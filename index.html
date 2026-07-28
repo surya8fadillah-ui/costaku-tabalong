@@ -62,7 +62,7 @@
         }
 
         /* 3D Fancy Flip Card Animation Styles */
-        .perspective-1000 { perspective: 1500px; } /* Diperdalam untuk efek 3D yang lebih dramatis */
+        .perspective-1000 { perspective: 1500px; }
         .transform-style-3d { transform-style: preserve-3d; }
         .backface-hidden { backface-visibility: hidden; }
         .rotate-y-180 { transform: rotateY(180deg); }
@@ -75,13 +75,12 @@
             transform: rotateY(180deg) !important; 
         }
         
-        /* Efek Tilt & Mengambang 3D saat Hover (Sebelum Flip) */
+        /* Efek Tilt & Mengambang 3D saat Hover */
         .card-hover-effect:hover .fancy-flip-anim:not(.is-flipped) {
             transform: translateY(-8px) rotateX(4deg) rotateY(-4deg) scale(1.03);
             box-shadow: -15px 20px 30px -10px rgba(212, 175, 55, 0.3);
         }
         
-        /* Efek Tilt & Mengambang 3D saat Hover (Sesudah Flip) */
         .card-hover-effect:hover .fancy-flip-anim.is-flipped {
             transform: translateY(-8px) rotateY(184deg) rotateX(4deg) scale(1.03);
             box-shadow: 15px 20px 30px -10px rgba(212, 175, 55, 0.3);
@@ -416,7 +415,6 @@
                                     <option value="Hardcore & Rhythm Gamer" data-jp="ゲーマー">Gamer</option>
                                 </select>
                             </div>
-                            <!-- Input Dipisah untuk Belakang Kartu -->
                             <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Anime Kesukaan</label>
                                 <input type="text" id="id-anime-input" value="Bocchi the Rock!" maxlength="25" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
@@ -426,12 +424,18 @@
                                 <input type="text" id="id-game-input" value="Genshin Impact" maxlength="25" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Pilih Avatar</label>
-                                <div class="grid grid-cols-4 gap-2">
-                                    <button onclick="setAvatar('ninja')" class="h-10 bg-zinc-800 border-2 border-jp-gold rounded-md focus:outline-none flex flex-col justify-center items-center text-xs text-jp-gold"><i class="fa-solid fa-user-ninja"></i></button>
-                                    <button onclick="setAvatar('dragon')" class="h-10 bg-zinc-850 border border-white/10 rounded-md focus:outline-none flex flex-col justify-center items-center text-xs text-gray-400"><i class="fa-solid fa-dragon"></i></button>
-                                </div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Pilih Avatar (Image URL)</label>
+                                <input type="text" id="id-avatar-input" value="https://placehold.co/150x150/121212/D4AF37?text=Avatar" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all" placeholder="Masukkan URL Gambar...">
+                                <p class="text-[10px] text-gray-500 mt-1">Gunakan URL gambar valid (cth: https://contoh.com/foto.jpg)</p>
                             </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Status Keanggotaan</label>
+                                <select id="id-status-select" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
+                                    <option value="ACTIVE" class="text-green-400">Active</option>
+                                    <option value="INACTIVE" class="text-red-400">Inactive</option>
+                                </select>
+                            </div>
+                            
                             <div class="pt-4 border-t border-white/5">
                                 <button onclick="addCurrentCardToList()" class="w-full bg-jp-gold hover:bg-jp-goldHover text-jp-dark py-3.5 rounded-md font-extrabold tracking-wider transition-all shadow-md flex items-center justify-center gap-2 text-sm uppercase">
                                     <i class="fa-solid fa-user-plus"></i> Tambahkan ke Daftar
@@ -459,12 +463,26 @@
                                     <div class="h-2 bg-jp-gold w-full"></div>
                                     <div class="p-6 flex flex-col justify-between h-[calc(100%-8px)] relative">
                                         <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle at 100% 150%, #fff 24%, white 25%, white 28%, #fff 29%, #fff 36%, white 36%, white 40%, transparent 40%, transparent); background-size: 20px 20px;"></div>
+                                        
                                         <div class="flex justify-between items-start relative z-10">
                                             <div class="flex gap-2 items-center">
                                                 <img src="logo.png" class="w-8 h-8 rounded-full border border-jp-gold/30 object-cover" onerror="this.src='https://placehold.co/100x100/121212/D4AF37?text=C'">
                                                 <div>
-                                                    <span class="text-[7px] uppercase tracking-widest text-gray-400 font-bold block">COSTAKU TABALONG ID</span>
-                                                    <span class="text-[10px] font-bold text-white font-jp block tracking-wider">MEMBER NO. #215</span>
+                                                    <span class="text-[7px] uppercase tracking-widest text-gray-400 font-bold block mb-1">COSTAKU TABALONG ID</span>
+                                                    <!-- Updated: Plat Silver Badge untuk Labmem -->
+                                                    <div class="relative inline-flex items-center justify-center px-1.5 py-0.5 bg-gradient-to-b from-slate-300 via-slate-100 to-slate-400 rounded-[3px] border border-slate-500 shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                                                        <!-- Highlight putih di tepi dalam plat untuk efek 3D -->
+                                                        <div class="absolute inset-0 border border-white/80 rounded-[3px] pointer-events-none"></div>
+                                                        
+                                                        <!-- Baut/Rivet Kiri -->
+                                                        <div class="w-1 h-1 rounded-full bg-gradient-to-br from-slate-200 to-slate-600 border-[0.5px] border-slate-700 mr-2 relative z-10 shadow-sm"></div>
+                                                        
+                                                        <!-- Teks bergaya Engraved (Ukiran ke dalam) -->
+                                                        <span class="text-[9px] font-black text-slate-800 font-mono tracking-widest drop-shadow-[0_1px_0_rgba(255,255,255,0.9)] relative z-10">LABMEM 0001</span>
+                                                        
+                                                        <!-- Baut/Rivet Kanan -->
+                                                        <div class="w-1 h-1 rounded-full bg-gradient-to-br from-slate-200 to-slate-600 border-[0.5px] border-slate-700 ml-2 relative z-10 shadow-sm"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="bg-jp-gold/10 px-2 py-1 rounded border border-jp-gold/30 flex items-center gap-1.5">
@@ -472,21 +490,32 @@
                                                 <span class="text-[8px] font-bold text-jp-gold uppercase tracking-wider font-jp">コスプレイヤー</span>
                                             </div>
                                         </div>
+                                        
                                         <div class="flex items-center gap-4 py-3 relative z-10">
-                                            <div class="w-20 h-20 rounded-xl bg-zinc-900 border border-white/10 flex items-center justify-center relative overflow-hidden flex-shrink-0">
-                                                <i class="fa-solid fa-user-ninja text-3xl text-jp-gold"></i>
-                                                <div class="absolute bottom-0 w-full bg-jp-gold/25 text-[8px] text-center font-bold text-white py-0.5">ACTIVE</div>
+                                            <!-- Updated: Avatar is now a square image container -->
+                                            <div class="w-20 h-20 bg-zinc-900 border border-white/10 flex items-center justify-center relative overflow-hidden flex-shrink-0">
+                                                <img id="card-avatar-img" src="https://placehold.co/150x150/121212/D4AF37?text=Avatar" alt="Foto Avatar" class="w-full h-full object-cover">
                                             </div>
                                             <div>
                                                 <h4 class="text-3xl font-extrabold text-white tracking-wide uppercase font-jp leading-none mb-1.5" id="card-nickname">Ryuka</h4>
-                                                <div class="text-[10px] text-gray-400 font-mono tracking-wider flex items-center gap-2"><i class="fa-solid fa-shield-halved text-jp-gold"></i> <span id="card-role">Cosplay & Crafting</span></div>
+                                                <div class="text-[10px] text-gray-400 font-mono tracking-wider flex items-center gap-2">
+                                                    <i class="fa-solid fa-shield-halved text-jp-gold"></i> <span id="card-role">Cosplay & Crafting</span>
+                                                </div>
                                             </div>
                                         </div>
+                                        
                                         <div class="flex justify-between items-end pt-4 border-t border-white/5 relative z-10">
                                             <div>
                                                 <span class="text-[8px] text-gray-500 uppercase block tracking-wider">LOKALITAS REGIONAL</span>
                                                 <span class="text-[10px] font-bold text-white tracking-wide uppercase">TABALONG, IDN</span>
                                             </div>
+                                            
+                                            <!-- Updated: Added Status at the bottom -->
+                                            <div>
+                                                <span class="text-[8px] text-gray-500 uppercase block tracking-wider">STATUS ANGGOTA</span>
+                                                <span class="text-[10px] font-bold text-green-400 tracking-wide uppercase" id="card-status-display">ACTIVE</span>
+                                            </div>
+                                            
                                             <div class="flex flex-col items-end">
                                                 <div class="flex gap-0.5 h-6">
                                                     <div class="w-0.5 bg-white/70 h-full"></div><div class="w-1 bg-white/70 h-full"></div><div class="w-0.5 bg-white/70 h-full"></div><div class="w-1.5 bg-white/70 h-full"></div><div class="w-0.5 bg-white/70 h-full"></div><div class="w-0.5 bg-white/70 h-full"></div>
@@ -766,23 +795,54 @@
         const idDivisionSelect = document.getElementById('id-division-select');
         const idAnimeInput = document.getElementById('id-anime-input');
         const idGameInput = document.getElementById('id-game-input');
+        const idAvatarInput = document.getElementById('id-avatar-input'); // New input
+        const idStatusSelect = document.getElementById('id-status-select'); // New input
         
         const cardNickname = document.getElementById('card-nickname');
         const cardRole = document.getElementById('card-role');
         const cardBackAnime = document.getElementById('card-back-anime');
         const cardBackGame = document.getElementById('card-back-game');
+        const cardAvatarImg = document.getElementById('card-avatar-img'); // New target
+        const cardStatusDisplay = document.getElementById('card-status-display'); // New target
 
         function updateCardData() {
             if(cardNickname) cardNickname.innerText = idNameInput.value || 'Ryuka';
             if(cardRole) cardRole.innerText = idDivisionSelect.value;
             if(cardBackAnime) cardBackAnime.innerText = idAnimeInput.value || 'Bocchi the Rock!';
             if(cardBackGame) cardBackGame.innerText = idGameInput.value || 'Genshin Impact';
+            
+            // Update Avatar Image
+            if(cardAvatarImg) {
+                const imgUrl = idAvatarInput.value;
+                if(imgUrl) {
+                    cardAvatarImg.src = imgUrl;
+                } else {
+                     cardAvatarImg.src = "https://placehold.co/150x150/121212/D4AF37?text=Avatar";
+                }
+            }
+
+            // Update Status and Color
+            if(cardStatusDisplay) {
+                const status = idStatusSelect.value;
+                cardStatusDisplay.innerText = status;
+                if(status === 'ACTIVE') {
+                    cardStatusDisplay.classList.remove('text-red-400');
+                    cardStatusDisplay.classList.add('text-green-400');
+                } else {
+                    cardStatusDisplay.classList.remove('text-green-400');
+                    cardStatusDisplay.classList.add('text-red-400');
+                }
+            }
         }
 
+        // Add event listeners to all inputs including the new ones
         if(idNameInput) idNameInput.addEventListener('input', updateCardData);
         if(idDivisionSelect) idDivisionSelect.addEventListener('change', updateCardData);
         if(idAnimeInput) idAnimeInput.addEventListener('input', updateCardData);
         if(idGameInput) idGameInput.addEventListener('input', updateCardData);
+        if(idAvatarInput) idAvatarInput.addEventListener('input', updateCardData);
+        if(idStatusSelect) idStatusSelect.addEventListener('change', updateCardData);
+
 
         function addCurrentCardToList() { 
             communityMembers.push({ nickname: idNameInput.value || 'Ryuka', role: idDivisionSelect.value });
