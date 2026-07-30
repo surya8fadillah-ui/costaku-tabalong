@@ -125,8 +125,8 @@
                     <a href="#/events" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="events">Event</a>
                     <a href="#/join" class="bg-jp-gold hover:bg-jp-goldHover text-jp-dark px-5 py-2.5 rounded-md text-sm font-bold tracking-wide transition-all shadow-md shadow-jp-gold/10 hover:shadow-jp-gold/30">Gabung</a>
                     
-                    <!-- Container Login/Logout -->
-                    <div id="nav-auth-container" class="border-l border-white/20 pl-4 ml-2 flex items-center">
+                    <!-- Container Login/Logout: DISEMBUNYIKAN DEFAULT -->
+                    <div id="nav-auth-container" class="border-l border-white/20 pl-4 ml-2 flex items-center" style="display: none;">
                         <button onclick="window.loginWithGoogle()" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-4 py-2 rounded-md text-sm font-bold transition-all"><i class="fa-solid fa-spinner fa-spin mr-1"></i> Memuat...</button>
                     </div>
                 </div>
@@ -146,7 +146,8 @@
             <a href="#/events" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="events">Jadwal Event</a>
             <a href="#/join" class="block bg-jp-gold hover:bg-jp-goldHover text-jp-dark text-center py-3 rounded-md text-base font-bold transition-all mt-4">Gabung Komunitas</a>
             
-            <div id="mobile-auth-container" class="pt-4 border-t border-white/10 mt-4 flex justify-center">
+            <!-- Mobile Container Login: DISEMBUNYIKAN DEFAULT -->
+            <div id="mobile-auth-container" class="pt-4 border-t border-white/10 mt-4 flex justify-center" style="display: none;">
                 <!-- Mobile Auth Button Placeholder -->
             </div>
         </div>
@@ -175,7 +176,7 @@
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <a href="#/join" class="w-full sm:w-auto bg-jp-gold hover:bg-jp-goldHover text-jp-dark px-8 py-4 rounded-md font-bold tracking-wide transition-all shadow-lg shadow-jp-gold/20 hover:shadow-jp-gold/40 flex items-center justify-center gap-2 text-base"><i class="fa-solid fa-circle-user"></i> Gabung Sekarang</a>
-                        <a href="#/members" class="w-full sm:w-auto bg-white/5 hover:bg-white/10 text-white border border-white/10 px-8 py-4 rounded-md font-bold tracking-wide transition-all flex items-center justify-center gap-2 text-base backdrop-blur-sm">Buat Kartu Anggota <i class="fa-solid fa-address-card text-jp-gold"></i></a>
+                        <a href="#/members" class="w-full sm:w-auto bg-white/5 hover:bg-white/10 text-white border border-white/10 px-8 py-4 rounded-md font-bold tracking-wide transition-all flex items-center justify-center gap-2 text-base backdrop-blur-sm">Lihat Kartu Anggota <i class="fa-solid fa-address-card text-jp-gold"></i></a>
                     </div>
                 </div>
             </header>
@@ -245,142 +246,146 @@
 
         <div id="page-members" class="page-container hidden page-fade-in">
             <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <span class="text-xs font-bold tracking-widest text-jp-gold uppercase font-jp block mb-2">会員カード ・ MEMBER REGISTER</span>
-                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Pembuat Kartu Anggota</h2>
-                    <p class="max-w-xl mx-auto text-gray-400 text-sm font-light">Rancang ID Card dan simpan ke database secara real-time. Anda harus login untuk mengubah data.</p>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16 relative">
-                    <!-- Panel Kustomisasi -->
-                    <div class="lg:col-span-5 bg-jp-lightGray/40 p-8 rounded-2xl border border-white/5 backdrop-blur-sm shadow-xl relative overflow-hidden">
-                        
-                        <!-- Overlay Khusus yang Mengunci Form jika Belum Login -->
-                        <div id="auth-overlay-form" class="absolute inset-0 bg-jp-dark/90 backdrop-blur-sm z-30 flex flex-col items-center justify-center text-center p-6 transition-all duration-300">
-                            <i class="fa-solid fa-lock text-5xl text-jp-gold mb-6 opacity-80"></i>
-                            <h4 class="text-xl text-white font-bold mb-3">Akses Terkunci</h4>
-                            <p class="text-gray-400 text-sm mb-6 leading-relaxed max-w-xs">Silakan login sebagai pengurus menggunakan akun Google Anda untuk menambah atau menghapus data kartu anggota.</p>
-                            <button onclick="window.loginWithGoogle()" class="bg-white text-black hover:bg-gray-200 px-6 py-3 rounded-full text-sm font-bold transition-all shadow-lg flex items-center gap-2">
-                                <i class="fa-brands fa-google text-red-500"></i> Login dengan Google
-                            </button>
-                            <button onclick="window.openModal('rules-modal')" class="text-xs text-jp-gold underline mt-6 hover:text-white transition-colors">
-                                <i class="fa-solid fa-shield-halved"></i> Info Aturan Keamanan Database
-                            </button>
-                        </div>
-
-                        <!-- Status Firebase Cloud -->
-                        <div id="cloud-sync-status" class="absolute top-4 right-4 flex items-center gap-2 px-2 py-1 bg-blue-500/10 border border-blue-500/30 rounded text-[10px] text-blue-400 font-mono tracking-widest">
-                            <i class="fa-brands fa-google"></i> FIREBASE
-                        </div>
-
-                        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2"><i class="fa-solid fa-sliders text-jp-gold"></i> Panel Kustomisasi</h3>
-                        <div class="space-y-5">
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Nama Panggilan</label>
-                                <input type="text" id="id-name-input" value="Ryuka" maxlength="15" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Divisi Utama</label>
-                                <select id="id-division-select" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
-                                    <option value="Cosplay & Crafting" data-jp="コスプレイヤー">Cosplayer</option>
-                                    <option value="Anime & Manga Illustrator" data-jp="イラストレーター">Artist / Illustrator</option>
-                                    <option value="Hardcore & Rhythm Gamer" data-jp="ゲーマー">Gamer</option>
-                                    <option value="Event Organizer (EO)" data-jp="イベント主催者">Event Organizer</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Generasi</label>
-                                <select id="id-gen-select" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
-                                    <option value="Gen 1">Gen 1 (2015 - 2018)</option>
-                                    <option value="Gen 2">Gen 2 (2019 - 2022)</option>
-                                    <option value="Gen 3">Gen 3 (2023 - Sekarang)</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Anime Kesukaan</label>
-                                <input type="text" id="id-anime-input" value="Bocchi the Rock!" maxlength="25" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Game Favorit</label>
-                                <input type="text" id="id-game-input" value="Genshin Impact" maxlength="25" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Pilih Avatar URL</label>
-                                <input type="text" id="id-avatar-input" value="https://placehold.co/150x150/121212/D4AF37?text=Avatar" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all" placeholder="Masukkan URL Gambar...">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Status Keanggotaan</label>
-                                <select id="id-status-select" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
-                                    <option value="ACTIVE" class="text-green-400">Active</option>
-                                    <option value="INACTIVE" class="text-red-400">Inactive</option>
-                                </select>
-                            </div>
-                            
-                            <div class="pt-4 border-t border-white/5">
-                                <button id="btn-simpan" onclick="window.addCurrentCardToList()" class="w-full bg-jp-gold hover:bg-jp-goldHover text-jp-dark py-3.5 rounded-md font-extrabold tracking-wider transition-all shadow-md flex items-center justify-center gap-2 text-sm uppercase">
-                                    <i class="fa-solid fa-user-plus"></i> Simpan ke Database
-                                </button>
-                            </div>
-                        </div>
+                
+                <!-- BUNGKUSAN ADMIN PANEL RAHASIA (Default Hidden) -->
+                <div id="admin-control-panel" style="display: none;">
+                    <div class="text-center mb-12">
+                        <span class="text-xs font-bold tracking-widest text-jp-gold uppercase font-jp block mb-2">会員カード ・ MEMBER REGISTER</span>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Pembuat Kartu Anggota</h2>
+                        <p class="max-w-xl mx-auto text-gray-400 text-sm font-light">Rancang ID Card dan simpan ke database secara real-time. Anda harus login untuk mengubah data.</p>
                     </div>
 
-                    <!-- Flip Card Preview Container -->
-                    <div class="lg:col-span-7 flex flex-col items-center justify-center h-full min-h-[350px] relative">
-                        <div class="absolute w-72 h-72 bg-jp-gold/5 rounded-full blur-[90px] pointer-events-none -z-10"></div>
-                        <div class="text-[10px] text-gray-400 uppercase tracking-widest mb-6 flex items-center gap-2 animate-bounce bg-jp-darkGray/80 px-4 py-1.5 rounded-full border border-white/5 shadow-lg">
-                            <i class="fa-solid fa-hand-pointer text-jp-gold"></i> Klik kartu untuk flip
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16 relative">
+                        <!-- Panel Kustomisasi -->
+                        <div class="lg:col-span-5 bg-jp-lightGray/40 p-8 rounded-2xl border border-white/5 backdrop-blur-sm shadow-xl relative overflow-hidden">
+                            
+                            <!-- Overlay Khusus yang Mengunci Form jika Belum Login -->
+                            <div id="auth-overlay-form" class="absolute inset-0 bg-jp-dark/90 backdrop-blur-sm z-30 flex flex-col items-center justify-center text-center p-6 transition-all duration-300">
+                                <i class="fa-solid fa-lock text-5xl text-jp-gold mb-6 opacity-80"></i>
+                                <h4 class="text-xl text-white font-bold mb-3">Akses Terkunci</h4>
+                                <p class="text-gray-400 text-sm mb-6 leading-relaxed max-w-xs">Silakan login sebagai pengurus menggunakan akun Google Anda untuk menambah atau menghapus data kartu anggota.</p>
+                                <button onclick="window.loginWithGoogle()" class="bg-white text-black hover:bg-gray-200 px-6 py-3 rounded-full text-sm font-bold transition-all shadow-lg flex items-center gap-2">
+                                    <i class="fa-brands fa-google text-red-500"></i> Login dengan Google
+                                </button>
+                                <button onclick="window.openModal('rules-modal')" class="text-xs text-jp-gold underline mt-6 hover:text-white transition-colors">
+                                    <i class="fa-solid fa-shield-halved"></i> Info Aturan Keamanan Database
+                                </button>
+                            </div>
+
+                            <!-- Status Firebase Cloud -->
+                            <div id="cloud-sync-status" class="absolute top-4 right-4 flex items-center gap-2 px-2 py-1 bg-blue-500/10 border border-blue-500/30 rounded text-[10px] text-blue-400 font-mono tracking-widest">
+                                <i class="fa-brands fa-google"></i> FIREBASE
+                            </div>
+
+                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2"><i class="fa-solid fa-sliders text-jp-gold"></i> Panel Kustomisasi</h3>
+                            <div class="space-y-5">
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Nama Panggilan</label>
+                                    <input type="text" id="id-name-input" value="Ryuka" maxlength="15" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Divisi Utama</label>
+                                    <select id="id-division-select" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
+                                        <option value="Cosplay & Crafting" data-jp="コスプレイヤー">Cosplayer</option>
+                                        <option value="Anime & Manga Illustrator" data-jp="イラストレーター">Artist / Illustrator</option>
+                                        <option value="Hardcore & Rhythm Gamer" data-jp="ゲーマー">Gamer</option>
+                                        <option value="Event Organizer (EO)" data-jp="イベント主催者">Event Organizer</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Generasi</label>
+                                    <select id="id-gen-select" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
+                                        <option value="Gen 1">Gen 1 (2015 - 2018)</option>
+                                        <option value="Gen 2">Gen 2 (2019 - 2022)</option>
+                                        <option value="Gen 3">Gen 3 (2023 - Sekarang)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Anime Kesukaan</label>
+                                    <input type="text" id="id-anime-input" value="Bocchi the Rock!" maxlength="25" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Game Favorit</label>
+                                    <input type="text" id="id-game-input" value="Genshin Impact" maxlength="25" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Pilih Avatar URL</label>
+                                    <input type="text" id="id-avatar-input" value="https://placehold.co/150x150/121212/D4AF37?text=Avatar" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all" placeholder="Masukkan URL Gambar...">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Status Keanggotaan</label>
+                                    <select id="id-status-select" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
+                                        <option value="ACTIVE" class="text-green-400">Active</option>
+                                        <option value="INACTIVE" class="text-red-400">Inactive</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="pt-4 border-t border-white/5">
+                                    <button id="btn-simpan" onclick="window.addCurrentCardToList()" class="w-full bg-jp-gold hover:bg-jp-goldHover text-jp-dark py-3.5 rounded-md font-extrabold tracking-wider transition-all shadow-md flex items-center justify-center gap-2 text-sm uppercase">
+                                        <i class="fa-solid fa-user-plus"></i> Simpan ke Database
+                                    </button>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="w-full max-w-md perspective-1000 cursor-pointer card-hover-effect" onclick="document.getElementById('flip-card-inner').classList.toggle('is-flipped')">
-                            <div id="flip-card-inner" class="relative w-full h-64 transform-style-3d fancy-flip-anim shadow-2xl shadow-jp-gold/10 rounded-2xl">
-                                <!-- FRONT -->
-                                <div class="absolute top-0 left-0 w-full h-full backface-hidden bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none">
-                                    <div class="glare-sweep"></div>
-                                    <div class="h-2 bg-jp-gold w-full"></div>
-                                    <div class="p-6 flex flex-col justify-between h-[calc(100%-8px)] relative">
-                                        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle at 100% 150%, #fff 24%, white 25%, white 28%, #fff 29%, #fff 36%, white 36%, white 40%, transparent 40%, transparent); background-size: 20px 20px;"></div>
-                                        <div class="flex justify-between items-start relative z-10">
-                                            <div class="flex gap-2.5 items-center">
-                                                <img src="logo.png" class="w-9 h-9 rounded-full border border-jp-gold/30 object-cover shadow-sm" onerror="this.src='https://placehold.co/100x100/121212/D4AF37?text=C'">
-                                                <div class="flex flex-col justify-center">
-                                                    <span class="text-[10px] tracking-widest text-gray-200 font-extrabold block mb-1">Costaku Tabalong</span>
-                                                    <div class="relative inline-flex items-center justify-center px-1.5 py-0.5 bg-gradient-to-b from-slate-300 via-slate-100 to-slate-400 rounded-[3px] border border-slate-500 shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                                                        <span class="text-[9px] font-black text-slate-800 font-mono tracking-widest relative z-10">PREVIEW</span>
+                        <!-- Flip Card Preview Container -->
+                        <div class="lg:col-span-7 flex flex-col items-center justify-center h-full min-h-[350px] relative">
+                            <div class="absolute w-72 h-72 bg-jp-gold/5 rounded-full blur-[90px] pointer-events-none -z-10"></div>
+                            <div class="text-[10px] text-gray-400 uppercase tracking-widest mb-6 flex items-center gap-2 animate-bounce bg-jp-darkGray/80 px-4 py-1.5 rounded-full border border-white/5 shadow-lg">
+                                <i class="fa-solid fa-hand-pointer text-jp-gold"></i> Klik kartu untuk flip
+                            </div>
+
+                            <div class="w-full max-w-md perspective-1000 cursor-pointer card-hover-effect" onclick="document.getElementById('flip-card-inner').classList.toggle('is-flipped')">
+                                <div id="flip-card-inner" class="relative w-full h-64 transform-style-3d fancy-flip-anim shadow-2xl shadow-jp-gold/10 rounded-2xl">
+                                    <!-- FRONT -->
+                                    <div class="absolute top-0 left-0 w-full h-full backface-hidden bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none">
+                                        <div class="glare-sweep"></div>
+                                        <div class="h-2 bg-jp-gold w-full"></div>
+                                        <div class="p-6 flex flex-col justify-between h-[calc(100%-8px)] relative">
+                                            <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle at 100% 150%, #fff 24%, white 25%, white 28%, #fff 29%, #fff 36%, white 36%, white 40%, transparent 40%, transparent); background-size: 20px 20px;"></div>
+                                            <div class="flex justify-between items-start relative z-10">
+                                                <div class="flex gap-2.5 items-center">
+                                                    <img src="logo.png" class="w-9 h-9 rounded-full border border-jp-gold/30 object-cover shadow-sm" onerror="this.src='https://placehold.co/100x100/121212/D4AF37?text=C'">
+                                                    <div class="flex flex-col justify-center">
+                                                        <span class="text-[10px] tracking-widest text-gray-200 font-extrabold block mb-1">Costaku Tabalong</span>
+                                                        <div class="relative inline-flex items-center justify-center px-1.5 py-0.5 bg-gradient-to-b from-slate-300 via-slate-100 to-slate-400 rounded-[3px] border border-slate-500 shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                                                            <span class="text-[9px] font-black text-slate-800 font-mono tracking-widest relative z-10">PREVIEW</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center gap-4 py-3 relative z-10">
+                                                <div class="w-20 h-20 bg-zinc-900 border border-white/10 flex items-center justify-center relative overflow-hidden flex-shrink-0">
+                                                    <img id="card-avatar-img" src="https://placehold.co/150x150/121212/D4AF37?text=Avatar" alt="Foto Avatar" class="w-full h-full object-cover">
+                                                </div>
+                                                <div>
+                                                    <h4 class="text-3xl font-extrabold text-white tracking-wide uppercase font-jp leading-none mb-1.5" id="card-nickname">Ryuka</h4>
+                                                    <div class="text-[10px] text-gray-400 font-mono tracking-wider flex items-center gap-2">
+                                                        <i class="fa-solid fa-shield-halved text-jp-gold"></i> <span id="card-role">Cosplay & Crafting</span>
+                                                        <span class="text-white/20">|</span>
+                                                        <span id="card-gen" class="font-bold text-jp-gold bg-jp-gold/10 px-1.5 py-0.5 rounded border border-jp-gold/20">GEN 1</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="flex items-center gap-4 py-3 relative z-10">
-                                            <div class="w-20 h-20 bg-zinc-900 border border-white/10 flex items-center justify-center relative overflow-hidden flex-shrink-0">
-                                                <img id="card-avatar-img" src="https://placehold.co/150x150/121212/D4AF37?text=Avatar" alt="Foto Avatar" class="w-full h-full object-cover">
-                                            </div>
-                                            <div>
-                                                <h4 class="text-3xl font-extrabold text-white tracking-wide uppercase font-jp leading-none mb-1.5" id="card-nickname">Ryuka</h4>
-                                                <div class="text-[10px] text-gray-400 font-mono tracking-wider flex items-center gap-2">
-                                                    <i class="fa-solid fa-shield-halved text-jp-gold"></i> <span id="card-role">Cosplay & Crafting</span>
-                                                    <span class="text-white/20">|</span>
-                                                    <span id="card-gen" class="font-bold text-jp-gold bg-jp-gold/10 px-1.5 py-0.5 rounded border border-jp-gold/20">GEN 1</span>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-                                </div>
-                                <!-- BACK -->
-                                <div class="absolute top-0 left-0 w-full h-full backface-hidden rotate-y-180 bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none">
-                                    <div class="glare-sweep"></div>
-                                    <div class="w-full h-12 bg-black mt-6 relative z-10 border-y border-white/10 shadow-inner"></div>
-                                    <div class="p-6 flex flex-col justify-between h-[calc(100%-72px)] relative z-10">
-                                        <div class="space-y-4 w-full mt-2">
-                                            <div>
-                                                <span class="text-[8px] uppercase tracking-widest text-jp-gold font-bold block mb-1">Anime Kesukaan</span>
-                                                <div class="bg-jp-dark/50 border border-white/5 rounded px-3 py-2 text-xs text-white font-medium flex items-center gap-3">
-                                                    <i class="fa-solid fa-tv text-gray-500 w-4"></i> <span id="card-back-anime" class="truncate">Bocchi the Rock!</span>
+                                    <!-- BACK -->
+                                    <div class="absolute top-0 left-0 w-full h-full backface-hidden rotate-y-180 bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none">
+                                        <div class="glare-sweep"></div>
+                                        <div class="w-full h-12 bg-black mt-6 relative z-10 border-y border-white/10 shadow-inner"></div>
+                                        <div class="p-6 flex flex-col justify-between h-[calc(100%-72px)] relative z-10">
+                                            <div class="space-y-4 w-full mt-2">
+                                                <div>
+                                                    <span class="text-[8px] uppercase tracking-widest text-jp-gold font-bold block mb-1">Anime Kesukaan</span>
+                                                    <div class="bg-jp-dark/50 border border-white/5 rounded px-3 py-2 text-xs text-white font-medium flex items-center gap-3">
+                                                        <i class="fa-solid fa-tv text-gray-500 w-4"></i> <span id="card-back-anime" class="truncate">Bocchi the Rock!</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div>
-                                                <span class="text-[8px] uppercase tracking-widest text-jp-gold font-bold block mb-1">Game Favorit</span>
-                                                <div class="bg-jp-dark/50 border border-white/5 rounded px-3 py-2 text-xs text-white font-medium flex items-center gap-3">
-                                                    <i class="fa-solid fa-gamepad text-gray-500 w-4"></i> <span id="card-back-game" class="truncate">Genshin Impact</span>
+                                                <div>
+                                                    <span class="text-[8px] uppercase tracking-widest text-jp-gold font-bold block mb-1">Game Favorit</span>
+                                                    <div class="bg-jp-dark/50 border border-white/5 rounded px-3 py-2 text-xs text-white font-medium flex items-center gap-3">
+                                                        <i class="fa-solid fa-gamepad text-gray-500 w-4"></i> <span id="card-back-game" class="truncate">Genshin Impact</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -389,7 +394,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> <!-- END BUNGKUSAN ADMIN PANEL RAHASIA -->
 
                 <div class="border-t border-white/5 pt-12">
                     <div class="flex items-center justify-between mb-6">
@@ -840,10 +845,36 @@ service cloud.firestore {
         window.openModal = function(id) { document.getElementById(id).classList.remove('hidden'); }
         window.closeModal = function(id) { document.getElementById(id).classList.add('hidden'); }
         
+        // Pengecekan URL Rahasia
+        window.checkAdminAccess = function() {
+            // Ambil hash lengkap, lalu ekstrak parameternya
+            const hash = window.location.hash || '';
+            const isAdmin = hash.includes('admin=true');
+            
+            const navAuth = document.getElementById('nav-auth-container');
+            const mobileAuth = document.getElementById('mobile-auth-container');
+            const adminPanel = document.getElementById('admin-control-panel');
+            
+            if (isAdmin) {
+                // TAMPILKAN PANEL ADMIN
+                if (navAuth) navAuth.style.display = 'flex';
+                if (mobileAuth) mobileAuth.style.display = 'flex';
+                if (adminPanel) adminPanel.style.display = 'block'; 
+            } else {
+                // SEMBUNYIKAN PANEL ADMIN DARI PENGUNJUNG UMUM
+                if (navAuth) navAuth.style.display = 'none';
+                if (mobileAuth) mobileAuth.style.display = 'none';
+                if (adminPanel) adminPanel.style.display = 'none';
+            }
+        }
+
         function handleRouting() {
             const hash = window.location.hash || '#/';
             const validPages = ['home', 'about', 'divisions', 'gallery', 'members', 'events', 'join'];
-            let hashPath = hash.substring(2);
+            
+            // Bersihkan parameter khusus seperti ?admin=true agar routing halaman tidak error
+            let cleanHash = hash.split('?')[0]; 
+            let hashPath = cleanHash.substring(2);
             let pathParts = hashPath.split('/');
             let targetPage = pathParts[0] || 'home';
 
@@ -858,6 +889,9 @@ service cloud.firestore {
 
             document.getElementById('mobile-menu').classList.add('hidden');
             window.scrollTo({ top: 0, behavior: 'instant' });
+            
+            // Panggil fungsi cek akses admin setiap kali pindah halaman / refresh
+            window.checkAdminAccess();
         }
 
         window.addEventListener('hashchange', handleRouting);
