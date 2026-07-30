@@ -612,6 +612,47 @@
     </div>
 
     <script type="module">
+        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+// Provider Google
+const provider = new GoogleAuthProvider();
+
+// Fungsi Login Google
+window.loginWithGoogle = async function() {
+    try {
+        await signInWithPopup(auth, provider);
+        alert("Berhasil login!");
+    } catch (error) {
+        console.error("Gagal login:", error);
+        alert("Terjadi kesalahan saat login.");
+    }
+};
+
+// Fungsi Logout
+window.logoutAccount = async function() {
+    try {
+        await signOut(auth);
+        alert("Berhasil logout!");
+    } catch (error) {
+        console.error("Gagal logout:", error);
+    }
+};
+
+// Pantau status login pengguna secara real-time
+onAuthStateChanged(auth, (user) => {
+    const formPanel = document.getElementById('member-form-panel'); // Panel kustomisasi
+    const loginPrompt = document.getElementById('login-prompt-panel'); // Panel suruh login
+
+    if (user) {
+        // Jika sudah login, tampilkan form buat kartu
+        if(formPanel) formPanel.classList.remove('hidden');
+        if(loginPrompt) loginPrompt.classList.add('hidden');
+    } else {
+        // Jika belum login, sembunyikan form dan suruh login dulu
+        if(formPanel) formPanel.classList.add('hidden');
+        if(loginPrompt) loginPrompt.classList.remove('hidden');
+    }
+});
         // IMPORT FIREBASE LIBRARIES
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
