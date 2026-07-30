@@ -154,7 +154,6 @@
                 </div>
             </div>
         </div>
-
         <div id="mobile-menu" class="hidden md:hidden bg-jp-dark/95 border-b border-white/5 px-4 pt-2 pb-6 space-y-3 absolute w-full shadow-2xl">
             <a href="#/" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="home">Beranda</a>
             <a href="#/about" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="about">Tentang Kami</a>
@@ -241,7 +240,6 @@
                         </div>
                     </div>
                     
-                    <!-- Divisi EO -->
                     <div id="divisi-eo" class="scroll-mt-32 rounded-3xl bg-jp-lightGray/40 border border-white/5 p-6 md:p-10 flex flex-col lg:flex-row-reverse gap-10 items-center transition-all">
                         <div class="lg:w-2/5 w-full relative">
                             <div class="absolute inset-0 bg-gradient-to-tl from-purple-500/20 to-fuchsia-500/20 blur-2xl rounded-full"></div>
@@ -297,6 +295,10 @@
 
                         <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2"><i class="fa-solid fa-sliders text-jp-gold"></i> Panel Kustomisasi</h3>
                         <div class="space-y-5">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">ID / Kategori Labmem</label>
+                                <input type="text" id="id-labmem-input" value="LABMEM 001" maxlength="15" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all" placeholder="Misal: LABMEM 001">
+                            </div>
                             <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Nama Panggilan</label>
                                 <input type="text" id="id-name-input" value="Ryuka" maxlength="15" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
@@ -378,7 +380,7 @@
                                                     <div class="relative inline-flex items-center justify-center px-1.5 py-0.5 bg-gradient-to-b from-slate-300 via-slate-100 to-slate-400 rounded-[3px] border border-slate-500 shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                                                         <div class="absolute inset-0 border border-white/80 rounded-[3px] pointer-events-none"></div>
                                                         <div class="w-1 h-1 rounded-full bg-gradient-to-br from-slate-200 to-slate-600 border-[0.5px] border-slate-700 mr-2 relative z-10 shadow-sm"></div>
-                                                        <span class="text-[9px] font-black text-slate-800 font-mono tracking-widest drop-shadow-[0_1px_0_rgba(255,255,255,0.9)] relative z-10">PREVIEW</span>
+                                                        <span id="card-labmem" class="text-[9px] font-black text-slate-800 font-mono tracking-widest drop-shadow-[0_1px_0_rgba(255,255,255,0.9)] relative z-10">LABMEM 001</span>
                                                         <div class="w-1 h-1 rounded-full bg-gradient-to-br from-slate-200 to-slate-600 border-[0.5px] border-slate-700 ml-2 relative z-10 shadow-sm"></div>
                                                     </div>
                                                 </div>
@@ -570,10 +572,11 @@
         }
 
         // Data anggota bawaan (Seeding Initial Data)
+        // Menambahkan properti "labmem" pada data awal
         const initialLocalMembers = [
-            { id: 'local_1', nickname: "Ryuu", role: "Cosplay & Crafting", gen: "Gen 1", anime: "Fate/Stay Night", game: "Elden Ring", avatar: "https://placehold.co/150x150/121212/D4AF37?text=RY", status: "ACTIVE", createdAt: new Date().toISOString() },
-            { id: 'local_2', nickname: "Shiro", role: "Anime & Manga Illustrator", gen: "Gen 2", anime: "Violet Evergarden", game: "Arknights", avatar: "https://placehold.co/150x150/121212/3B82F6?text=SH", status: "ACTIVE", createdAt: new Date().toISOString() },
-            { id: 'local_3', nickname: "Kuro", role: "Hardcore & Rhythm Gamer", gen: "Gen 3", anime: "Oshi no Ko", game: "Osu!", avatar: "https://placehold.co/150x150/121212/10B981?text=KU", status: "INACTIVE", createdAt: new Date().toISOString() }
+            { id: 'local_1', labmem: "LABMEM 001", nickname: "Ryuu", role: "Cosplay & Crafting", gen: "Gen 1", anime: "Fate/Stay Night", game: "Elden Ring", avatar: "https://placehold.co/150x150/121212/D4AF37?text=RY", status: "ACTIVE", createdAt: new Date().toISOString() },
+            { id: 'local_2', labmem: "LABMEM 002", nickname: "Shiro", role: "Anime & Manga Illustrator", gen: "Gen 2", anime: "Violet Evergarden", game: "Arknights", avatar: "https://placehold.co/150x150/121212/3B82F6?text=SH", status: "ACTIVE", createdAt: new Date().toISOString() },
+            { id: 'local_3', labmem: "LABMEM 003", nickname: "Kuro", role: "Hardcore & Rhythm Gamer", gen: "Gen 3", anime: "Oshi no Ko", game: "Osu!", avatar: "https://placehold.co/150x150/121212/10B981?text=KU", status: "INACTIVE", createdAt: new Date().toISOString() }
         ];
 
         let communityMembers = [...initialLocalMembers];
@@ -638,7 +641,9 @@
         window.addCurrentCardToList = async function() { 
             const name = document.getElementById('id-name-input').value || 'Ryuka';
             
+            // Tambahkan nilai labmem dari input field
             const newMember = { 
+                labmem: document.getElementById('id-labmem-input').value || 'LABMEM 001',
                 nickname: name, 
                 role: document.getElementById('id-division-select').value, 
                 gen: document.getElementById('id-gen-select').value,
@@ -694,6 +699,9 @@
         function generateCardHTML(member, index) {
             const idNum = String(index + 1).padStart(4, '0');
             const statusColor = member.status === 'ACTIVE' ? 'text-green-400' : 'text-red-400';
+            
+            // Mengambil custom labmem, atau fallback ke indeks (LABMEM 000X) jika properti tidak ada
+            const labmemId = member.labmem || `LABMEM ${idNum}`;
 
             return `
             <div class="w-full max-w-sm perspective-1000 cursor-pointer card-hover-effect mx-auto" onclick="this.querySelector('.fancy-flip-anim').classList.toggle('is-flipped')">
@@ -720,7 +728,7 @@
                                         <div class="relative inline-flex items-center justify-center px-1.5 py-0.5 bg-gradient-to-b from-slate-300 via-slate-100 to-slate-400 rounded-[3px] border border-slate-500 shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                                             <div class="absolute inset-0 border border-white/80 rounded-[3px] pointer-events-none"></div>
                                             <div class="w-1 h-1 rounded-full bg-gradient-to-br from-slate-200 to-slate-600 border-[0.5px] border-slate-700 mr-2 relative z-10 shadow-sm"></div>
-                                            <span class="text-[8px] font-black text-slate-800 font-mono tracking-widest drop-shadow-[0_1px_0_rgba(255,255,255,0.9)] relative z-10">LABMEM ${idNum}</span>
+                                            <span class="text-[8px] font-black text-slate-800 font-mono tracking-widest drop-shadow-[0_1px_0_rgba(255,255,255,0.9)] relative z-10">${labmemId}</span>
                                             <div class="w-1 h-1 rounded-full bg-gradient-to-br from-slate-200 to-slate-600 border-[0.5px] border-slate-700 ml-2 relative z-10 shadow-sm"></div>
                                         </div>
                                     </div>
@@ -837,6 +845,7 @@
             }
         }
 
+        const idLabmemInput = document.getElementById('id-labmem-input');
         const idNameInput = document.getElementById('id-name-input');
         const idDivisionSelect = document.getElementById('id-division-select');
         const idGenSelect = document.getElementById('id-gen-select');
@@ -845,6 +854,7 @@
         const idAvatarInput = document.getElementById('id-avatar-input');
         const idStatusSelect = document.getElementById('id-status-select');
         
+        const cardLabmem = document.getElementById('card-labmem');
         const cardNickname = document.getElementById('card-nickname');
         const cardRole = document.getElementById('card-role');
         const cardGen = document.getElementById('card-gen');
@@ -855,6 +865,7 @@
         const idAvatarUpload = document.getElementById('id-avatar-upload');
 
         function updateCardData() {
+            if(cardLabmem) cardLabmem.innerText = idLabmemInput.value || 'LABMEM 001';
             if(cardNickname) cardNickname.innerText = idNameInput.value || 'Ryuka';
             if(cardRole) cardRole.innerText = idDivisionSelect.value;
             if(cardGen && idGenSelect) cardGen.innerText = idGenSelect.value.toUpperCase();
@@ -917,6 +928,7 @@
             });
         }
 
+        if(idLabmemInput) idLabmemInput.addEventListener('input', updateCardData);
         if(idNameInput) idNameInput.addEventListener('input', updateCardData);
         if(idDivisionSelect) idDivisionSelect.addEventListener('change', updateCardData);
         if(idGenSelect) idGenSelect.addEventListener('change', updateCardData);
