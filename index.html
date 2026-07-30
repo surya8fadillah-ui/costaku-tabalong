@@ -119,13 +119,50 @@
                 <div class="hidden md:flex items-center space-x-7">
                     <a href="#/" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="home">Beranda</a>
                     <a href="#/about" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="about">Tentang Kami</a>
-                    <a href="#/divisions" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="divisions">Divisi</a>
-                    <a href="#/gallery" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="gallery">Galeri</a>
-                    <a href="#/members" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="members">Anggota</a>
+                    
+                    <!-- Dropdown Divisi -->
+                    <div class="relative group">
+                        <a href="#/divisions" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1 flex items-center gap-1" data-target="divisions">Divisi <i class="fa-solid fa-chevron-down text-[10px] opacity-70 transition-transform duration-300 group-hover:rotate-180"></i></a>
+                        <div class="absolute left-0 mt-1 w-56 bg-jp-darkGray border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform origin-top translate-y-2 group-hover:translate-y-0 overflow-hidden">
+                            <div class="py-1">
+                                <a href="#/divisions/cosplay" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-scissors w-4 text-center"></i> Cosplay & Crafting</a>
+                                <a href="#/divisions/dance" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-music w-4 text-center"></i> Dance & Musik</a>
+                                <a href="#/divisions/gaming" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-gamepad w-4 text-center"></i> Gaming</a>
+                                <a href="#/divisions/eo" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-clipboard-list w-4 text-center"></i> Event Organizer (EO)</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown Galeri -->
+                    <div class="relative group">
+                        <a href="#/gallery" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1 flex items-center gap-1" data-target="gallery">Galeri <i class="fa-solid fa-chevron-down text-[10px] opacity-70 transition-transform duration-300 group-hover:rotate-180"></i></a>
+                        <div class="absolute left-0 mt-1 w-56 bg-jp-darkGray border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform origin-top translate-y-2 group-hover:translate-y-0 overflow-hidden">
+                            <div class="py-1">
+                                <a href="#/gallery/gathering" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-users w-4 text-center"></i> Gathering</a>
+                                <a href="#/gallery/photosession" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-camera w-4 text-center"></i> Photo Session</a>
+                                <a href="#/gallery/sports" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-volleyball w-4 text-center"></i> Sports</a>
+                                <a href="#/gallery/dance" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-compact-disc w-4 text-center"></i> Dance & Musik</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown Anggota -->
+                    <div class="relative group">
+                        <a href="#/members" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1 flex items-center gap-1" data-target="members">Anggota <i class="fa-solid fa-chevron-down text-[10px] opacity-70 transition-transform duration-300 group-hover:rotate-180"></i></a>
+                        <div class="absolute left-0 mt-1 w-48 bg-jp-darkGray border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform origin-top translate-y-2 group-hover:translate-y-0 overflow-hidden">
+                            <div class="py-1">
+                                <a href="#/members" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-users-viewfinder w-4 text-center"></i> Semua Anggota</a>
+                                <a href="#/members/gen1" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-id-card-clip w-4 text-center text-jp-gold"></i> Gen 1</a>
+                                <a href="#/members/gen2" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-id-card-clip w-4 text-center text-jp-gold"></i> Gen 2</a>
+                                <a href="#/members/gen3" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-id-card-clip w-4 text-center text-jp-gold"></i> Gen 3</a>
+                            </div>
+                        </div>
+                    </div>
+
                     <a href="#/events" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="events">Event</a>
                     <a href="#/join" class="bg-jp-gold hover:bg-jp-goldHover text-jp-dark px-5 py-2.5 rounded-md text-sm font-bold tracking-wide transition-all shadow-md shadow-jp-gold/10 hover:shadow-jp-gold/30">Gabung</a>
                     
-                    <!-- Container Login/Logout -->
+                    <!-- Container Login/Logout ADMIN -->
                     <div id="nav-auth-container" class="border-l border-white/20 pl-4 ml-2 flex items-center" style="display: none;">
                         <button onclick="window.loginWithGoogle()" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-4 py-2 rounded-md text-sm font-bold transition-all"><i class="fa-solid fa-spinner fa-spin mr-1"></i> Memuat...</button>
                     </div>
@@ -137,12 +174,43 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-jp-dark/95 border-b border-white/5 px-4 pt-2 pb-6 space-y-3 absolute w-full shadow-2xl">
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden md:hidden bg-jp-dark/95 border-b border-white/5 px-4 pt-2 pb-6 space-y-3 absolute w-full shadow-2xl z-50">
             <a href="#/" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="home">Beranda</a>
             <a href="#/about" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="about">Tentang Kami</a>
-            <a href="#/divisions" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="divisions">Divisi Hobi</a>
-            <a href="#/gallery" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="gallery">Galeri</a>
-            <a href="#/members" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="members">Anggota (ID Card)</a>
+            
+            <div class="space-y-1">
+                <button onclick="window.toggleMobileSubmenu('mobile-divisi-sub')" class="w-full flex justify-between items-center text-gray-300 hover:text-jp-gold text-base font-medium py-2 transition-colors"><span>Divisi Hobi</span><i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" id="icon-mobile-divisi-sub"></i></button>
+                <div id="mobile-divisi-sub" class="hidden pl-4 space-y-2 border-l-2 border-jp-gold/30 ml-2 mb-2 mt-1">
+                    <a href="#/divisions" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors" data-target="divisions"><i class="fa-solid fa-layer-group w-5"></i> Semua Divisi</a>
+                    <a href="#/divisions/cosplay" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-scissors w-5"></i> Cosplay & Crafting</a>
+                    <a href="#/divisions/dance" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-music w-5"></i> Dance & Musik</a>
+                    <a href="#/divisions/gaming" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-gamepad w-5"></i> Gaming</a>
+                    <a href="#/divisions/eo" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-clipboard-list w-5"></i> Event Organizer (EO)</a>
+                </div>
+            </div>
+            
+            <div class="space-y-1">
+                <button onclick="window.toggleMobileSubmenu('mobile-galeri-sub')" class="w-full flex justify-between items-center text-gray-300 hover:text-jp-gold text-base font-medium py-2 transition-colors"><span>Galeri Dokumentasi</span><i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" id="icon-mobile-galeri-sub"></i></button>
+                <div id="mobile-galeri-sub" class="hidden pl-4 space-y-2 border-l-2 border-jp-gold/30 ml-2 mb-2 mt-1">
+                    <a href="#/gallery" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors" data-target="gallery"><i class="fa-solid fa-images w-5"></i> Semua Galeri</a>
+                    <a href="#/gallery/gathering" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-users w-5"></i> Gathering</a>
+                    <a href="#/gallery/photosession" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-camera w-5"></i> Photo Session</a>
+                    <a href="#/gallery/sports" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-volleyball w-5"></i> Sports</a>
+                    <a href="#/gallery/dance" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-compact-disc w-5"></i> Dance & Musik</a>
+                </div>
+            </div>
+
+            <div class="space-y-1">
+                <button onclick="window.toggleMobileSubmenu('mobile-anggota-sub')" class="w-full flex justify-between items-center text-gray-300 hover:text-jp-gold text-base font-medium py-2 transition-colors"><span>Anggota (ID Card)</span><i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" id="icon-mobile-anggota-sub"></i></button>
+                <div id="mobile-anggota-sub" class="hidden pl-4 space-y-2 border-l-2 border-jp-gold/30 ml-2 mb-2 mt-1">
+                    <a href="#/members" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors" data-target="members"><i class="fa-solid fa-users-viewfinder w-5"></i> Semua Generasi</a>
+                    <a href="#/members/gen1" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-id-card-clip w-5"></i> Gen 1</a>
+                    <a href="#/members/gen2" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-id-card-clip w-5"></i> Gen 2</a>
+                    <a href="#/members/gen3" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-id-card-clip w-5"></i> Gen 3</a>
+                </div>
+            </div>
+
             <a href="#/events" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="events">Jadwal Event</a>
             <a href="#/join" class="block bg-jp-gold hover:bg-jp-goldHover text-jp-dark text-center py-3 rounded-md text-base font-bold transition-all mt-4">Gabung Komunitas</a>
             
@@ -152,13 +220,14 @@
         </div>
     </nav>
 
+    <!-- MAIN CONTENT AREA -->
     <main class="flex-grow pt-20">
         
         <!-- HOME PAGE -->
         <div id="page-home" class="page-container hidden page-fade-in">
             <header class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
                 <div class="absolute right-10 bottom-10 md:right-32 md:bottom-24 font-jp text-[12rem] md:text-[22rem] font-black text-white/[0.01] select-none pointer-events-none leading-none">タバロン</div>
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] h-[600px] bg-jp-gold/5 rounded-full filter blur-[90px] pointer-events-none animate-pulse-slow"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-jp-gold/5 rounded-full filter blur-[90px] pointer-events-none animate-pulse-slow"></div>
 
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-center py-12">
                     <div class="flex justify-center mb-6">
@@ -184,15 +253,17 @@
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div class="bg-jp-lightGray/30 p-8 rounded-2xl border border-white/5 hover:border-jp-gold/20 transition-all text-center"><i class="fa-solid fa-timeline text-4xl text-jp-gold mb-4"></i><h3 class="text-xl font-bold text-white mb-2">Didirikan Sejak 2015</h3><p class="text-sm text-gray-400">Komunitas pop-culture tertua dan paling konsisten bergerak di wilayah Tabalong selama satu dekade.</p></div>
-                        <div class="bg-jp-lightGray/30 p-8 rounded-2xl border border-white/5 hover:border-jp-gold/20 transition-all text-center"><i class="fa-solid fa-shield-cat text-4xl text-jp-orange mb-4"></i><h3 class="text-xl font-bold text-white mb-2">Multidivisi Aktif</h3><p class="text-sm text-gray-400">Memiliki sub-komunitas khusus untuk kenyamanan berbagi minat seni gambar, kostum, hingga e-sports.</p></div>
-                        <div class="bg-jp-lightGray/30 p-8 rounded-2xl border border-white/5 hover:border-jp-gold/20 transition-all text-center"><i class="fa-solid fa-handshake-angle text-4xl text-jp-gold mb-4"></i><h3 class="text-xl font-bold text-white mb-2">Event Rutin</h3><p class="text-sm text-gray-400">Dari gathering kecil bulanan (mabar/art-sharing) hingga panggung festival cosplay regional.</p></div>
+                        <div class="bg-jp-lightGray/30 p-8 rounded-2xl border border-white/5 hover:border-jp-gold/20 transition-all text-center"><i class="fa-solid fa-shield-cat text-4xl text-jp-orange mb-4"></i><h3 class="text-xl font-bold text-white mb-2">Multidivisi Aktif</h3><p class="text-sm text-gray-400">Memiliki sub-komunitas khusus untuk kenyamanan berbagi minat seni, musik, hingga e-sports.</p></div>
+                        <div class="bg-jp-lightGray/30 p-8 rounded-2xl border border-white/5 hover:border-jp-gold/20 transition-all text-center"><i class="fa-solid fa-handshake-angle text-4xl text-jp-gold mb-4"></i><h3 class="text-xl font-bold text-white mb-2">Event Rutin</h3><p class="text-sm text-gray-400">Dari gathering kecil bulanan, latihan bareng, hingga panggung festival pop-culture regional.</p></div>
                     </div>
                 </div>
             </section>
         </div>
 
+        <!-- ABOUT PAGE -->
         <div id="page-about" class="page-container hidden page-fade-in">
             <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div class="absolute right-0 top-20 font-jp text-[8rem] font-black text-white/[0.02] select-none pointer-events-none transform rotate-90 origin-right">私たちについて</div>
                 <div class="text-center mb-16 relative z-10">
                     <span class="text-xs font-bold tracking-widest text-jp-gold uppercase font-jp block mb-2">私たちについて ・ TENTANG KAMI</span>
                     <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-6">Sejarah & Profil Costaku</h2>
@@ -205,8 +276,22 @@
                             <span class="text-jp-gold font-semibold">Costaku Tabalong</span> lahir pada tahun 2015 dari inisiatif sekelompok kecil pemuda-pemudi di Kabupaten Tabalong, Kalimantan Selatan yang memiliki minat yang sama terhadap budaya pop Jepang.
                         </p>
                         <p class="text-gray-400 leading-relaxed text-lg">
-                            Berawal dari kumpul-kumpul santai membicarakan anime musiman, komunitas ini perlahan berkembang menjadi wadah berekspresi yang lebih luas.
+                            Berawal dari kumpul-kumpul santai membicarakan anime musiman, komunitas ini perlahan berkembang menjadi wadah berekspresi yang lebih luas. Kami mulai mendalami seni pembuatan kostum (cosplay), memoles bakat, hingga membentuk tim-tim untuk berkarya bersama.
                         </p>
+                        <div class="flex gap-4 pt-4">
+                            <div class="bg-jp-lightGray/50 border border-white/5 p-4 rounded-xl text-center flex-1">
+                                <div class="text-3xl font-black text-white mb-1">9+</div>
+                                <div class="text-[10px] uppercase tracking-wider text-jp-gold font-bold">Tahun Berdiri</div>
+                            </div>
+                            <div class="bg-jp-lightGray/50 border border-white/5 p-4 rounded-xl text-center flex-1">
+                                <div class="text-3xl font-black text-white mb-1">200+</div>
+                                <div class="text-[10px] uppercase tracking-wider text-jp-gold font-bold">Total Anggota</div>
+                            </div>
+                            <div class="bg-jp-lightGray/50 border border-white/5 p-4 rounded-xl text-center flex-1">
+                                <div class="text-3xl font-black text-white mb-1">50+</div>
+                                <div class="text-[10px] uppercase tracking-wider text-jp-gold font-bold">Event & Gath</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="relative">
                         <div class="absolute -inset-4 bg-jp-gold/10 rounded-2xl blur-xl animate-pulse-slow"></div>
@@ -216,34 +301,144 @@
             </section>
         </div>
 
+        <!-- DIVISIONS PAGE -->
         <div id="page-divisions" class="page-container hidden page-fade-in">
             <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Divisi Hobi</h2>
+                    <span class="text-xs font-bold tracking-widest text-jp-gold uppercase font-jp block mb-2">部門 ・ DIVISI HOBI</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Pilar Komunitas Kami</h2>
+                    <p class="max-w-2xl mx-auto text-gray-400 text-sm font-light leading-relaxed">Costaku Tabalong mewadahi berbagai minat anggotanya melalui 4 divisi terfokus. Pilih divisi yang sesuai dengan passion Anda dan berkembang bersama kreator lainnya.</p>
                 </div>
-                <div class="space-y-12">
-                     <div class="rounded-3xl bg-jp-lightGray/40 border border-white/5 p-6 flex flex-col lg:flex-row gap-6 items-center transition-all">
-                        <div class="lg:w-1/3 w-full"><img src="https://placehold.co/600x400/121212/D4AF37?text=Cosplay+Crafting" class="w-full rounded-2xl border border-white/10"></div>
-                        <div class="lg:w-2/3 w-full space-y-4">
-                            <h3 class="text-3xl font-black text-white">Cosplay & Crafting</h3>
-                            <p class="text-gray-400">Rumah bagi para cosplayer, pembuat properti (crafter), dan makeup artist.</p>
+                
+                <div class="space-y-24">
+                     <!-- Divisi Cosplay -->
+                     <div id="divisi-cosplay" class="scroll-mt-32 rounded-3xl bg-jp-lightGray/40 border border-white/5 p-6 md:p-10 flex flex-col lg:flex-row gap-10 items-center transition-all">
+                        <div class="lg:w-2/5 w-full relative">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-pink-500/20 to-purple-500/20 blur-2xl rounded-full"></div>
+                            <img src="https://placehold.co/600x600/121212/D4AF37?text=Cosplay+Crafting" alt="Cosplay Division" class="w-full aspect-square object-cover rounded-2xl border border-white/10 relative z-10 shadow-2xl">
+                            <div class="absolute -bottom-6 -right-6 bg-jp-dark border border-white/10 rounded-xl p-4 shadow-xl z-20 hidden md:block">
+                                <i class="fa-solid fa-scissors text-3xl text-jp-gold"></i>
+                            </div>
+                        </div>
+                        <div class="lg:w-3/5 w-full space-y-6">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-bold text-jp-gold tracking-widest uppercase">
+                                <i class="fa-solid fa-masks-theater"></i> Divisi 01
+                            </div>
+                            <h3 class="text-4xl font-black text-white">Cosplay & Crafting</h3>
+                            <p class="text-gray-400 text-lg leading-relaxed">Divisi ini adalah rumah bagi para cosplayer, pembuat properti (crafter), dan makeup artist. Di sini kami belajar bersama bagaimana menghidupkan karakter fiksi menjadi nyata, mulai dari menjahit kostum hingga menata wig.</p>
+                        </div>
+                    </div>
+
+                    <!-- Divisi Dance & Musik -->
+                    <div id="divisi-dance" class="scroll-mt-32 rounded-3xl bg-jp-lightGray/40 border border-white/5 p-6 md:p-10 flex flex-col lg:flex-row-reverse gap-10 items-center transition-all">
+                        <div class="lg:w-2/5 w-full relative">
+                            <div class="absolute inset-0 bg-gradient-to-tl from-cyan-500/20 to-teal-500/20 blur-2xl rounded-full"></div>
+                            <img src="https://placehold.co/600x600/121212/06B6D4?text=Dance+Music" alt="Dance & Music Division" class="w-full aspect-square object-cover rounded-2xl border border-white/10 relative z-10 shadow-2xl">
+                            <div class="absolute -bottom-6 -left-6 bg-jp-dark border border-white/10 rounded-xl p-4 shadow-xl z-20 hidden md:block">
+                                <i class="fa-solid fa-compact-disc text-3xl text-cyan-400"></i>
+                            </div>
+                        </div>
+                        <div class="lg:w-3/5 w-full space-y-6">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-bold text-cyan-400 tracking-widest uppercase">
+                                <i class="fa-solid fa-music"></i> Divisi 02
+                            </div>
+                            <h3 class="text-4xl font-black text-white">Dance & Musik</h3>
+                            <p class="text-gray-400 text-lg leading-relaxed">Bagi Anda yang memiliki bakat dan hobi di bidang seni pertunjukan. Divisi ini mewadahi grup Idol Cover, Odottemita (Dance Cover), Anisong Cover, hingga Wotagei/Cyalume Dance yang sering tampil memukau di panggung.</p>
+                        </div>
+                    </div>
+
+                    <!-- Divisi Gaming -->
+                    <div id="divisi-gaming" class="scroll-mt-32 rounded-3xl bg-jp-lightGray/40 border border-white/5 p-6 md:p-10 flex flex-col lg:flex-row gap-10 items-center transition-all">
+                        <div class="lg:w-2/5 w-full relative">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-red-500/20 to-orange-500/20 blur-2xl rounded-full"></div>
+                            <img src="https://placehold.co/600x600/121212/EF4444?text=Gaming" alt="Gaming Division" class="w-full aspect-square object-cover rounded-2xl border border-white/10 relative z-10 shadow-2xl">
+                            <div class="absolute -bottom-6 -right-6 bg-jp-dark border border-white/10 rounded-xl p-4 shadow-xl z-20 hidden md:block">
+                                <i class="fa-solid fa-gamepad text-3xl text-red-500"></i>
+                            </div>
+                        </div>
+                        <div class="lg:w-3/5 w-full space-y-6">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-bold text-red-500 tracking-widest uppercase">
+                                <i class="fa-solid fa-headset"></i> Divisi 03
+                            </div>
+                            <h3 class="text-4xl font-black text-white">Gaming & E-Sports</h3>
+                            <p class="text-gray-400 text-lg leading-relaxed">Tempat berkumpulnya para gamer kasual hingga hardcore. Divisi ini sering mengadakan sesi mabar (main bareng) untuk game gacha, rhythm game, game fighting, hingga berpartisipasi mewakili komunitas di kompetisi E-Sports lokal.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Divisi EO -->
+                    <div id="divisi-eo" class="scroll-mt-32 rounded-3xl bg-jp-lightGray/40 border border-white/5 p-6 md:p-10 flex flex-col lg:flex-row-reverse gap-10 items-center transition-all">
+                        <div class="lg:w-2/5 w-full relative">
+                            <div class="absolute inset-0 bg-gradient-to-tl from-purple-500/20 to-fuchsia-500/20 blur-2xl rounded-full"></div>
+                            <img src="https://placehold.co/600x600/121212/A855F7?text=Event+Organizer" alt="Event Organizer Division" class="w-full aspect-square object-cover rounded-2xl border border-white/10 relative z-10 shadow-2xl">
+                            <div class="absolute -bottom-6 -left-6 bg-jp-dark border border-white/10 rounded-xl p-4 shadow-xl z-20 hidden md:block">
+                                <i class="fa-solid fa-clipboard-list text-3xl text-purple-400"></i>
+                            </div>
+                        </div>
+                        <div class="lg:w-3/5 w-full space-y-6">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-bold text-purple-400 tracking-widest uppercase">
+                                <i class="fa-solid fa-calendar-check"></i> Divisi 04
+                            </div>
+                            <h3 class="text-4xl font-black text-white">Event Organizer (EO)</h3>
+                            <p class="text-gray-400 text-lg leading-relaxed">Motor penggerak di balik setiap acara Costaku Tabalong. Divisi ini berisi mereka yang memiliki passion dalam merancang konsep, manajemen panggung, kepanitiaan, hingga memastikan kelancaran setiap festival jejepangan.</p>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
 
+        <!-- GALLERY PAGE -->
         <div id="page-gallery" class="page-container hidden page-fade-in">
             <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Galeri</h2>
+                    <span class="text-xs font-bold tracking-widest text-jp-gold uppercase font-jp block mb-2">ギャラリー ・ GALERI KITA</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Dokumentasi Kegiatan</h2>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center"><img src="https://placehold.co/600x400/161615/D4AF37?text=Gathering" class="w-full h-full object-cover rounded-xl"></div>
+
+                <!-- Gallery: Gathering -->
+                <div id="galeri-gathering" class="scroll-mt-32 mb-16 border-t border-white/5 pt-10">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3"><i class="fa-solid fa-users text-jp-gold"></i> Gathering & Kumpul Rutin</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="https://placehold.co/600x400/161615/D4AF37?text=Gath+1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="https://placehold.co/600x400/161615/D4AF37?text=Gath+2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="https://placehold.co/600x400/161615/D4AF37?text=Gath+3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="https://placehold.co/600x400/161615/D4AF37?text=Gath+4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                    </div>
                 </div>
+
+                <!-- Gallery: Photo Session -->
+                <div id="galeri-photosession" class="scroll-mt-32 mb-16 border-t border-white/5 pt-10">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3"><i class="fa-solid fa-camera text-jp-orange"></i> Photo Session (Cosplay)</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div class="aspect-square bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-orange/30 transition-all overflow-hidden group"><img src="https://placehold.co/400x400/161615/FF9F1C?text=Photo+1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                        <div class="aspect-square bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-orange/30 transition-all overflow-hidden group"><img src="https://placehold.co/400x400/161615/FF9F1C?text=Photo+2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                        <div class="aspect-square bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-orange/30 transition-all overflow-hidden group"><img src="https://placehold.co/400x400/161615/FF9F1C?text=Photo+3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                        <div class="aspect-square bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-orange/30 transition-all overflow-hidden group"><img src="https://placehold.co/400x400/161615/FF9F1C?text=Photo+4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                    </div>
+                </div>
+
+                <!-- Gallery: Sports -->
+                <div id="galeri-sports" class="scroll-mt-32 mb-16 border-t border-white/5 pt-10">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3"><i class="fa-solid fa-volleyball text-blue-400"></i> Sports & Olahraga Bersama</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-blue-400/30 transition-all overflow-hidden group"><img src="https://placehold.co/600x400/161615/3B82F6?text=Sport+1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-blue-400/30 transition-all overflow-hidden group"><img src="https://placehold.co/600x400/161615/3B82F6?text=Sport+2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                    </div>
+                </div>
+
+                <!-- Gallery: Dance & Musik -->
+                <div id="galeri-dance" class="scroll-mt-32 mb-16 border-t border-white/5 pt-10">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3"><i class="fa-solid fa-compact-disc text-pink-400"></i> Dance Cover & Musik</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-pink-400/30 transition-all overflow-hidden group"><img src="https://placehold.co/600x400/161615/EC4899?text=Dance+1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-pink-400/30 transition-all overflow-hidden group"><img src="https://placehold.co/600x400/161615/EC4899?text=Dance+2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-pink-400/30 transition-all overflow-hidden group"><img src="https://placehold.co/600x400/161615/EC4899?text=Music+1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                    </div>
+                </div>
+
             </section>
         </div>
 
+        <!-- MEMBERS PAGE -->
         <div id="page-members" class="page-container hidden page-fade-in">
             <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
@@ -283,18 +478,17 @@
                                     <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Nama Panggilan</label>
                                     <input type="text" id="id-name-input" value="Ryuka" maxlength="15" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
                                 </div>
-                                <!-- TAMBAHAN: FIELD NOMOR LABMEM MANUAL -->
                                 <div>
-                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">No. LABMEM</label>
-                                    <input type="text" id="id-labmem-input" value="0001" maxlength="6" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all" placeholder="Misal: 0001">
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">No. LABMEM (ID)</label>
+                                    <input type="text" id="id-labmem-input" value="0001" maxlength="6" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all" placeholder="Contoh: 0001">
                                 </div>
                                 <div>
                                     <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Divisi Utama</label>
                                     <select id="id-division-select" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
-                                        <option value="Cosplay & Crafting" data-jp="コスプレイヤー">Cosplayer</option>
-                                        <option value="Anime & Manga Illustrator" data-jp="イラストレーター">Artist / Illustrator</option>
-                                        <option value="Hardcore & Rhythm Gamer" data-jp="ゲーマー">Gamer</option>
-                                        <option value="Event Organizer (EO)" data-jp="イベント主催者">Event Organizer</option>
+                                        <option value="Cosplay & Crafting" data-jp="コスプレ">Cosplay & Crafting</option>
+                                        <option value="Dance & Musik" data-jp="ダンス＆音楽">Dance & Musik</option>
+                                        <option value="Gaming" data-jp="ゲーム">Gaming</option>
+                                        <option value="Event Organizer (EO)" data-jp="イベント">Event Organizer (EO)</option>
                                     </select>
                                 </div>
                                 <div>
@@ -364,11 +558,12 @@
                                                     <img id="card-avatar-img" src="https://placehold.co/150x150/121212/D4AF37?text=Avatar" alt="Foto Avatar" class="w-full h-full object-cover">
                                                 </div>
                                                 <div>
-                                                    <h4 class="text-3xl font-extrabold text-white tracking-wide uppercase font-jp leading-none mb-1.5" id="card-nickname">Ryuka</h4>
+                                                    <h4 class="text-3xl font-extrabold text-white tracking-wide uppercase font-jp leading-none mb-1.5 truncate pr-8" id="card-nickname">Ryuka</h4>
                                                     <div class="text-[10px] text-gray-400 font-mono tracking-wider flex items-center gap-2">
-                                                        <i class="fa-solid fa-shield-halved text-jp-gold"></i> <span id="card-role">Cosplay & Crafting</span>
-                                                        <span class="text-white/20">|</span>
-                                                        <span id="card-gen" class="font-bold text-jp-gold bg-jp-gold/10 px-1.5 py-0.5 rounded border border-jp-gold/20">GEN 1</span>
+                                                        <i class="fa-solid fa-shield-halved text-jp-gold"></i> <span id="card-role" class="truncate">Cosplay & Crafting</span>
+                                                    </div>
+                                                    <div class="mt-1">
+                                                        <span id="card-gen" class="font-bold text-jp-gold text-[9px] bg-jp-gold/10 px-1.5 py-0.5 rounded border border-jp-gold/20">GEN 1</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -405,7 +600,7 @@
                     <div class="flex items-center justify-between mb-6">
                         <div class="flex flex-col">
                             <h3 class="text-2xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-database text-jp-gold"></i> Database Direktori</h3>
-                            <p class="text-xs text-gray-400 mt-1">Daftar kartu keanggotaan aktif dari seluruh divisi.</p>
+                            <p class="text-xs text-gray-400 mt-1" id="filter-status-text">Menampilkan semua generasi aktif.</p>
                         </div>
                         <div id="loading-spinner" class="text-jp-gold animate-spin"><i class="fa-solid fa-circle-notch text-xl"></i></div>
                     </div>
@@ -429,6 +624,7 @@
         </div>
     </main>
 
+    <!-- FOOTER WITH SOCIAL MEDIA -->
     <footer class="bg-jp-dark text-gray-500 py-12 border-t border-white/5 relative z-20 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
             <div>
@@ -458,6 +654,7 @@
         </div>
     </footer>
 
+    <!-- MODALS -->
     <div id="success-modal" class="hidden fixed inset-0 z-50 bg-jp-dark/90 flex items-center justify-center p-4 backdrop-blur-md">
         <div class="bg-jp-lightGray/95 border border-white/10 rounded-2xl max-w-md w-full p-8 text-center shadow-2xl relative overflow-hidden">
             <div class="absolute inset-0 bg-jp-gold/5 animate-pulse-slow"></div>
@@ -470,6 +667,7 @@
         </div>
     </div>
     
+    <!-- Modal Aturan Keamanan -->
     <div id="rules-modal" class="hidden fixed inset-0 z-[60] bg-jp-dark/95 flex items-center justify-center p-4 backdrop-blur-md">
         <div class="bg-jp-darkGray border border-jp-gold/30 rounded-2xl max-w-2xl w-full p-8 shadow-2xl relative overflow-hidden">
             <button onclick="window.closeModal('rules-modal')" class="absolute top-4 right-4 text-gray-500 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
@@ -489,7 +687,9 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /members_directory/{document=**} {
+      // Siapapun bisa melihat daftar anggota (untuk di website)
       allow read: if true;
+      // Hanya akun yang sudah login lewat Google Auth yang bisa mengubah/menghapus
       allow write: if request.auth != null;
     }
   }
@@ -508,7 +708,7 @@ service cloud.firestore {
         import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
         import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-        // Konfigurasi dari Akun Firebase Anda (Sesuai dengan yang Anda berikan di awal)
+        // Konfigurasi dari Akun Firebase Anda 
         const firebaseConfig = {
             apiKey: "AIzaSyB_reprtE-6VB14KHVz1b-Pim2xoTDiHV0",
             authDomain: "costaku-tabalong.firebaseapp.com",
@@ -528,6 +728,9 @@ service cloud.firestore {
 
         let currentUser = null;
         let communityMembers = [];
+        
+        // Simpan Filter yang sedang aktif
+        window.currentGenFilter = null; 
 
         onAuthStateChanged(auth, (user) => {
             currentUser = user;
@@ -553,8 +756,6 @@ service cloud.firestore {
                 document.getElementById('success-modal-message').innerText = "Berhasil Logout dari akun pengurus.";
                 document.getElementById('success-modal').classList.remove('hidden');
                 
-                // Jika URL ada '?admin=true', logout akan otomatis menyembunyikan panelnya jika di-refresh, 
-                // tapi kita bantu perbarui UI seketika
                 const authOverlay = document.getElementById('auth-overlay-form');
                 if(authOverlay) authOverlay.classList.remove('hidden');
             });
@@ -663,11 +864,9 @@ service cloud.firestore {
         }
 
         function generateCardHTML(member, index) {
-            // Jika ada nomor labmem dari database, gunakan itu, jika tidak ada fallback ke index otomatis
             const idNum = member.labmem ? member.labmem : String(index + 1).padStart(4, '0');
             const statusColor = member.status === 'ACTIVE' ? 'text-green-400' : 'text-red-400';
             
-            // TAMPILKAN TOMBOL HAPUS HANYA JIKA USER SEDANG LOGIN
             const deleteBtnHTML = currentUser ? `
                 <button onclick="window.deleteMember('${member.id}', event)" class="absolute top-3 right-3 z-50 bg-red-600/90 hover:bg-red-500 text-white w-7 h-7 rounded-full flex items-center justify-center backdrop-blur-sm transition-all shadow-[0_0_10px_rgba(220,38,38,0.5)] border border-red-400/50 hover:scale-110" title="Hapus Kartu Ini">
                     <i class="fa-solid fa-trash-can text-[11px]"></i>
@@ -676,12 +875,9 @@ service cloud.firestore {
             return `
             <div class="w-full max-w-sm perspective-1000 cursor-pointer card-hover-effect mx-auto" onclick="this.querySelector('.fancy-flip-anim').classList.toggle('is-flipped')">
                 <div class="relative w-full h-64 transform-style-3d fancy-flip-anim shadow-xl shadow-jp-gold/5 rounded-2xl">
-                    
                     <!-- FRONT OF CARD -->
                     <div class="absolute top-0 left-0 w-full h-full backface-hidden bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none">
-                        
                         ${deleteBtnHTML}
-
                         <div class="glare-sweep"></div>
                         <div class="h-2 bg-jp-gold w-full"></div>
                         <div class="p-5 flex flex-col justify-between h-[calc(100%-8px)] relative">
@@ -762,14 +958,22 @@ service cloud.firestore {
             `;
         }
 
-        function renderMemberDirectory() {
+        // FUNGSI RENDER BERDASARKAN FILTER GENERASI
+        window.renderMemberDirectory = function(filterGen = window.currentGenFilter) {
+            window.currentGenFilter = filterGen;
             const container = document.getElementById('member-directory-container');
+            const statusText = document.getElementById('filter-status-text');
             container.innerHTML = '';
             
-            const generations = ['Gen 1', 'Gen 2', 'Gen 3'];
+            let generationsToShow = ['Gen 1', 'Gen 2', 'Gen 3'];
+            if (filterGen === 'gen1') { generationsToShow = ['Gen 1']; statusText.innerText = "Hanya menampilkan data anggota Generasi 1 (2015-2018)."; }
+            else if (filterGen === 'gen2') { generationsToShow = ['Gen 2']; statusText.innerText = "Hanya menampilkan data anggota Generasi 2 (2019-2022)."; }
+            else if (filterGen === 'gen3') { generationsToShow = ['Gen 3']; statusText.innerText = "Hanya menampilkan data anggota Generasi 3 (2023-Sekarang)."; }
+            else { statusText.innerText = "Menampilkan semua data generasi anggota secara penuh."; }
+
             let anyRendered = false;
             
-            generations.forEach(gen => {
+            generationsToShow.forEach(gen => {
                 const membersInGen = communityMembers.filter(m => m.gen === gen);
                 
                 if (membersInGen.length > 0) {
@@ -782,7 +986,7 @@ service cloud.firestore {
                                 <div class="h-[1px] flex-grow bg-gradient-to-l from-transparent to-white/10"></div>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 mt-8">
-                                ${membersInGen.map((m, idx) => generateCardHTML(m, idx)).join('')}
+                                ${membersInGen.map((m, idx) => generateCardHTML(m, communityMembers.indexOf(m))).join('')}
                             </div>
                         </div>
                     `;
@@ -794,7 +998,7 @@ service cloud.firestore {
                 container.innerHTML = `
                     <div class="text-center py-10 bg-jp-lightGray/20 rounded-xl border border-white/5 border-dashed">
                         <i class="fa-regular fa-folder-open text-3xl text-gray-600 mb-3"></i>
-                        <p class="text-gray-400 text-sm">Belum ada data anggota yang terdaftar di database.</p>
+                        <p class="text-gray-400 text-sm">Belum ada data anggota yang terdaftar di ${generationsToShow.length === 1 ? generationsToShow[0] : 'database'}.</p>
                     </div>
                 `;
             }
@@ -841,22 +1045,31 @@ service cloud.firestore {
         window.openModal = function(id) { document.getElementById(id).classList.remove('hidden'); }
         window.closeModal = function(id) { document.getElementById(id).classList.add('hidden'); }
         
+        window.toggleMobileSubmenu = function(id) {
+            const submenu = document.getElementById(id);
+            const icon = document.getElementById(`icon-${id}`);
+            if (submenu.classList.contains('hidden')) {
+                submenu.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                submenu.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
         function checkAdminAccess() {
             const urlParams = new URLSearchParams(window.location.search);
             const isAdmin = urlParams.get('admin');
             
             const controlPanel = document.getElementById('admin-control-panel');
             const navAuthBtn = document.getElementById('nav-auth-container');
-            const mobileAuthBtn = document.getElementById('mobile-auth-container');
 
             if (isAdmin === 'true') {
                 if(controlPanel) controlPanel.style.display = 'block';
                 if(navAuthBtn) navAuthBtn.style.display = 'flex';
-                if(mobileAuthBtn) mobileAuthBtn.style.display = 'flex';
             } else {
                 if(controlPanel) controlPanel.style.display = 'none';
                 if(navAuthBtn) navAuthBtn.style.display = 'none';
-                if(mobileAuthBtn) mobileAuthBtn.style.display = 'none';
             }
         }
 
@@ -864,10 +1077,10 @@ service cloud.firestore {
             const hash = window.location.hash || '#/';
             const validPages = ['home', 'about', 'divisions', 'gallery', 'members', 'events', 'join'];
             
-            // Hapus query parameters (?admin=true) saat mengecek nama path
             let hashPath = hash.substring(2).split('?')[0]; 
             let pathParts = hashPath.split('/');
             let targetPage = pathParts[0] || 'home';
+            let subTarget = pathParts[1] || null;
 
             if (!validPages.includes(targetPage)) targetPage = 'home';
             validPages.forEach(p => { const c = document.getElementById(`page-${p}`); if (c) c.classList.add('hidden'); });
@@ -878,10 +1091,25 @@ service cloud.firestore {
             document.querySelectorAll('.nav-link').forEach(link => { link.classList.remove('text-jp-gold'); link.classList.add('text-gray-300'); });
             document.querySelectorAll(`a.nav-link[data-target="${targetPage}"]`).forEach(link => { link.classList.add('text-jp-gold'); link.classList.remove('text-gray-300'); });
 
-            document.getElementById('mobile-menu').classList.add('hidden');
-            window.scrollTo({ top: 0, behavior: 'instant' });
+            // LOGIKA FILTER DAN SCROLLING SUBMENU
+            if (targetPage === 'members') {
+                window.renderMemberDirectory(subTarget); // Panggil render ulang dengan subTarget (gen1, gen2, dsb)
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            } else if (targetPage === 'divisions' && subTarget) {
+                setTimeout(() => {
+                    const targetElement = document.getElementById(`divisi-${subTarget}`);
+                    if (targetElement) { targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+                }, 100);
+            } else if (targetPage === 'gallery' && subTarget) {
+                setTimeout(() => {
+                    const targetElement = document.getElementById(`galeri-${subTarget}`);
+                    if (targetElement) { targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+                }, 100);
+            } else {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            }
             
-            // Panggil cek admin setiap kali route berubah
+            document.getElementById('mobile-menu').classList.add('hidden');
             checkAdminAccess();
         }
 
@@ -889,9 +1117,8 @@ service cloud.firestore {
         
         document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
 
-        // Initialize App Database on load
         window.onload = function() {
-            handleRouting(); // Pastikan admin & tab di cek saat web dimuat
+            handleRouting(); 
             loadMembersFromFirestore(); 
         };
     </script>
