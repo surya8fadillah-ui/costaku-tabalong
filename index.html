@@ -119,34 +119,16 @@
                 <div class="hidden md:flex items-center space-x-7">
                     <a href="#/" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="home">Beranda</a>
                     <a href="#/about" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="about">Tentang Kami</a>
-                    
-                    <div class="relative group">
-                        <a href="#/divisions" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1 flex items-center gap-1" data-target="divisions">Divisi <i class="fa-solid fa-chevron-down text-[10px] opacity-70 transition-transform duration-300 group-hover:rotate-180"></i></a>
-                        <div class="absolute left-0 mt-1 w-56 bg-jp-darkGray border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform origin-top translate-y-2 group-hover:translate-y-0 overflow-hidden">
-                            <div class="py-1">
-                                <a href="#/divisions/cosplay" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-masks-theater w-4 text-center"></i> Cosplay & Crafting</a>
-                                <a href="#/divisions/art" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-palette w-4 text-center"></i> Anime & Illustration</a>
-                                <a href="#/divisions/game" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-gamepad w-4 text-center"></i> Gaming & E-Sports</a>
-                                <a href="#/divisions/eo" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-clipboard-list w-4 text-center"></i> Event Organizer (EO)</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="relative group">
-                        <a href="#/gallery" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1 flex items-center gap-1" data-target="gallery">Galeri <i class="fa-solid fa-chevron-down text-[10px] opacity-70 transition-transform duration-300 group-hover:rotate-180"></i></a>
-                        <div class="absolute left-0 mt-1 w-56 bg-jp-darkGray border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform origin-top translate-y-2 group-hover:translate-y-0 overflow-hidden">
-                            <div class="py-1">
-                                <a href="#/gallery/gathering" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-users w-4 text-center"></i> Gathering</a>
-                                <a href="#/gallery/olahraga" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-volleyball w-4 text-center"></i> Olahraga</a>
-                                <a href="#/gallery/dance" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-music w-4 text-center"></i> Dance Cover</a>
-                                <a href="#/gallery/event" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-calendar-day w-4 text-center"></i> Event</a>
-                            </div>
-                        </div>
-                    </div>
-
+                    <a href="#/divisions" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="divisions">Divisi</a>
+                    <a href="#/gallery" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="gallery">Galeri</a>
                     <a href="#/members" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="members">Anggota</a>
                     <a href="#/events" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="events">Event</a>
                     <a href="#/join" class="bg-jp-gold hover:bg-jp-goldHover text-jp-dark px-5 py-2.5 rounded-md text-sm font-bold tracking-wide transition-all shadow-md shadow-jp-gold/10 hover:shadow-jp-gold/30">Gabung</a>
+                    
+                    <!-- Container Login/Logout -->
+                    <div id="nav-auth-container" class="border-l border-white/20 pl-4 ml-2 flex items-center">
+                        <button onclick="window.loginWithGoogle()" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-4 py-2 rounded-md text-sm font-bold transition-all"><i class="fa-solid fa-spinner fa-spin mr-1"></i> Memuat...</button>
+                    </div>
                 </div>
 
                 <div class="md:hidden">
@@ -158,30 +140,18 @@
         <div id="mobile-menu" class="hidden md:hidden bg-jp-dark/95 border-b border-white/5 px-4 pt-2 pb-6 space-y-3 absolute w-full shadow-2xl">
             <a href="#/" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="home">Beranda</a>
             <a href="#/about" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="about">Tentang Kami</a>
-            <div class="space-y-1">
-                <button onclick="window.toggleMobileSubmenu('mobile-divisi-sub')" class="w-full flex justify-between items-center text-gray-300 hover:text-jp-gold text-base font-medium py-2 transition-colors"><span>Divisi Hobi</span><i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" id="icon-mobile-divisi-sub"></i></button>
-                <div id="mobile-divisi-sub" class="hidden pl-4 space-y-2 border-l-2 border-jp-gold/30 ml-2 mb-2 mt-1">
-                    <a href="#/divisions" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors" data-target="divisions"><i class="fa-solid fa-layer-group w-5"></i> Semua Divisi</a>
-                    <a href="#/divisions/cosplay" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-masks-theater w-5"></i> Cosplay & Crafting</a>
-                    <a href="#/divisions/art" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-palette w-5"></i> Anime & Illustration</a>
-                    <a href="#/divisions/game" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-gamepad w-5"></i> Gaming & E-Sports</a>
-                    <a href="#/divisions/eo" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-clipboard-list w-5"></i> Event Organizer (EO)</a>
-                </div>
-            </div>
-            <div class="space-y-1">
-                <button onclick="window.toggleMobileSubmenu('mobile-galeri-sub')" class="w-full flex justify-between items-center text-gray-300 hover:text-jp-gold text-base font-medium py-2 transition-colors"><span>Galeri Dokumentasi</span><i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" id="icon-mobile-galeri-sub"></i></button>
-                <div id="mobile-galeri-sub" class="hidden pl-4 space-y-2 border-l-2 border-jp-gold/30 ml-2 mb-2 mt-1">
-                    <a href="#/gallery" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors" data-target="gallery"><i class="fa-solid fa-images w-5"></i> Semua Galeri</a>
-                    <a href="#/gallery/gathering" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-users w-5"></i> Gathering</a>
-                </div>
-            </div>
+            <a href="#/divisions" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="divisions">Divisi Hobi</a>
+            <a href="#/gallery" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="gallery">Galeri</a>
             <a href="#/members" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="members">Anggota (ID Card)</a>
             <a href="#/events" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="events">Jadwal Event</a>
             <a href="#/join" class="block bg-jp-gold hover:bg-jp-goldHover text-jp-dark text-center py-3 rounded-md text-base font-bold transition-all mt-4">Gabung Komunitas</a>
+            
+            <div id="mobile-auth-container" class="pt-4 border-t border-white/10 mt-4 flex justify-center">
+                <!-- Mobile Auth Button Placeholder -->
+            </div>
         </div>
     </nav>
 
-    <!-- MAIN CONTENT AREA -->
     <main class="flex-grow pt-20">
         
         <div id="page-home" class="page-container hidden page-fade-in">
@@ -222,7 +192,6 @@
 
         <div id="page-about" class="page-container hidden page-fade-in">
             <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div class="absolute right-0 top-20 font-jp text-[8rem] font-black text-white/[0.02] select-none pointer-events-none transform rotate-90 origin-right">私たちについて</div>
                 <div class="text-center mb-16 relative z-10">
                     <span class="text-xs font-bold tracking-widest text-jp-gold uppercase font-jp block mb-2">私たちについて ・ TENTANG KAMI</span>
                     <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-6">Sejarah & Profil Costaku</h2>
@@ -235,22 +204,8 @@
                             <span class="text-jp-gold font-semibold">Costaku Tabalong</span> lahir pada tahun 2015 dari inisiatif sekelompok kecil pemuda-pemudi di Kabupaten Tabalong, Kalimantan Selatan yang memiliki minat yang sama terhadap budaya pop Jepang.
                         </p>
                         <p class="text-gray-400 leading-relaxed text-lg">
-                            Berawal dari kumpul-kumpul santai membicarakan anime musiman, komunitas ini perlahan berkembang menjadi wadah berekspresi yang lebih luas. Kami mulai mendalami seni pembuatan kostum (cosplay), memoles bakat ilustrasi (fan-art), hingga membentuk tim-tim kecil untuk kompetisi e-sports lokal.
+                            Berawal dari kumpul-kumpul santai membicarakan anime musiman, komunitas ini perlahan berkembang menjadi wadah berekspresi yang lebih luas.
                         </p>
-                        <div class="flex gap-4 pt-4">
-                            <div class="bg-jp-lightGray/50 border border-white/5 p-4 rounded-xl text-center flex-1">
-                                <div class="text-3xl font-black text-white mb-1">9+</div>
-                                <div class="text-[10px] uppercase tracking-wider text-jp-gold font-bold">Tahun Berdiri</div>
-                            </div>
-                            <div class="bg-jp-lightGray/50 border border-white/5 p-4 rounded-xl text-center flex-1">
-                                <div class="text-3xl font-black text-white mb-1">200+</div>
-                                <div class="text-[10px] uppercase tracking-wider text-jp-gold font-bold">Total Anggota</div>
-                            </div>
-                            <div class="bg-jp-lightGray/50 border border-white/5 p-4 rounded-xl text-center flex-1">
-                                <div class="text-3xl font-black text-white mb-1">50+</div>
-                                <div class="text-[10px] uppercase tracking-wider text-jp-gold font-bold">Event & Gath</div>
-                            </div>
-                        </div>
                     </div>
                     <div class="relative">
                         <div class="absolute -inset-4 bg-jp-gold/10 rounded-2xl blur-xl animate-pulse-slow"></div>
@@ -263,69 +218,14 @@
         <div id="page-divisions" class="page-container hidden page-fade-in">
             <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <span class="text-xs font-bold tracking-widest text-jp-gold uppercase font-jp block mb-2">部門 ・ DIVISI HOBI</span>
-                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Pilar Komunitas Kami</h2>
-                    <p class="max-w-2xl mx-auto text-gray-400 text-sm font-light leading-relaxed">Costaku Tabalong mewadahi berbagai minat anggotanya melalui divisi-divisi terfokus. Pilih divisi yang sesuai dengan passion Anda dan berkembang bersama kreator lainnya.</p>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Divisi Hobi</h2>
                 </div>
-                
-                <div class="space-y-24">
-                     <!-- Divisi Cosplay -->
-                     <div id="divisi-cosplay" class="scroll-mt-32 rounded-3xl bg-jp-lightGray/40 border border-white/5 p-6 md:p-10 flex flex-col lg:flex-row gap-10 items-center transition-all">
-                        <div class="lg:w-2/5 w-full relative">
-                            <div class="absolute inset-0 bg-gradient-to-tr from-pink-500/20 to-purple-500/20 blur-2xl rounded-full"></div>
-                            <img src="https://placehold.co/600x600/121212/D4AF37?text=Cosplay+Crafting" alt="Cosplay Division" class="w-full aspect-square object-cover rounded-2xl border border-white/10 relative z-10 shadow-2xl">
-                            <div class="absolute -bottom-6 -right-6 bg-jp-dark border border-white/10 rounded-xl p-4 shadow-xl z-20 hidden md:block">
-                                <i class="fa-solid fa-scissors text-3xl text-jp-gold"></i>
-                            </div>
-                        </div>
-                        <div class="lg:w-3/5 w-full space-y-6">
-                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-bold text-jp-gold tracking-widest uppercase">
-                                <i class="fa-solid fa-masks-theater"></i> Divisi 01
-                            </div>
-                            <h3 class="text-4xl font-black text-white">Cosplay & Crafting</h3>
-                            <p class="text-gray-400 text-lg leading-relaxed">Divisi ini adalah rumah bagi para cosplayer, pembuat properti (crafter), dan makeup artist. Di sini kami belajar bersama bagaimana menghidupkan karakter 2D menjadi nyata.</p>
-                        </div>
-                    </div>
-
-                    <!-- Divisi Art -->
-                    <div id="divisi-art" class="scroll-mt-32 rounded-3xl bg-jp-lightGray/40 border border-white/5 p-6 md:p-10 flex flex-col lg:flex-row-reverse gap-10 items-center transition-all">
-                        <div class="lg:w-2/5 w-full relative">
-                            <div class="absolute inset-0 bg-gradient-to-tl from-blue-500/20 to-cyan-500/20 blur-2xl rounded-full"></div>
-                            <img src="https://placehold.co/600x600/121212/3B82F6?text=Anime+Illustration" alt="Art Division" class="w-full aspect-square object-cover rounded-2xl border border-white/10 relative z-10 shadow-2xl">
-                            <div class="absolute -bottom-6 -left-6 bg-jp-dark border border-white/10 rounded-xl p-4 shadow-xl z-20 hidden md:block">
-                                <i class="fa-solid fa-pen-nib text-3xl text-blue-400"></i>
-                            </div>
-                        </div>
-                        <div class="lg:w-3/5 w-full space-y-6">
-                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-bold text-blue-400 tracking-widest uppercase">
-                                <i class="fa-solid fa-palette"></i> Divisi 02
-                            </div>
-                            <h3 class="text-4xl font-black text-white">Anime & Illustration</h3>
-                            <p class="text-gray-400 text-lg leading-relaxed">Diperuntukkan bagi mereka yang gemar menggambar fan-art, desain karakter orisinal, atau membuat komik.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Divisi EO -->
-                    <div id="divisi-eo" class="scroll-mt-32 rounded-3xl bg-jp-lightGray/40 border border-white/5 p-6 md:p-10 flex flex-col lg:flex-row-reverse gap-10 items-center transition-all">
-                        <div class="lg:w-2/5 w-full relative">
-                            <div class="absolute inset-0 bg-gradient-to-tl from-purple-500/20 to-fuchsia-500/20 blur-2xl rounded-full"></div>
-                            <img src="https://placehold.co/600x600/121212/A855F7?text=Event+Organizer" alt="Event Organizer Division" class="w-full aspect-square object-cover rounded-2xl border border-white/10 relative z-10 shadow-2xl">
-                            <div class="absolute -bottom-6 -left-6 bg-jp-dark border border-white/10 rounded-xl p-4 shadow-xl z-20 hidden md:block">
-                                <i class="fa-solid fa-clipboard-list text-3xl text-purple-400"></i>
-                            </div>
-                        </div>
-                        <div class="lg:w-3/5 w-full space-y-6">
-                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-bold text-purple-400 tracking-widest uppercase">
-                                <i class="fa-solid fa-calendar-check"></i> Divisi 04
-                            </div>
-                            <h3 class="text-4xl font-black text-white">Event Organizer (EO)</h3>
-                            <p class="text-gray-400 text-lg leading-relaxed">Motor penggerak di balik setiap acara Costaku Tabalong. Divisi ini berisi mereka yang memiliki passion dalam merancang konsep, mengelola manajemen panggung, hingga memastikan kelancaran setiap festival jejepangan dan gathering yang kami adakan.</p>
-                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-300">
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-[8px] text-purple-400"></i> Manajemen event & kepanitiaan</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-[8px] text-purple-400"></i> Stage & rundown management</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-[8px] text-purple-400"></i> Sponsorship & public relations</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-circle-dot text-[8px] text-purple-400"></i> Perencanaan gathering rutin</li>
-                            </ul>
+                <div class="space-y-12">
+                     <div class="rounded-3xl bg-jp-lightGray/40 border border-white/5 p-6 flex flex-col lg:flex-row gap-6 items-center transition-all">
+                        <div class="lg:w-1/3 w-full"><img src="https://placehold.co/600x400/121212/D4AF37?text=Cosplay+Crafting" class="w-full rounded-2xl border border-white/10"></div>
+                        <div class="lg:w-2/3 w-full space-y-4">
+                            <h3 class="text-3xl font-black text-white">Cosplay & Crafting</h3>
+                            <p class="text-gray-400">Rumah bagi para cosplayer, pembuat properti (crafter), dan makeup artist.</p>
                         </div>
                     </div>
                 </div>
@@ -335,10 +235,10 @@
         <div id="page-gallery" class="page-container hidden page-fade-in">
             <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Dokumentasi Kegiatan</h2>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Galeri</h2>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all gold-glow-hover overflow-hidden group"><img src="https://placehold.co/600x400/161615/D4AF37?text=Gathering" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                    <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center"><img src="https://placehold.co/600x400/161615/D4AF37?text=Gathering" class="w-full h-full object-cover rounded-xl"></div>
                 </div>
             </section>
         </div>
@@ -348,15 +248,29 @@
                 <div class="text-center mb-12">
                     <span class="text-xs font-bold tracking-widest text-jp-gold uppercase font-jp block mb-2">会員カード ・ MEMBER REGISTER</span>
                     <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Pembuat Kartu Anggota</h2>
-                    <p class="max-w-xl mx-auto text-gray-400 text-sm font-light">Rancang ID Card dan klik pada kartu untuk melihat informasi di balik kartu. Kartu otomatis tersimpan di database komunitas.</p>
+                    <p class="max-w-xl mx-auto text-gray-400 text-sm font-light">Rancang ID Card dan simpan ke database secara real-time. Anda harus login untuk mengubah data.</p>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16 relative">
                     <!-- Panel Kustomisasi -->
-                    <div class="lg:col-span-5 bg-jp-lightGray/40 p-8 rounded-2xl border border-white/5 backdrop-blur-sm shadow-xl relative">
-                        <!-- Loading Overlay for Cloud Status -->
-                        <div id="cloud-sync-status" class="absolute top-4 right-4 flex items-center gap-2 px-2 py-1 bg-green-500/10 border border-green-500/30 rounded text-[10px] text-green-400 font-mono tracking-widest hidden">
-                            <i class="fa-solid fa-cloud-check"></i> SYNCED
+                    <div class="lg:col-span-5 bg-jp-lightGray/40 p-8 rounded-2xl border border-white/5 backdrop-blur-sm shadow-xl relative overflow-hidden">
+                        
+                        <!-- Overlay Khusus yang Mengunci Form jika Belum Login -->
+                        <div id="auth-overlay-form" class="absolute inset-0 bg-jp-dark/90 backdrop-blur-sm z-30 flex flex-col items-center justify-center text-center p-6 transition-all duration-300">
+                            <i class="fa-solid fa-lock text-5xl text-jp-gold mb-6 opacity-80"></i>
+                            <h4 class="text-xl text-white font-bold mb-3">Akses Terkunci</h4>
+                            <p class="text-gray-400 text-sm mb-6 leading-relaxed max-w-xs">Silakan login sebagai pengurus menggunakan akun Google Anda untuk menambah atau menghapus data kartu anggota.</p>
+                            <button onclick="window.loginWithGoogle()" class="bg-white text-black hover:bg-gray-200 px-6 py-3 rounded-full text-sm font-bold transition-all shadow-lg flex items-center gap-2">
+                                <i class="fa-brands fa-google text-red-500"></i> Login dengan Google
+                            </button>
+                            <button onclick="window.openModal('rules-modal')" class="text-xs text-jp-gold underline mt-6 hover:text-white transition-colors">
+                                <i class="fa-solid fa-shield-halved"></i> Info Aturan Keamanan Database
+                            </button>
+                        </div>
+
+                        <!-- Status Firebase Cloud -->
+                        <div id="cloud-sync-status" class="absolute top-4 right-4 flex items-center gap-2 px-2 py-1 bg-blue-500/10 border border-blue-500/30 rounded text-[10px] text-blue-400 font-mono tracking-widest">
+                            <i class="fa-brands fa-google"></i> FIREBASE
                         </div>
 
                         <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2"><i class="fa-solid fa-sliders text-jp-gold"></i> Panel Kustomisasi</h3>
@@ -391,17 +305,8 @@
                                 <input type="text" id="id-game-input" value="Genshin Impact" maxlength="25" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Pilih Avatar</label>
-                                <div class="flex flex-col gap-3">
-                                    <input type="text" id="id-avatar-input" value="https://placehold.co/150x150/121212/D4AF37?text=Avatar" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all" placeholder="Masukkan URL Gambar...">
-                                    
-                                    <div class="relative w-full">
-                                        <input type="file" id="id-avatar-upload" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
-                                        <div class="w-full bg-zinc-800 hover:bg-zinc-700 border border-dashed border-gray-500 rounded-md px-4 py-3 text-sm text-gray-300 transition-all flex items-center justify-center gap-2">
-                                            <i class="fa-solid fa-cloud-arrow-up"></i> Atau Upload Foto Lokal
-                                        </div>
-                                    </div>
-                                </div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Pilih Avatar URL</label>
+                                <input type="text" id="id-avatar-input" value="https://placehold.co/150x150/121212/D4AF37?text=Avatar" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all" placeholder="Masukkan URL Gambar...">
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Status Keanggotaan</label>
@@ -412,7 +317,7 @@
                             </div>
                             
                             <div class="pt-4 border-t border-white/5">
-                                <button onclick="window.addCurrentCardToList()" class="w-full bg-jp-gold hover:bg-jp-goldHover text-jp-dark py-3.5 rounded-md font-extrabold tracking-wider transition-all shadow-md flex items-center justify-center gap-2 text-sm uppercase">
+                                <button id="btn-simpan" onclick="window.addCurrentCardToList()" class="w-full bg-jp-gold hover:bg-jp-goldHover text-jp-dark py-3.5 rounded-md font-extrabold tracking-wider transition-all shadow-md flex items-center justify-center gap-2 text-sm uppercase">
                                     <i class="fa-solid fa-user-plus"></i> Simpan ke Database
                                 </button>
                             </div>
@@ -440,10 +345,7 @@
                                                 <div class="flex flex-col justify-center">
                                                     <span class="text-[10px] tracking-widest text-gray-200 font-extrabold block mb-1">Costaku Tabalong</span>
                                                     <div class="relative inline-flex items-center justify-center px-1.5 py-0.5 bg-gradient-to-b from-slate-300 via-slate-100 to-slate-400 rounded-[3px] border border-slate-500 shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                                                        <div class="absolute inset-0 border border-white/80 rounded-[3px] pointer-events-none"></div>
-                                                        <div class="w-1 h-1 rounded-full bg-gradient-to-br from-slate-200 to-slate-600 border-[0.5px] border-slate-700 mr-2 relative z-10 shadow-sm"></div>
-                                                        <span class="text-[9px] font-black text-slate-800 font-mono tracking-widest drop-shadow-[0_1px_0_rgba(255,255,255,0.9)] relative z-10">PREVIEW</span>
-                                                        <div class="w-1 h-1 rounded-full bg-gradient-to-br from-slate-200 to-slate-600 border-[0.5px] border-slate-700 ml-2 relative z-10 shadow-sm"></div>
+                                                        <span class="text-[9px] font-black text-slate-800 font-mono tracking-widest relative z-10">PREVIEW</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -461,28 +363,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="flex justify-between items-end pt-4 border-t border-white/5 relative z-10">
-                                            <div>
-                                                <span class="text-[8px] text-gray-500 uppercase block tracking-wider">LOKALITAS REGIONAL</span>
-                                                <span class="text-[10px] font-bold text-white tracking-wide uppercase">TABALONG, IDN</span>
-                                            </div>
-                                            <div>
-                                                <span class="text-[8px] text-gray-500 uppercase block tracking-wider">STATUS ANGGOTA</span>
-                                                <span class="text-[10px] font-bold text-green-400 tracking-wide uppercase" id="card-status-display">ACTIVE</span>
-                                            </div>
-                                            <div class="flex flex-col items-end">
-                                                <div class="flex gap-0.5 h-6">
-                                                    <div class="w-0.5 bg-white/70 h-full"></div><div class="w-1 bg-white/70 h-full"></div><div class="w-0.5 bg-white/70 h-full"></div><div class="w-1.5 bg-white/70 h-full"></div><div class="w-0.5 bg-white/70 h-full"></div><div class="w-0.5 bg-white/70 h-full"></div>
-                                                </div>
-                                                <span class="text-[6px] tracking-widest text-gray-500 font-mono mt-0.5">EST-SINCE-2015</span>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                                 <!-- BACK -->
                                 <div class="absolute top-0 left-0 w-full h-full backface-hidden rotate-y-180 bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none">
                                     <div class="glare-sweep"></div>
-                                    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle at 100% 150%, #fff 24%, white 25%, white 28%, #fff 29%, #fff 36%, white 36%, white 40%, transparent 40%, transparent); background-size: 20px 20px;"></div>
                                     <div class="w-full h-12 bg-black mt-6 relative z-10 border-y border-white/10 shadow-inner"></div>
                                     <div class="p-6 flex flex-col justify-between h-[calc(100%-72px)] relative z-10">
                                         <div class="space-y-4 w-full mt-2">
@@ -499,12 +384,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="flex justify-between items-center border-t border-white/5 pt-3 mt-4">
-                                            <div class="text-[8px] text-gray-500 font-mono tracking-widest">SCAN VALIDASI ID</div>
-                                            <div class="w-10 h-10 bg-white/90 p-1 rounded-sm flex items-center justify-center">
-                                                <i class="fa-solid fa-qrcode text-black text-2xl"></i>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -515,47 +394,24 @@
                 <div class="border-t border-white/5 pt-12">
                     <div class="flex items-center justify-between mb-6">
                         <h3 class="text-2xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-database text-jp-gold"></i> Database Direktori</h3>
-                        <div id="loading-spinner" class="text-jp-gold animate-spin hidden"><i class="fa-solid fa-circle-notch text-xl"></i></div>
+                        <div id="loading-spinner" class="text-jp-gold animate-spin"><i class="fa-solid fa-circle-notch text-xl"></i></div>
                     </div>
-                    <div id="member-directory-container" class="w-full"></div>
+                    <div id="member-directory-container" class="w-full">
+                        <!-- Cards injected here -->
+                    </div>
                 </div>
             </section>
         </div>
 
         <div id="page-events" class="page-container hidden page-fade-in">
-            <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Kalender Kegiatan</h2>
-                </div>
-                <div class="space-y-6 max-w-4xl mx-auto" id="events-container">
-                    <div class="event-item bg-jp-lightGray/30 p-6 sm:p-8 rounded-2xl border border-white/5 flex flex-col sm:flex-row justify-between items-center gap-6">
-                        <div class="flex gap-6 items-center">
-                            <div class="bg-jp-gold/10 w-16 h-16 rounded-xl flex flex-col items-center justify-center text-jp-gold"><span class="text-xs font-bold">Agt</span><span class="text-2xl font-extrabold">08</span></div>
-                            <div><h3 class="text-xl font-bold text-white">Costaku Natsu-Matsuri</h3><p class="text-xs text-gray-400">Taman Kota Tanjung</p></div>
-                        </div>
-                        <button onclick="window.openRegistrationModal('Gathering')" class="bg-jp-gold text-jp-dark text-xs font-bold py-2.5 px-5 rounded">Ikut Serta</button>
-                    </div>
-                </div>
+             <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12"><h2 class="text-3xl font-extrabold text-white">Kalender Kegiatan</h2></div>
             </section>
         </div>
-
+        
         <div id="page-join" class="page-container hidden page-fade-in">
-            <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="bg-jp-lightGray/30 p-8 sm:p-12 rounded-3xl border border-white/5 backdrop-blur-sm relative overflow-hidden shadow-2xl">
-                    <div class="text-center mb-10 relative z-10">
-                        <span class="text-xs font-bold tracking-widest text-jp-gold uppercase font-jp block mb-2">仲間になる ・ JOIN</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Formulir Pendaftaran</h2>
-                    </div>
-                    <form onsubmit="handleFormSubmit(event)" class="space-y-6 relative z-10">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <input type="text" required placeholder="Nama Lengkap" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:border-jp-gold">
-                            <input type="email" required placeholder="Email" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:border-jp-gold">
-                        </div>
-                        <div class="pt-4 flex justify-center">
-                            <button type="submit" class="bg-jp-gold text-jp-dark font-extrabold uppercase px-12 py-4 rounded-md text-sm">Kirim Formulir</button>
-                        </div>
-                    </form>
-                </div>
+             <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12"><h2 class="text-3xl font-extrabold text-white">Gabung Komunitas</h2></div>
             </section>
         </div>
     </main>
@@ -564,30 +420,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
             <div>
                 <div class="flex items-center gap-3 mb-4 justify-center md:justify-start">
-                    <img src="logo.png" class="w-10 h-10 rounded-full border border-jp-gold/30 object-cover" onerror="this.src='https://placehold.co/100x100/121212/D4AF37?text=C'">
                     <span class="text-base font-bold tracking-wider text-white">COSTAKU TABALONG</span>
                 </div>
-                <p class="text-sm text-gray-400 max-w-sm mb-6 text-center md:text-left">Pionir komunitas pop-culture Jepang terbesar di Tabalong sejak 2015.</p>
-            </div>
-            
-            <div class="flex flex-col items-center md:items-end">
-                <h4 class="text-white font-bold mb-4 tracking-wider text-sm uppercase">Terhubung Dengan Kami</h4>
-                <div class="flex gap-4">
-                    <a href="https://www.instagram.com/costaku.tabalong/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-red-500 hover:to-purple-500 hover:border-transparent transition-all duration-300 shadow-lg hover:shadow-purple-500/20 group">
-                        <i class="fa-brands fa-instagram text-lg group-hover:scale-110 transition-transform"></i>
-                    </a>
-                    <a href="https://web.facebook.com/profile.php?id=100068536860320" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#1877F2] hover:border-transparent transition-all duration-300 shadow-lg hover:shadow-blue-500/20 group">
-                        <i class="fa-brands fa-facebook-f text-lg group-hover:scale-110 transition-transform"></i>
-                    </a>
-                    <a href="mailto:costaku.tabalong@gmail.com" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-jp-dark hover:bg-jp-gold hover:border-transparent transition-all duration-300 shadow-lg hover:shadow-jp-gold/20 group">
-                        <i class="fa-solid fa-envelope text-lg group-hover:scale-110 transition-transform"></i>
-                    </a>
-                </div>
+                <p class="text-sm text-gray-400 max-w-sm text-center md:text-left">Pionir komunitas pop-culture Jepang terbesar di Tabalong sejak 2015.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Modals -->
     <div id="success-modal" class="hidden fixed inset-0 z-50 bg-jp-dark/90 flex items-center justify-center p-4 backdrop-blur-md">
         <div class="bg-jp-lightGray/95 border border-white/10 rounded-2xl max-w-md w-full p-8 text-center shadow-2xl relative overflow-hidden">
             <div class="absolute inset-0 bg-jp-gold/5 animate-pulse-slow"></div>
@@ -600,132 +439,160 @@
         </div>
     </div>
     
-    <div id="event-modal" class="hidden fixed inset-0 z-50 bg-jp-dark/90 flex items-center justify-center p-4 backdrop-blur-md">
-        <div class="bg-jp-lightGray/95 border border-white/10 rounded-2xl max-w-md w-full p-8 shadow-2xl relative">
-            <button onclick="window.closeModal('event-modal')" class="absolute top-4 right-4 text-gray-500 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-            <div class="text-center mb-6"><h3 class="text-2xl font-bold text-white" id="event-title-modal">Event</h3></div>
-            <form onsubmit="window.handleEventRegisterSubmit(event)" class="space-y-4">
-                <input type="text" required placeholder="Nama" class="w-full bg-jp-dark border border-white/10 rounded px-4 py-2 text-sm text-white focus:border-jp-gold">
-                <button type="submit" class="w-full bg-jp-gold text-jp-dark font-bold py-3 rounded text-xs">Daftar</button>
-            </form>
+    <!-- Modal Aturan Keamanan -->
+    <div id="rules-modal" class="hidden fixed inset-0 z-[60] bg-jp-dark/95 flex items-center justify-center p-4 backdrop-blur-md">
+        <div class="bg-jp-darkGray border border-jp-gold/30 rounded-2xl max-w-2xl w-full p-8 shadow-2xl relative overflow-hidden">
+            <button onclick="window.closeModal('rules-modal')" class="absolute top-4 right-4 text-gray-500 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <h3 class="text-2xl font-bold text-jp-gold mb-2"><i class="fa-solid fa-shield-halved"></i> Panduan Keamanan Firebase</h3>
+            <p class="text-gray-300 text-sm mb-4">Agar database Anda (Firestore) aman dan hanya bisa diotak-atik oleh admin yang login, Anda <strong>wajib</strong> memasukkan aturan keamanan ini di Firebase Console.</p>
+            
+            <div class="space-y-3 text-sm text-gray-400 mb-6">
+                <p>1. Buka <a href="https://console.firebase.google.com/" target="_blank" class="text-blue-400 hover:underline">Firebase Console</a>, pilih project <strong>costaku-tabalong</strong>.</p>
+                <p>2. Di menu kiri, pilih <strong>Firestore Database</strong>, lalu klik tab <strong>Rules</strong> (Aturan).</p>
+                <p>3. Hapus kode yang ada, ganti dengan kode di bawah ini, lalu klik <strong>Publish</strong>.</p>
+            </div>
+
+            <div class="relative">
+                <button onclick="navigator.clipboard.writeText(document.getElementById('rules-code').innerText); alert('Aturan dicopy!');" class="absolute top-2 right-2 bg-white/10 hover:bg-white/20 p-2 rounded text-white text-xs"><i class="fa-regular fa-copy"></i> Copy</button>
+                <pre class="bg-black border border-white/10 rounded-lg p-4 text-sm text-green-400 overflow-x-auto" id="rules-code">
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /members_directory/{document=**} {
+      // Siapapun bisa melihat daftar anggota (untuk di website)
+      allow read: if true;
+      // Hanya akun yang sudah login lewat Google Auth yang bisa mengubah/menghapus
+      allow write: if request.auth != null;
+    }
+  }
+}
+</pre>
+            </div>
+            
+            <div class="mt-6 text-center">
+                <button onclick="window.closeModal('rules-modal')" class="bg-white/10 hover:bg-white/20 text-white px-6 py-2 rounded-md font-bold text-sm">Saya Mengerti</button>
+            </div>
         </div>
     </div>
 
     <script type="module">
-        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-
-// Provider Google
-const provider = new GoogleAuthProvider();
-
-// Fungsi Login Google
-window.loginWithGoogle = async function() {
-    try {
-        await signInWithPopup(auth, provider);
-        alert("Berhasil login!");
-    } catch (error) {
-        console.error("Gagal login:", error);
-        alert("Terjadi kesalahan saat login.");
-    }
-};
-
-// Fungsi Logout
-window.logoutAccount = async function() {
-    try {
-        await signOut(auth);
-        alert("Berhasil logout!");
-    } catch (error) {
-        console.error("Gagal logout:", error);
-    }
-};
-
-// Pantau status login pengguna secara real-time
-onAuthStateChanged(auth, (user) => {
-    const formPanel = document.getElementById('member-form-panel'); // Panel kustomisasi
-    const loginPrompt = document.getElementById('login-prompt-panel'); // Panel suruh login
-
-    if (user) {
-        // Jika sudah login, tampilkan form buat kartu
-        if(formPanel) formPanel.classList.remove('hidden');
-        if(loginPrompt) loginPrompt.classList.add('hidden');
-    } else {
-        // Jika belum login, sembunyikan form dan suruh login dulu
-        if(formPanel) formPanel.classList.add('hidden');
-        if(loginPrompt) loginPrompt.classList.remove('hidden');
-    }
-});
-        // IMPORT FIREBASE LIBRARIES
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-        // ============================================================================
-        // PENTING: GANTI NILAI DI BAWAH INI DENGAN FIREBASE CONFIG MILIK ANDA SENDIRI
-        // ============================================================================
+        // Konfigurasi dari Akun Firebase Anda
         const firebaseConfig = {
             apiKey: "AIzaSyB_reprtE-6VB14KHVz1b-Pim2xoTDiHV0",
             authDomain: "costaku-tabalong.firebaseapp.com",
             projectId: "costaku-tabalong",
             storageBucket: "costaku-tabalong.firebasestorage.app",
-            messagingSenderId: "1:460748081636:web:4ad750768119ceb45f5ff1",
-            appId: "G-35TXRQF7RZ"
+            messagingSenderId: "460748081636",
+            appId: "1:460748081636:web:4ad750768119ceb45f5ff1",
+            measurementId: "G-35TXRQF7RZ"
         };
-        // ============================================================================
 
-        // Initialize Firebase
-        let db = null;
-        let membersCollection = null;
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+        
+        // Nama koleksi di Firestore
+        const membersCollection = collection(db, "members_directory");
 
-        // Cek apakah user sudah mengganti config dengan yang asli
-        if (firebaseConfig.apiKey !== "AIzaSyB_reprtE-6VB14KHVz1b-Pim2xoTDiHV0") {
-            const app = initializeApp(firebaseConfig);
-            db = getFirestore(app);
-            membersCollection = collection(db, "members_directory");
-            document.getElementById('cloud-sync-status').classList.remove('hidden');
-        } else {
-            console.warn("Firebase belum dikonfigurasi. Menggunakan mode lokal (Data akan hilang saat refresh).");
+        let currentUser = null;
+        let communityMembers = [];
+
+        // ==========================================
+        // AUTENTIKASI LOGIN GOOGLE
+        // ==========================================
+        onAuthStateChanged(auth, (user) => {
+            currentUser = user;
+            updateAuthUI();
+            // Render ulang kartu agar tombol hapus muncul/hilang
+            if (communityMembers.length > 0) {
+                renderMemberDirectory();
+            }
+        });
+
+        window.loginWithGoogle = () => {
+            const btnNav = document.getElementById('nav-auth-container');
+            if(btnNav) btnNav.innerHTML = `<button class="bg-white/10 text-white border border-white/20 px-4 py-2 rounded-md text-sm font-bold opacity-50 cursor-not-allowed"><i class="fa-solid fa-spinner fa-spin"></i> Login...</button>`;
+
+            signInWithPopup(auth, provider).catch(error => {
+                console.error("Login failed:", error);
+                if (error.code !== 'auth/popup-closed-by-user') {
+                    alert("Gagal login: " + error.message + "\n\n(Jika Anda melihat ini di halaman Preview, silakan buka di tab terpisah atau deploy ke Github Pages karena ada batasan Iframe keamanan browser)");
+                }
+                updateAuthUI(); // Kembalikan tombol jika gagal
+            });
+        };
+
+        window.logout = () => {
+            signOut(auth).then(() => {
+                document.getElementById('success-modal-message').innerText = "Berhasil Logout dari akun pengurus.";
+                document.getElementById('success-modal').classList.remove('hidden');
+            });
+        };
+
+        function updateAuthUI() {
+            const authContainerNav = document.getElementById('nav-auth-container');
+            const authContainerMobile = document.getElementById('mobile-auth-container');
+            const formOverlay = document.getElementById('auth-overlay-form');
+
+            if (currentUser) {
+                // Tampilan jika SUDAH LOGIN
+                const btnHtml = `<button onclick="window.logout()" class="bg-red-500/20 hover:bg-red-500/40 text-red-300 border border-red-500/30 px-4 py-2 rounded-md text-sm font-bold transition-all" title="Logged in as ${currentUser.email}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout Admin</button>`;
+                if(authContainerNav) authContainerNav.innerHTML = btnHtml;
+                if(authContainerMobile) authContainerMobile.innerHTML = btnHtml;
+                
+                // Hilangkan gembok overlay form
+                if(formOverlay) formOverlay.classList.add('hidden');
+            } else {
+                // Tampilan jika BELUM LOGIN
+                const btnHtml = `<button onclick="window.loginWithGoogle()" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-4 py-2 rounded-md text-sm font-bold transition-all"><i class="fa-brands fa-google"></i> Login Admin</button>`;
+                if(authContainerNav) authContainerNav.innerHTML = btnHtml;
+                if(authContainerMobile) authContainerMobile.innerHTML = btnHtml;
+                
+                // Munculkan gembok overlay form
+                if(formOverlay) formOverlay.classList.remove('hidden');
+            }
         }
 
-        // Data anggota bawaan (Seeding Initial Data)
-        const initialLocalMembers = [
-            { id: 'local_1', nickname: "Ryuu", role: "Cosplay & Crafting", gen: "Gen 1", anime: "Fate/Stay Night", game: "Elden Ring", avatar: "https://placehold.co/150x150/121212/D4AF37?text=RY", status: "ACTIVE", createdAt: new Date().toISOString() },
-            { id: 'local_2', nickname: "Shiro", role: "Anime & Manga Illustrator", gen: "Gen 2", anime: "Violet Evergarden", game: "Arknights", avatar: "https://placehold.co/150x150/121212/3B82F6?text=SH", status: "ACTIVE", createdAt: new Date().toISOString() },
-            { id: 'local_3', nickname: "Kuro", role: "Hardcore & Rhythm Gamer", gen: "Gen 3", anime: "Oshi no Ko", game: "Osu!", avatar: "https://placehold.co/150x150/121212/10B981?text=KU", status: "INACTIVE", createdAt: new Date().toISOString() }
-        ];
-
-        let communityMembers = [...initialLocalMembers];
-
-        async function loadMembersFromFirestore() {
-            if (!db) {
-                renderMemberDirectory();
-                return;
-            }
-            
+        // ==========================================
+        // DATABASE REALTIME (FIRESTORE)
+        // ==========================================
+        
+        function loadMembersFromFirestore() {
             document.getElementById('loading-spinner').classList.remove('hidden');
 
-            try {
-                // Real-time listener untuk memantau perubahan database secara langsung
-                onSnapshot(membersCollection, (snapshot) => {
-                    communityMembers = [];
-                    snapshot.forEach((doc) => {
-                        communityMembers.push({ id: doc.id, ...doc.data() });
-                    });
-                    
-                    // Sort berdasarkan generasi dan waktu dibuat
-                    communityMembers.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
-                    
-                    renderMemberDirectory();
-                    document.getElementById('loading-spinner').classList.add('hidden');
-                }, (error) => {
-                    console.error("Error mendengarkan data Firestore:", error);
-                    renderMemberDirectory(); // Fallback jika gagal ambil
+            // onSnapshot akan terpicu otomatis setiap ada perubahan di database
+            onSnapshot(membersCollection, (snapshot) => {
+                communityMembers = [];
+                snapshot.forEach((doc) => {
+                    communityMembers.push({ id: doc.id, ...doc.data() });
                 });
-            } catch (e) {
-                console.error("Gagal terhubung ke Firestore:", e);
-                renderMemberDirectory(); // Fallback
-            }
+                
+                // Urutkan berdasarkan waktu pendaftaran
+                communityMembers.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+                
+                renderMemberDirectory();
+                document.getElementById('loading-spinner').classList.add('hidden');
+            }, (error) => {
+                console.error("Error mendengarkan data Firestore:", error);
+                document.getElementById('loading-spinner').classList.add('hidden');
+                document.getElementById('member-directory-container').innerHTML = `<div class="text-red-400 text-center py-4 bg-red-400/10 border border-red-400/30 rounded">Gagal memuat data: ${error.message}</div>`;
+            });
         }
 
         window.addCurrentCardToList = async function() { 
+            // Proteksi Tambahan
+            if (!currentUser) {
+                alert("Akses Ditolak! Anda harus login sebagai admin untuk menambah data.");
+                return;
+            }
+
             const name = document.getElementById('id-name-input').value || 'Ryuka';
+            const btnSimpan = document.getElementById('btn-simpan');
             
             const newMember = { 
                 nickname: name, 
@@ -733,58 +600,80 @@ onAuthStateChanged(auth, (user) => {
                 gen: document.getElementById('id-gen-select').value,
                 anime: document.getElementById('id-anime-input').value || 'Bocchi the Rock!',
                 game: document.getElementById('id-game-input').value || 'Genshin Impact',
-                avatar: document.getElementById('card-avatar-img') ? document.getElementById('card-avatar-img').src : "https://placehold.co/150x150/121212/D4AF37?text=Avatar",
+                avatar: document.getElementById('id-avatar-input').value || "https://placehold.co/150x150/121212/D4AF37?text=Avatar",
                 status: document.getElementById('id-status-select').value,
-                createdAt: new Date().toISOString()
+                createdAt: new Date().toISOString(),
+                // Menyimpan identitas pembuat (opsional, bagus untuk audit log)
+                createdBy: currentUser.uid,
+                creatorEmail: currentUser.email
             };
 
-            if (db) {
-                // Simpan ke Database Asli (Firebase)
-                try {
-                    await addDoc(membersCollection, newMember);
-                    document.getElementById('success-modal-message').innerText = `Kartu anggota untuk ${name} berhasil disimpan permanen ke dalam Database!`;
-                    document.getElementById('success-modal').classList.remove('hidden');
-                } catch (error) {
-                    console.error("Error menambahkan anggota:", error);
-                    alert("Gagal menyimpan ke database. Pastikan aturan keamanan (Security Rules) Firestore Anda sudah benar.");
-                }
-            } else {
-                // Fallback Lokal (Jika belum setting Firebase)
-                newMember.id = 'local_' + Date.now();
-                communityMembers.push(newMember);
-                renderMemberDirectory();
-                document.getElementById('success-modal-message').innerText = "Anggota baru ditambahkan SECARA LOKAL (Data akan hilang saat halaman di-refresh karena Firebase belum di-setting).";
+            try {
+                // Ubah state tombol
+                btnSimpan.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Menyimpan...';
+                btnSimpan.disabled = true;
+
+                // Proses menyimpan ke database Cloud Firestore
+                await addDoc(membersCollection, newMember);
+                
+                document.getElementById('success-modal-message').innerText = `Kartu anggota untuk ${name} berhasil disimpan secara permanen dan real-time ke Database!`;
                 document.getElementById('success-modal').classList.remove('hidden');
+                
+            } catch (error) {
+                console.error("Error menambahkan anggota:", error);
+                alert("Gagal menyimpan ke database. Pastikan Security Rules sudah diatur.\nError: " + error.message);
+                // Menampilkan Modal Panduan Rules jika ada error permission
+                if (error.code === 'permission-denied') {
+                    window.openModal('rules-modal');
+                }
+            } finally {
+                // Kembalikan state tombol
+                btnSimpan.innerHTML = '<i class="fa-solid fa-user-plus"></i> Simpan ke Database';
+                btnSimpan.disabled = false;
             }
         }
 
         window.deleteMember = async function(memberId, event) {
-            // Hentikan efek klik agar tidak memicu animasi flip saat menekan tombol hapus
-            if (event) {
-                event.stopPropagation();
+            if (event) event.stopPropagation();
+
+            // Proteksi Tambahan
+            if (!currentUser) {
+                alert("Akses Ditolak! Anda harus login sebagai admin untuk menghapus data.");
+                return;
             }
 
-            if (db && !memberId.toString().startsWith('local_')) {
-                // Hapus dari Database Asli (Firebase)
-                try {
-                    await deleteDoc(doc(db, "members_directory", memberId));
-                    document.getElementById('success-modal-message').innerText = "Kartu anggota berhasil dihapus dari Database!";
-                    document.getElementById('success-modal').classList.remove('hidden');
-                } catch (error) {
-                    console.error("Error menghapus anggota:", error);
-                }
-            } else {
-                // Fallback lokal penghapusan
-                communityMembers = communityMembers.filter(m => m.id !== memberId);
-                renderMemberDirectory();
-                document.getElementById('success-modal-message').innerText = "Kartu anggota lokal berhasil dihapus!";
+            const isConfirm = confirm("Apakah Anda yakin ingin menghapus data anggota ini dari database permanen?");
+            if (!isConfirm) return;
+
+            try {
+                // Proses menghapus dari database
+                await deleteDoc(doc(db, "members_directory", memberId));
+                
+                // Tidak perlu render manual, `onSnapshot` di atas akan otomatis merespon
+                document.getElementById('success-modal-message').innerText = "Data kartu anggota berhasil dihapus dari Database!";
                 document.getElementById('success-modal').classList.remove('hidden');
+            } catch (error) {
+                console.error("Error menghapus anggota:", error);
+                alert("Gagal menghapus data: " + error.message);
+                if (error.code === 'permission-denied') {
+                    window.openModal('rules-modal');
+                }
             }
         }
+
+        // ==========================================
+        // UI & RENDER LOGIC
+        // ==========================================
 
         function generateCardHTML(member, index) {
             const idNum = String(index + 1).padStart(4, '0');
             const statusColor = member.status === 'ACTIVE' ? 'text-green-400' : 'text-red-400';
+            
+            // TAMPILKAN TOMBOL HAPUS HANYA JIKA USER SEDANG LOGIN
+            const deleteBtnHTML = currentUser ? `
+                <button onclick="window.deleteMember('${member.id}', event)" class="absolute top-3 right-3 z-50 bg-red-600/90 hover:bg-red-500 text-white w-7 h-7 rounded-full flex items-center justify-center backdrop-blur-sm transition-all shadow-[0_0_10px_rgba(220,38,38,0.5)] border border-red-400/50 hover:scale-110" title="Hapus Kartu Ini">
+                    <i class="fa-solid fa-trash-can text-[11px]"></i>
+                </button>` : '';
 
             return `
             <div class="w-full max-w-sm perspective-1000 cursor-pointer card-hover-effect mx-auto" onclick="this.querySelector('.fancy-flip-anim').classList.toggle('is-flipped')">
@@ -793,10 +682,7 @@ onAuthStateChanged(auth, (user) => {
                     <!-- FRONT OF CARD -->
                     <div class="absolute top-0 left-0 w-full h-full backface-hidden bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none">
                         
-                        <!-- TOMBOL HAPUS KARTU -->
-                        <button onclick="window.deleteMember('${member.id}', event)" class="absolute top-3 right-3 z-50 bg-red-600/90 hover:bg-red-500 text-white w-7 h-7 rounded-full flex items-center justify-center backdrop-blur-sm transition-all shadow-[0_0_10px_rgba(220,38,38,0.5)] border border-red-400/50 hover:scale-110" title="Hapus Kartu Ini">
-                            <i class="fa-solid fa-trash-can text-[11px]"></i>
-                        </button>
+                        ${deleteBtnHTML}
 
                         <div class="glare-sweep"></div>
                         <div class="h-2 bg-jp-gold w-full"></div>
@@ -809,10 +695,7 @@ onAuthStateChanged(auth, (user) => {
                                     <div class="flex flex-col justify-center">
                                         <span class="text-[8px] tracking-widest text-gray-200 font-extrabold block mb-0.5">Costaku Tabalong</span>
                                         <div class="relative inline-flex items-center justify-center px-1.5 py-0.5 bg-gradient-to-b from-slate-300 via-slate-100 to-slate-400 rounded-[3px] border border-slate-500 shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                                            <div class="absolute inset-0 border border-white/80 rounded-[3px] pointer-events-none"></div>
-                                            <div class="w-1 h-1 rounded-full bg-gradient-to-br from-slate-200 to-slate-600 border-[0.5px] border-slate-700 mr-2 relative z-10 shadow-sm"></div>
-                                            <span class="text-[8px] font-black text-slate-800 font-mono tracking-widest drop-shadow-[0_1px_0_rgba(255,255,255,0.9)] relative z-10">LABMEM ${idNum}</span>
-                                            <div class="w-1 h-1 rounded-full bg-gradient-to-br from-slate-200 to-slate-600 border-[0.5px] border-slate-700 ml-2 relative z-10 shadow-sm"></div>
+                                            <span class="text-[8px] font-black text-slate-800 font-mono tracking-widest relative z-10">LABMEM ${idNum}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -820,14 +703,12 @@ onAuthStateChanged(auth, (user) => {
                             
                             <div class="flex items-center gap-3 py-2 relative z-10 mt-1">
                                 <div class="w-16 h-16 bg-zinc-900 border border-white/10 flex items-center justify-center relative overflow-hidden flex-shrink-0">
-                                    <img src="${member.avatar}" alt="Avatar" class="w-full h-full object-cover">
+                                    <img src="${member.avatar}" alt="Avatar" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/150x150/121212/D4AF37?text=!'">
                                 </div>
                                 <div class="overflow-hidden">
                                     <h4 class="text-2xl font-extrabold text-white tracking-wide uppercase font-jp leading-none mb-1.5 truncate pr-8">${member.nickname}</h4>
                                     <div class="text-[9px] text-gray-400 font-mono tracking-wider flex items-center gap-1.5 truncate">
                                         <i class="fa-solid fa-shield-halved text-jp-gold"></i> <span class="truncate">${member.role}</span>
-                                        <span class="text-white/20 flex-shrink-0">|</span>
-                                        <span class="font-bold text-jp-gold bg-jp-gold/10 px-1 py-0.5 rounded border border-jp-gold/20 flex-shrink-0">${member.gen.toUpperCase()}</span>
                                     </div>
                                 </div>
                             </div>
@@ -841,13 +722,6 @@ onAuthStateChanged(auth, (user) => {
                                 <div>
                                     <span class="text-[7px] text-gray-500 uppercase block tracking-wider">STATUS ANGGOTA</span>
                                     <span class="text-[9px] font-bold ${statusColor} tracking-wide uppercase">${member.status}</span>
-                                </div>
-                                
-                                <div class="flex flex-col items-end">
-                                    <div class="flex gap-0.5 h-5">
-                                        <div class="w-0.5 bg-white/70 h-full"></div><div class="w-1 bg-white/70 h-full"></div><div class="w-0.5 bg-white/70 h-full"></div><div class="w-1.5 bg-white/70 h-full"></div><div class="w-0.5 bg-white/70 h-full"></div><div class="w-0.5 bg-white/70 h-full"></div>
-                                    </div>
-                                    <span class="text-[5px] tracking-widest text-gray-500 font-mono mt-0.5">EST-2015</span>
                                 </div>
                             </div>
                         </div>
@@ -877,7 +751,7 @@ onAuthStateChanged(auth, (user) => {
                             </div>
                             
                             <div class="flex justify-between items-center border-t border-white/5 pt-2 mt-3">
-                                <div class="text-[7px] text-gray-500 font-mono tracking-widest">SCAN VALIDASI ID</div>
+                                <div class="text-[7px] text-gray-500 font-mono tracking-widest">GEN: <span class="text-jp-gold">${member.gen.toUpperCase()}</span></div>
                                 <div class="w-8 h-8 bg-white/90 p-1 rounded-sm flex items-center justify-center">
                                     <i class="fa-solid fa-qrcode text-black text-xl"></i>
                                 </div>
@@ -910,7 +784,7 @@ onAuthStateChanged(auth, (user) => {
                                 <div class="h-[1px] flex-grow bg-gradient-to-l from-transparent to-white/10"></div>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 mt-8">
-                                ${membersInGen.map(m => generateCardHTML(m, communityMembers.indexOf(m))).join('')}
+                                ${membersInGen.map((m, idx) => generateCardHTML(m, idx)).join('')}
                             </div>
                         </div>
                     `;
@@ -928,6 +802,7 @@ onAuthStateChanged(auth, (user) => {
             }
         }
 
+        // Live Preview form handler
         const idNameInput = document.getElementById('id-name-input');
         const idDivisionSelect = document.getElementById('id-division-select');
         const idGenSelect = document.getElementById('id-gen-select');
@@ -936,223 +811,62 @@ onAuthStateChanged(auth, (user) => {
         const idAvatarInput = document.getElementById('id-avatar-input');
         const idStatusSelect = document.getElementById('id-status-select');
         
-        const cardNickname = document.getElementById('card-nickname');
-        const cardRole = document.getElementById('card-role');
-        const cardGen = document.getElementById('card-gen');
-        const cardBackAnime = document.getElementById('card-back-anime');
-        const cardBackGame = document.getElementById('card-back-game');
-        const cardAvatarImg = document.getElementById('card-avatar-img');
-        const cardStatusDisplay = document.getElementById('card-status-display');
-        const idAvatarUpload = document.getElementById('id-avatar-upload');
-
         function updateCardData() {
-            if(cardNickname) cardNickname.innerText = idNameInput.value || 'Ryuka';
-            if(cardRole) cardRole.innerText = idDivisionSelect.value;
-            if(cardGen && idGenSelect) cardGen.innerText = idGenSelect.value.toUpperCase();
-            if(cardBackAnime) cardBackAnime.innerText = idAnimeInput.value || 'Bocchi the Rock!';
-            if(cardBackGame) cardBackGame.innerText = idGameInput.value || 'Genshin Impact';
+            const elNick = document.getElementById('card-nickname');
+            const elRole = document.getElementById('card-role');
+            const elGen = document.getElementById('card-gen');
+            const elAni = document.getElementById('card-back-anime');
+            const elGam = document.getElementById('card-back-game');
+            const elImg = document.getElementById('card-avatar-img');
             
-            if(cardAvatarImg) {
-                const imgUrl = idAvatarInput.value;
-                if(imgUrl && !imgUrl.includes("Local Upload")) {
-                    cardAvatarImg.src = imgUrl;
-                }
-            }
-
-            if(cardStatusDisplay) {
-                const status = idStatusSelect.value;
-                cardStatusDisplay.innerText = status;
-                if(status === 'ACTIVE') {
-                    cardStatusDisplay.classList.remove('text-red-400');
-                    cardStatusDisplay.classList.add('text-green-400');
-                } else {
-                    cardStatusDisplay.classList.remove('text-green-400');
-                    cardStatusDisplay.classList.add('text-red-400');
-                }
-            }
+            if(elNick) elNick.innerText = idNameInput.value || 'Ryuka';
+            if(elRole) elRole.innerText = idDivisionSelect.value;
+            if(elGen && idGenSelect) elGen.innerText = idGenSelect.value.toUpperCase();
+            if(elAni) elAni.innerText = idAnimeInput.value || 'Bocchi the Rock!';
+            if(elGam) elGam.innerText = idGameInput.value || 'Genshin Impact';
+            if(elImg) elImg.src = idAvatarInput.value || "https://placehold.co/150x150/121212/D4AF37?text=Avatar";
         }
 
-        // Handle Image Upload and Resizing (to ensure it saves to database easily)
-        if(idAvatarUpload) {
-            idAvatarUpload.addEventListener('change', function(event) {
-                const file = event.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        const img = new Image();
-                        img.onload = function() {
-                            const canvas = document.createElement('canvas');
-                            const ctx = canvas.getContext('2d');
-                            const maxW = 250;
-                            const maxH = 250;
-                            let width = img.width;
-                            let height = img.height;
-                            
-                            // Scale down for database performance
-                            if (width > height) {
-                                if (width > maxW) { height *= maxW / width; width = maxW; }
-                            } else {
-                                if (height > maxH) { width *= maxH / height; height = maxH; }
-                            }
-                            canvas.width = width; canvas.height = height;
-                            ctx.drawImage(img, 0, 0, width, height);
-                            const resizedDataUrl = canvas.toDataURL('image/jpeg', 0.8);
-                            
-                            if(idAvatarInput) idAvatarInput.value = "Local Upload (Processed)";
-                            if(cardAvatarImg) cardAvatarImg.src = resizedDataUrl;
-                        }
-                        img.src = e.target.result;
-                    }
-                    reader.readAsDataURL(file);
-                }
-            });
-        }
+        ['input', 'change'].forEach(evt => {
+            if(idNameInput) idNameInput.addEventListener(evt, updateCardData);
+            if(idDivisionSelect) idDivisionSelect.addEventListener(evt, updateCardData);
+            if(idGenSelect) idGenSelect.addEventListener(evt, updateCardData);
+            if(idAnimeInput) idAnimeInput.addEventListener(evt, updateCardData);
+            if(idGameInput) idGameInput.addEventListener(evt, updateCardData);
+            if(idAvatarInput) idAvatarInput.addEventListener(evt, updateCardData);
+            if(idStatusSelect) idStatusSelect.addEventListener(evt, updateCardData);
+        });
 
-        if(idNameInput) idNameInput.addEventListener('input', updateCardData);
-        if(idDivisionSelect) idDivisionSelect.addEventListener('change', updateCardData);
-        if(idGenSelect) idGenSelect.addEventListener('change', updateCardData);
-        if(idAnimeInput) idAnimeInput.addEventListener('input', updateCardData);
-        if(idGameInput) idGameInput.addEventListener('input', updateCardData);
-        if(idAvatarInput) idAvatarInput.addEventListener('input', updateCardData);
-        if(idStatusSelect) idStatusSelect.addEventListener('change', updateCardData);
-
-        window.openRegistrationModal = function(title) { document.getElementById('event-title-modal').innerText = title; document.getElementById('event-modal').classList.remove('hidden'); }
+        window.openModal = function(id) { document.getElementById(id).classList.remove('hidden'); }
         window.closeModal = function(id) { document.getElementById(id).classList.add('hidden'); }
-        window.handleFormSubmit = function(e) { e.preventDefault(); document.getElementById('success-modal-message').innerText = "Form berhasil dikirim!"; document.getElementById('success-modal').classList.remove('hidden'); }
-        window.handleEventRegisterSubmit = function(e) { e.preventDefault(); window.closeModal('event-modal'); document.getElementById('success-modal-message').innerText = "Pendaftaran event berhasil!"; document.getElementById('success-modal').classList.remove('hidden'); }
-
-        window.toggleMobileSubmenu = function(id) {
-            const submenu = document.getElementById(id);
-            const icon = document.getElementById(`icon-${id}`);
-            if (submenu.classList.contains('hidden')) {
-                submenu.classList.remove('hidden');
-                icon.classList.add('rotate-180');
-            } else {
-                submenu.classList.add('hidden');
-                icon.classList.remove('rotate-180');
-            }
-        }
-
+        
         function handleRouting() {
             const hash = window.location.hash || '#/';
             const validPages = ['home', 'about', 'divisions', 'gallery', 'members', 'events', 'join'];
-            
             let hashPath = hash.substring(2);
             let pathParts = hashPath.split('/');
             let targetPage = pathParts[0] || 'home';
-            let subTarget = pathParts[1] || null;
 
             if (!validPages.includes(targetPage)) targetPage = 'home';
-
-            validPages.forEach(p => {
-                const container = document.getElementById(`page-${p}`);
-                if (container) container.classList.add('hidden');
-            });
-
-            const allNavLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
-            allNavLinks.forEach(link => {
-                if(link.hasAttribute('data-target')) {
-                    link.classList.remove('text-jp-gold', 'border-b', 'border-jp-gold');
-                    link.classList.add('text-gray-300');
-                }
-            });
+            validPages.forEach(p => { const c = document.getElementById(`page-${p}`); if (c) c.classList.add('hidden'); });
 
             const activeContainer = document.getElementById(`page-${targetPage}`);
             if (activeContainer) activeContainer.classList.remove('hidden');
 
-            const activeDesktopLinks = document.querySelectorAll(`a.nav-link[data-target="${targetPage}"]`);
-            activeDesktopLinks.forEach(link => {
-                link.classList.add('text-jp-gold');
-                if(targetPage !== 'home') link.classList.add('border-b', 'border-jp-gold');
-                link.classList.remove('text-gray-300');
-            });
-            
-            const activeMobileLinks = document.querySelectorAll(`a.mobile-nav-link[data-target="${targetPage}"]`);
-            activeMobileLinks.forEach(link => {
-                link.classList.add('text-jp-gold');
-                link.classList.remove('text-gray-300');
-            });
+            document.querySelectorAll('.nav-link').forEach(link => { link.classList.remove('text-jp-gold'); link.classList.add('text-gray-300'); });
+            document.querySelectorAll(`a.nav-link[data-target="${targetPage}"]`).forEach(link => { link.classList.add('text-jp-gold'); link.classList.remove('text-gray-300'); });
 
             document.getElementById('mobile-menu').classList.add('hidden');
-
-            if (targetPage === 'divisions' && subTarget) {
-                setTimeout(() => {
-                    const targetElement = document.getElementById(`divisi-${subTarget}`);
-                    if (targetElement) { targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' }); targetElement.classList.remove('highlight-target'); void targetElement.offsetWidth; targetElement.classList.add('highlight-target'); }
-                }, 100);
-            } else if (targetPage === 'gallery' && subTarget) {
-                setTimeout(() => {
-                    const targetElement = document.getElementById(`galeri-${subTarget}`);
-                    if (targetElement) { targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' }); targetElement.classList.remove('highlight-target'); void targetElement.offsetWidth; targetElement.classList.add('highlight-target'); }
-                }, 100);
-            } else {
-                window.scrollTo({ top: 0, behavior: 'instant' });
-            }
+            window.scrollTo({ top: 0, behavior: 'instant' });
         }
 
         window.addEventListener('hashchange', handleRouting);
         window.addEventListener('load', handleRouting);
-
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-        const navbarEl = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 40) navbarEl.classList.add('bg-jp-dark/95', 'shadow-lg', 'shadow-black/70');
-            else navbarEl.classList.remove('bg-jp-dark/95', 'shadow-lg', 'shadow-black/70');
-        });
-
-        const canvas = document.getElementById('sakura-canvas');
-        const ctx = canvas.getContext('2d');
-        let particlesArray = [];
         
-        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        window.addEventListener('resize', resizeCanvas); resizeCanvas();
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
 
-        class Particle {
-            constructor() { this.reset(); this.y = Math.random() * canvas.height; }
-            reset() {
-                this.x = Math.random() * canvas.width; this.y = -20; this.size = Math.random() * 4 + 3;
-                this.type = Math.random() > 0.55 ? 'ember' : 'sakura';
-                if (this.type === 'sakura') {
-                    this.speedX = Math.random() * 1 - 0.3; this.speedY = Math.random() * 0.7 + 0.5;
-                    this.color = 'rgba(212, 175, 55, 0.15)'; this.rotation = Math.random() * 360; this.rotationSpeed = Math.random() * 0.02 - 0.01;
-                } else {
-                    this.y = canvas.height + 20; this.speedX = Math.random() * 0.8 - 0.4; this.speedY = -(Math.random() * 0.7 + 0.5);
-                    this.color = Math.random() > 0.5 ? 'rgba(255, 159, 28, 0.3)' : 'rgba(212, 175, 55, 0.2)'; this.glow = Math.random() * 8 + 4;
-                }
-            }
-            draw() {
-                ctx.save();
-                if (this.type === 'sakura') {
-                    ctx.translate(this.x, this.y); ctx.rotate(this.rotation); ctx.beginPath(); ctx.fillStyle = this.color;
-                    ctx.moveTo(0, 0); ctx.bezierCurveTo(-this.size, -this.size, -this.size * 1.5, this.size / 2, 0, this.size * 2);
-                    ctx.bezierCurveTo(this.size * 1.5, this.size / 2, this.size, -this.size, 0, 0); ctx.fill(); ctx.closePath();
-                } else {
-                    ctx.beginPath(); ctx.fillStyle = this.color; ctx.shadowBlur = this.glow; ctx.shadowColor = this.color;
-                    ctx.arc(this.x, this.y, this.size / 2, 0, Math.PI * 2); ctx.fill(); ctx.closePath();
-                }
-                ctx.restore();
-            }
-            update() {
-                this.x += this.speedX; this.y += this.speedY;
-                if (this.type === 'sakura') {
-                    this.rotation += this.rotationSpeed;
-                    if (this.y > canvas.height + 10 || this.x > canvas.width + 10 || this.x < -10) this.reset();
-                } else {
-                    if (this.y < -10 || this.x > canvas.width + 10 || this.x < -10) this.reset();
-                }
-            }
-        }
-        function initParticles() { particlesArray = []; for (let i = 0; i < 40; i++) particlesArray.push(new Particle()); }
-        function animateParticles() { ctx.clearRect(0, 0, canvas.width, canvas.height); particlesArray.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animateParticles); }
-
-        // Initialize Everything on Load
+        // Initialize App Database on load
         window.onload = function() {
-            initParticles(); 
-            animateParticles(); 
-            // Panggil inisialisasi Firebase Data Load
             loadMembersFromFirestore(); 
         };
     </script>
