@@ -620,12 +620,12 @@
         // PENTING: GANTI NILAI DI BAWAH INI DENGAN FIREBASE CONFIG MILIK ANDA SENDIRI
         // ============================================================================
         const firebaseConfig = {
-            apiKey: "API_KEY_ANDA",
-            authDomain: "PROJECT_ID.firebaseapp.com",
-            projectId: "PROJECT_ID",
-            storageBucket: "PROJECT_ID.appspot.com",
-            messagingSenderId: "SENDER_ID",
-            appId: "APP_ID"
+            apiKey: "AIzaSyB_reprtE-6VB14KHVz1b-Pim2xoTDiHV0",
+            authDomain: "costaku-tabalong.firebaseapp.com",
+            projectId: "costaku-tabalong",
+            storageBucket: "costaku-tabalong.firebasestorage.app",
+            messagingSenderId: "1:460748081636:web:4ad750768119ceb45f5ff1",
+            appId: "G-35TXRQF7RZ"
         };
         // ============================================================================
 
@@ -634,7 +634,7 @@
         let membersCollection = null;
 
         // Cek apakah user sudah mengganti config dengan yang asli
-        if (firebaseConfig.apiKey !== "API_KEY_ANDA") {
+        if (firebaseConfig.apiKey !== "AIzaSyB_reprtE-6VB14KHVz1b-Pim2xoTDiHV0") {
             const app = initializeApp(firebaseConfig);
             db = getFirestore(app);
             membersCollection = collection(db, "members_directory");
