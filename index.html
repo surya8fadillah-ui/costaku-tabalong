@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Costaku Tabalong - Japanese Pop Culture Community</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -29,10 +30,10 @@
             }
         }
     </script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- Memperbarui FontAwesome ke versi 6.5.2 agar icon Threads (fa-threads) dapat dirender dengan benar -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
@@ -53,13 +54,6 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .highlight-target { animation: highlightGlow 2s ease-out forwards; }
-        @keyframes highlightGlow {
-            0% { box-shadow: 0 0 0px rgba(212, 175, 55, 0); border-color: rgba(255, 255, 255, 0.05); }
-            20% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); border-color: rgba(212, 175, 55, 1); }
-            100% { box-shadow: 0 0 0px rgba(212, 175, 55, 0); border-color: rgba(255, 255, 255, 0.05); }
         }
 
         /* 3D Fancy Flip Card Animation Styles */
@@ -175,7 +169,6 @@
             </div>
         </div>
 
-        <!-- MOBILE MENU -->
         <div id="mobile-menu" class="hidden md:hidden bg-jp-dark/95 border-b border-white/5 px-4 pt-2 pb-6 space-y-3 absolute w-full shadow-2xl z-50">
             <a href="#/" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="home">Beranda</a>
             <a href="#/about" class="mobile-nav-link block text-gray-300 hover:text-jp-gold text-base font-medium py-2" data-target="about">Tentang Kami</a>
@@ -221,7 +214,6 @@
         </div>
     </nav>
 
-    <!-- MAIN CONTENT AREA -->
     <main class="flex-grow pt-20">
         
         <!-- HOME PAGE -->
@@ -246,7 +238,6 @@
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <a href="#/join" class="w-full sm:w-auto bg-jp-gold hover:bg-jp-goldHover text-jp-dark px-8 py-4 rounded-md font-bold tracking-wide transition-all shadow-lg shadow-jp-gold/20 hover:shadow-jp-gold/40 flex items-center justify-center gap-2 text-base"><i class="fa-solid fa-circle-user"></i> Gabung Sekarang</a>
-                        <!-- Tombol Lihat Kartu Anggota dihapus sesuai permintaan -->
                     </div>
                 </div>
             </header>
@@ -439,7 +430,6 @@
             </section>
         </div>
 
-        <!-- MEMBERS PAGE -->
         <div id="page-members" class="page-container hidden page-fade-in">
             <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
@@ -509,8 +499,10 @@
                                     <input type="text" id="id-game-input" value="Genshin Impact" maxlength="25" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Pilih Avatar URL</label>
-                                    <input type="text" id="id-avatar-input" value="https://placehold.co/150x150/121212/D4AF37?text=Avatar" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all" placeholder="Masukkan URL Gambar...">
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Unggah Foto Avatar</label>
+                                    <input type="file" id="id-avatar-upload" accept="image/png, image/jpeg, image/jpg" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-2 text-sm text-white focus:outline-none focus:border-jp-gold transition-all file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-jp-gold file:text-jp-dark hover:file:bg-jp-goldHover cursor-pointer">
+                                    <input type="hidden" id="id-avatar-input" value="https://placehold.co/150x150/121212/D4AF37?text=Avatar">
+                                    <p class="text-[10px] text-gray-500 mt-1">* Disarankan rasio 1:1 (persegi) maks. 500KB.</p>
                                 </div>
                                 <div>
                                     <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Status Keanggotaan</label>
@@ -528,7 +520,6 @@
                             </div>
                         </div>
 
-                        <!-- Flip Card Preview Container -->
                         <div class="lg:col-span-7 flex flex-col items-center justify-center h-full min-h-[350px] relative">
                             <div class="absolute w-72 h-72 bg-jp-gold/5 rounded-full blur-[90px] pointer-events-none -z-10"></div>
                             <div class="text-[10px] text-gray-400 uppercase tracking-widest mb-6 flex items-center gap-2 animate-bounce bg-jp-darkGray/80 px-4 py-1.5 rounded-full border border-white/5 shadow-lg">
@@ -625,7 +616,6 @@
         </div>
     </main>
 
-    <!-- FOOTER WITH SOCIAL MEDIA -->
     <footer class="bg-jp-dark text-gray-500 py-12 border-t border-white/5 relative z-20 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
             <div>
@@ -1014,7 +1004,7 @@ service cloud.firestore {
         const idGenSelect = document.getElementById('id-gen-select');
         const idAnimeInput = document.getElementById('id-anime-input');
         const idGameInput = document.getElementById('id-game-input');
-        const idAvatarInput = document.getElementById('id-avatar-input');
+        const idAvatarInputHidden = document.getElementById('id-avatar-input');
         const idStatusSelect = document.getElementById('id-status-select');
         
         function updateCardData() {
@@ -1032,7 +1022,7 @@ service cloud.firestore {
             if(elGen && idGenSelect) elGen.innerText = idGenSelect.value.toUpperCase();
             if(elAni) elAni.innerText = idAnimeInput.value || 'Bocchi the Rock!';
             if(elGam) elGam.innerText = idGameInput.value || 'Genshin Impact';
-            if(elImg) elImg.src = idAvatarInput.value || "https://placehold.co/150x150/121212/D4AF37?text=Avatar";
+            if(elImg) elImg.src = idAvatarInputHidden.value || "https://placehold.co/150x150/121212/D4AF37?text=Avatar";
         }
 
         ['input', 'change'].forEach(evt => {
@@ -1042,9 +1032,39 @@ service cloud.firestore {
             if(idGenSelect) idGenSelect.addEventListener(evt, updateCardData);
             if(idAnimeInput) idAnimeInput.addEventListener(evt, updateCardData);
             if(idGameInput) idGameInput.addEventListener(evt, updateCardData);
-            if(idAvatarInput) idAvatarInput.addEventListener(evt, updateCardData);
             if(idStatusSelect) idStatusSelect.addEventListener(evt, updateCardData);
         });
+
+        // Event listener khusus untuk input file foto
+        const idAvatarUpload = document.getElementById('id-avatar-upload');
+        if (idAvatarUpload) {
+            idAvatarUpload.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    // Validasi ukuran file maks 500KB untuk keamanan Firestore
+                    if(file.size > 500 * 1024) {
+                        alert("Ukuran file terlalu besar! Maksimal 500KB.");
+                        this.value = ''; // Reset input
+                        return;
+                    }
+
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const base64Image = e.target.result;
+                        
+                        // 1. Simpan string Base64 ke hidden input agar tersimpan di Firestore
+                        if(idAvatarInputHidden) {
+                            idAvatarInputHidden.value = base64Image;
+                        }
+                        
+                        // 2. Perbarui tampilan kartu
+                        updateCardData();
+                    }
+                    // Baca file sebagai Data URL (Base64)
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
 
         window.openModal = function(id) { document.getElementById(id).classList.remove('hidden'); }
         window.closeModal = function(id) { document.getElementById(id).classList.add('hidden'); }
