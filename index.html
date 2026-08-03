@@ -115,7 +115,7 @@
                     <a href="#/" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="home">Beranda</a>
                     <a href="#/about" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="about">Tentang Kami</a>
                     
-                    <!-- Dropdown Divisi -->
+                    <!-- Dropdown Divisi (Ikon Dihapus) -->
                     <div class="relative group">
                         <a href="#/divisions" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1 flex items-center gap-1" data-target="divisions">Divisi <i class="fa-solid fa-chevron-down text-[10px] opacity-70 transition-transform duration-300 group-hover:rotate-180"></i></a>
                         <div class="absolute left-0 mt-1 w-56 bg-jp-darkGray border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform origin-top translate-y-2 group-hover:translate-y-0 overflow-hidden">
@@ -158,8 +158,8 @@
                     <a href="#/join" class="bg-jp-gold hover:bg-jp-goldHover text-jp-dark px-5 py-2.5 rounded-md text-sm font-bold tracking-wide transition-all shadow-md shadow-jp-gold/10 hover:shadow-jp-gold/30">Gabung</a>
                     
                     <!-- Container Login/Logout ADMIN -->
-                    <div id="nav-auth-container" class="border-l border-white/20 pl-4 ml-2 flex items-center">
-                        <!-- Button will be injected here -->
+                    <div id="nav-auth-container" class="border-l border-white/20 pl-4 ml-2 flex items-center" style="display: none;">
+                        <button onclick="window.loginWithGoogle()" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-4 py-2 rounded-md text-sm font-bold transition-all"><i class="fa-solid fa-spinner fa-spin mr-1"></i> Memuat...</button>
                     </div>
                 </div>
 
@@ -175,6 +175,7 @@
             
             <div class="space-y-1">
                 <button onclick="window.toggleMobileSubmenu('mobile-divisi-sub')" class="w-full flex justify-between items-center text-gray-300 hover:text-jp-gold text-base font-medium py-2 transition-colors"><span>Divisi Hobi</span><i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" id="icon-mobile-divisi-sub"></i></button>
+                <!-- Mobile Divisi Submenu (Ikon Dihapus) -->
                 <div id="mobile-divisi-sub" class="hidden pl-4 space-y-2 border-l-2 border-jp-gold/30 ml-2 mb-2 mt-1">
                     <a href="#/divisions" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors pl-2" data-target="divisions">Semua Divisi</a>
                     <a href="#/divisions/cosplay" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors pl-2">Cosplay & Crafting</a>
@@ -430,16 +431,15 @@
             </section>
         </div>
 
-        <!-- MEMBERS & ID CARD GENERATOR PAGE -->
         <div id="page-members" class="page-container hidden page-fade-in">
             <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                <!-- ID ADMIN-CONTROL-PANEL -->
+                <!-- ID ADMIN-CONTROL-PANEL: Area ini akan disembunyikan untuk pengunjung biasa -->
                 <div id="admin-control-panel" style="display: none;">
                     <div class="text-center mb-12">
                         <span class="text-xs font-bold tracking-widest text-jp-gold uppercase font-jp block mb-2">会員カード ・ MEMBER REGISTER</span>
                         <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Pembuat Kartu Anggota</h2>
-                        <p class="max-w-xl mx-auto text-gray-400 text-sm font-light">Rancang ID Card anggota Costaku Tabalong. Login sebagai admin untuk membuka kunci fitur kustomisasi.</p>
+                        <p class="max-w-xl mx-auto text-gray-400 text-sm font-light">Rancang ID Card dan simpan ke database secara real-time. Anda harus login untuk mengubah data.</p>
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16 relative">
@@ -450,10 +450,18 @@
                             <div id="auth-overlay-form" class="absolute inset-0 bg-jp-dark/90 backdrop-blur-sm z-30 flex flex-col items-center justify-center text-center p-6 transition-all duration-300">
                                 <i class="fa-solid fa-lock text-5xl text-jp-gold mb-6 opacity-80"></i>
                                 <h4 class="text-xl text-white font-bold mb-3">Akses Terkunci</h4>
-                                <p class="text-gray-400 text-sm mb-6 leading-relaxed max-w-xs">Silakan login sebagai pengurus menggunakan akun Anda untuk mengelola data kartu anggota.</p>
+                                <p class="text-gray-400 text-sm mb-6 leading-relaxed max-w-xs">Silakan login sebagai pengurus menggunakan akun Google Anda untuk menambah atau menghapus data kartu anggota.</p>
                                 <button onclick="window.loginWithGoogle()" class="bg-white text-black hover:bg-gray-200 px-6 py-3 rounded-full text-sm font-bold transition-all shadow-lg flex items-center gap-2">
                                     <i class="fa-brands fa-google text-red-500"></i> Login Admin
                                 </button>
+                                <button onclick="window.openModal('rules-modal')" class="text-xs text-jp-gold underline mt-6 hover:text-white transition-colors">
+                                    <i class="fa-solid fa-shield-halved"></i> Info Aturan Keamanan Database
+                                </button>
+                            </div>
+
+                            <!-- Status Firebase Cloud -->
+                            <div id="cloud-sync-status" class="absolute top-4 right-4 flex items-center gap-2 px-2 py-1 bg-blue-500/10 border border-blue-500/30 rounded text-[10px] text-blue-400 font-mono tracking-widest">
+                                <i class="fa-brands fa-google"></i> FIREBASE
                             </div>
 
                             <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2"><i class="fa-solid fa-sliders text-jp-gold"></i> Panel Kustomisasi</h3>
@@ -475,395 +483,677 @@
                                         <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#gamer" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #gamer</label>
                                         <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#make-up-artist" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #make-up-artist</label>
                                         <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#costagvrls" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #costagvrls</label>
-                                        <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#event-organizer" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #event-organizer</label>
-                                        <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#dance-cover" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #dance-cover</label>
+                                        <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#dancer" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #dancer</label>
+                                        <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#photografer" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #photografer</label>
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Angkatan (Generasi)</label>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Generasi</label>
                                     <select id="id-gen-select" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
-                                        <option value="1">Generasi 1 (2015-2018)</option>
-                                        <option value="2">Generasi 2 (2019-2021)</option>
-                                        <option value="3">Generasi 3 (2022-Sekarang)</option>
+                                        <option value="Gen 1">Gen 1 (2015 - 2018)</option>
+                                        <option value="Gen 2">Gen 2 (2019 - 2022)</option>
+                                        <option value="Gen 3">Gen 3 (2023 - Sekarang)</option>
                                     </select>
                                 </div>
-                                <button onclick="generateCard()" class="w-full bg-jp-gold hover:bg-jp-goldHover text-jp-dark font-bold py-3 rounded-md transition-all shadow-md mt-4">Generate Kartu</button>
-                            </div>
-                        </div>
-                        
-                        <!-- Preview Kartu -->
-                        <div class="lg:col-span-7 flex justify-center items-center perspective-1000">
-                            <!-- Card Design Implementation (with flip hover effect) -->
-                            <div class="w-[320px] h-[500px] sm:w-[350px] sm:h-[550px] relative card-hover-effect">
-                                <div class="w-full h-full fancy-flip-anim transform-style-3d relative">
-                                    
-                                    <!-- Bagian Depan Kartu -->
-                                    <div class="absolute inset-0 backface-hidden bg-jp-darkGray rounded-2xl border-2 border-jp-gold/50 shadow-2xl overflow-hidden flex flex-col items-center pt-8">
-                                        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-jp-gold/20 to-transparent"></div>
-                                        <div class="glare-sweep"></div>
-                                        
-                                        <img src="logo.png" class="w-24 h-24 rounded-full border-2 border-jp-gold z-10 mb-4 bg-jp-dark" onerror="this.src='https://placehold.co/100x100/121212/D4AF37?text=C'">
-                                        <h3 class="text-2xl font-black text-white z-10 uppercase tracking-widest" id="preview-name">Ryuka</h3>
-                                        <p class="text-jp-gold font-mono tracking-widest mb-6 z-10">LABMEM <span id="preview-labmem">0001</span></p>
-                                        
-                                        <div class="w-full px-6 z-10">
-                                            <div class="border-t border-white/20 pt-4 mb-4">
-                                                <p class="text-[10px] text-gray-400 uppercase tracking-wider mb-2 text-center">Roles</p>
-                                                <div class="flex flex-wrap justify-center gap-2" id="preview-roles">
-                                                    <span class="text-xs bg-white/10 px-2 py-1 rounded text-gray-200">#cosplayer</span>
-                                                </div>
-                                            </div>
-                                            <div class="border-t border-white/20 pt-4 text-center">
-                                                <p class="text-[10px] text-gray-400 uppercase tracking-wider mb-1">Generasi</p>
-                                                <p class="text-lg font-bold text-white" id="preview-gen">Generasi 1</p>
-                                            </div>
-                                        </div>
-                                        <div class="absolute bottom-4 text-[8px] text-gray-500 font-mono text-center w-full tracking-widest">
-                                            COSTAKU TABALONG OFFICIAL
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Bagian Belakang Kartu -->
-                                    <div class="absolute inset-0 backface-hidden rotate-y-180 bg-jp-darkGray rounded-2xl border-2 border-white/10 shadow-2xl overflow-hidden flex flex-col justify-center items-center p-6 text-center">
-                                        <div class="w-full h-full border border-dashed border-white/20 rounded-xl flex flex-col justify-center items-center p-4 relative">
-                                            <i class="fa-solid fa-qrcode text-6xl text-white/50 mb-4"></i>
-                                            <p class="text-xs text-gray-400 mb-2">Kartu ini adalah identitas resmi anggota Costaku Tabalong.</p>
-                                            <p class="text-[10px] text-gray-500">Dilarang menyalahgunakan kartu ini untuk tindak kejahatan.</p>
-                                            
-                                            <div class="absolute bottom-4 left-0 w-full text-center">
-                                                 <span class="text-[10px] font-mono text-jp-gold/50">EST. 2015</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Anime Kesukaan</label>
+                                    <input type="text" id="id-anime-input" value="Bocchi the Rock!" maxlength="25" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Game Favorit</label>
+                                    <input type="text" id="id-game-input" value="Genshin Impact" maxlength="25" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Unggah Foto Avatar</label>
+                                    <input type="file" id="id-avatar-upload" accept="image/png, image/jpeg, image/jpg" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-2 text-sm text-white focus:outline-none focus:border-jp-gold transition-all file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-jp-gold file:text-jp-dark hover:file:bg-jp-goldHover cursor-pointer">
+                                    <input type="hidden" id="id-avatar-input" value="https://placehold.co/150x150/121212/D4AF37?text=Avatar">
+                                    <p class="text-[10px] text-gray-500 mt-1">* Disarankan rasio 1:1 (persegi) maks. 500KB.</p>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Status Keanggotaan</label>
+                                    <select id="id-status-select" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
+                                        <option value="ACTIVE" class="text-green-400">Active</option>
+                                        <option value="INACTIVE" class="text-red-400">Inactive</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="pt-4 border-t border-white/5">
+                                    <button id="btn-simpan" onclick="window.addCurrentCardToList()" class="w-full bg-jp-gold hover:bg-jp-goldHover text-jp-dark py-3.5 rounded-md font-extrabold tracking-wider transition-all shadow-md flex items-center justify-center gap-2 text-sm uppercase">
+                                        <i class="fa-solid fa-user-plus"></i> Simpan ke Database
+                                    </button>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="lg:col-span-7 flex flex-col items-center justify-center h-full min-h-[350px] relative">
+                            <div class="absolute w-72 h-72 bg-jp-gold/5 rounded-full blur-[90px] pointer-events-none -z-10"></div>
+                            <div class="text-[10px] text-gray-400 uppercase tracking-widest mb-6 flex items-center gap-2 animate-bounce bg-jp-darkGray/80 px-4 py-1.5 rounded-full border border-white/5 shadow-lg">
+                                <i class="fa-solid fa-hand-pointer text-jp-gold"></i> Klik kartu untuk flip
+                            </div>
+
+                            <div class="w-full max-w-md perspective-1000 cursor-pointer card-hover-effect" onclick="document.getElementById('flip-card-inner').classList.toggle('is-flipped')">
+                                <div id="flip-card-inner" class="relative w-full h-64 transform-style-3d fancy-flip-anim shadow-2xl shadow-jp-gold/10 rounded-2xl">
+                                    <!-- FRONT -->
+                                    <div class="absolute top-0 left-0 w-full h-full backface-hidden bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none">
+                                        <div class="glare-sweep"></div>
+                                        <div class="h-2 bg-jp-gold w-full"></div>
+                                        <div class="p-6 flex flex-col justify-between h-[calc(100%-8px)] relative">
+                                            <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle at 100% 150%, #fff 24%, white 25%, white 28%, #fff 29%, #fff 36%, white 36%, white 40%, transparent 40%, transparent); background-size: 20px 20px;"></div>
+                                            <div class="flex justify-between items-start relative z-10">
+                                                <div class="flex gap-2.5 items-center">
+                                                    <img src="logo.png" class="w-9 h-9 rounded-full border border-jp-gold/30 object-cover shadow-sm" onerror="this.src='https://placehold.co/100x100/121212/D4AF37?text=C'">
+                                                    <div class="flex flex-col justify-center">
+                                                        <span class="text-[10px] tracking-widest text-gray-200 font-extrabold block mb-1">Costaku Tabalong</span>
+                                                        <div class="relative inline-flex items-center justify-center px-1.5 py-0.5 bg-gradient-to-b from-slate-300 via-slate-100 to-slate-400 rounded-[3px] border border-slate-500 shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                                                            <span id="card-labmem-preview" class="text-[9px] font-black text-slate-800 font-mono tracking-widest relative z-10">LABMEM 0001</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center gap-4 py-3 relative z-10">
+                                                <div class="w-20 h-20 bg-zinc-900 border border-white/10 flex items-center justify-center relative overflow-hidden flex-shrink-0">
+                                                    <img id="card-avatar-img" src="https://placehold.co/150x150/121212/D4AF37?text=Avatar" alt="Foto Avatar" class="w-full h-full object-cover">
+                                                </div>
+                                                <div class="overflow-hidden">
+                                                    <h4 class="text-3xl font-extrabold text-white tracking-wide uppercase font-jp leading-none mb-1.5 truncate pr-8" id="card-nickname">Ryuka</h4>
+                                                    <div id="card-role" class="flex flex-wrap gap-1 mt-1 font-mono">
+                                                        <span class="text-[8px] font-bold text-jp-gold bg-jp-gold/10 border border-jp-gold/20 px-1.5 py-0.5 rounded">#cosplayer</span>
+                                                    </div>
+                                                    <div class="mt-1.5">
+                                                        <span id="card-gen" class="font-bold text-jp-gold text-[9px] bg-jp-gold/10 px-1.5 py-0.5 rounded border border-jp-gold/20">GEN 1</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- BACK -->
+                                    <div class="absolute top-0 left-0 w-full h-full backface-hidden rotate-y-180 bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none">
+                                        <div class="glare-sweep"></div>
+                                        <div class="w-full h-12 bg-black mt-6 relative z-10 border-y border-white/10 shadow-inner"></div>
+                                        <div class="p-6 flex flex-col justify-between h-[calc(100%-72px)] relative z-10">
+                                            <div class="space-y-4 w-full mt-2">
+                                                <div>
+                                                    <span class="text-[8px] uppercase tracking-widest text-jp-gold font-bold block mb-1">Anime Kesukaan</span>
+                                                    <div class="bg-jp-dark/50 border border-white/5 rounded px-3 py-2 text-xs text-white font-medium flex items-center gap-3">
+                                                        <i class="fa-solid fa-tv text-gray-500 w-4"></i> <span id="card-back-anime" class="truncate">Bocchi the Rock!</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <span class="text-[8px] uppercase tracking-widest text-jp-gold font-bold block mb-1">Game Favorit</span>
+                                                    <div class="bg-jp-dark/50 border border-white/5 rounded px-3 py-2 text-xs text-white font-medium flex items-center gap-3">
+                                                        <i class="fa-solid fa-gamepad text-gray-500 w-4"></i> <span id="card-back-game" class="truncate">Genshin Impact</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- END ADMIN CONTROL PANEL -->
+
+                <div class="border-t border-white/5 pt-12">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex flex-col">
+                            <h3 class="text-2xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-database text-jp-gold"></i> Database Direktori</h3>
+                            <p class="text-xs text-gray-400 mt-1" id="filter-status-text">Menampilkan semua generasi aktif.</p>
+                        </div>
+                        <div id="loading-spinner" class="text-jp-gold animate-spin"><i class="fa-solid fa-circle-notch text-xl"></i></div>
+                    </div>
+                    <div id="member-directory-container" class="w-full">
+                        <!-- Cards injected here -->
                     </div>
                 </div>
             </section>
         </div>
-        
-        <!-- EVENTS PAGE -->
+
         <div id="page-events" class="page-container hidden page-fade-in">
              <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <span class="text-xs font-bold tracking-widest text-jp-gold uppercase font-jp block mb-2">イベント ・ EVENT</span>
-                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Jadwal Event Mendatang</h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Event 1 -->
-                    <div class="bg-jp-lightGray/40 border border-white/5 rounded-2xl overflow-hidden hover:border-jp-gold/30 transition-all flex flex-col">
-                        <img src="https://placehold.co/600x300/161615/D4AF37?text=Cosplay+Competition" class="w-full h-48 object-cover">
-                        <div class="p-6 flex-grow flex flex-col justify-between">
-                            <div>
-                                <div class="flex items-center justify-between mb-3">
-                                    <span class="text-xs font-bold text-jp-dark bg-jp-gold px-2 py-1 rounded">Agustus 2026</span>
-                                    <span class="text-xs text-gray-400"><i class="fa-solid fa-location-dot"></i> Aston Tanjung City Hotel</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Bazar 60 Seconds To Tokyo & Lomba Cosplay</h3>
-                                <p class="text-sm text-gray-400 line-clamp-3">Acara kolaborasi dengan Aston Tanjung City Hotel menghadirkan Tokyo Street Food dan kompetisi cosplay untuk mewadahi kreativitas anak muda Tabalong.</p>
-                            </div>
-                            <button class="mt-4 text-sm text-jp-gold font-bold hover:text-white transition-colors self-start">Lihat Detail <i class="fa-solid fa-arrow-right text-xs"></i></button>
-                        </div>
-                    </div>
-                    <!-- Event 2 -->
-                    <div class="bg-jp-lightGray/40 border border-white/5 rounded-2xl overflow-hidden hover:border-jp-gold/30 transition-all flex flex-col">
-                        <div class="w-full h-48 bg-jp-darkGray flex items-center justify-center border-b border-white/5">
-                            <i class="fa-regular fa-calendar-xmark text-4xl text-gray-600"></i>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col justify-between">
-                            <div>
-                                <h3 class="text-xl font-bold text-gray-500 mb-2">Belum Ada Event Lain</h3>
-                                <p class="text-sm text-gray-600">Pantau terus sosial media kami untuk update event selanjutnya.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-             </section>
+                <div class="text-center mb-12"><h2 class="text-3xl font-extrabold text-white">Kalender Kegiatan</h2></div>
+            </section>
         </div>
-
-        <!-- JOIN PAGE -->
+        
         <div id="page-join" class="page-container hidden page-fade-in">
-             <section class="py-20 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                 <i class="fa-solid fa-handshake-simple text-6xl text-jp-gold mb-6"></i>
-                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Tertarik Bergabung dengan Kami?</h2>
-                 <p class="text-gray-400 mb-8 leading-relaxed">Pendaftaran anggota baru dibuka secara berkala. Silakan hubungi kami melalui Instagram atau WhatsApp untuk informasi lebih lanjut mengenai rekrutmen generasi selanjutnya. Jadilah bagian dari keluarga besar Costaku Tabalong!</p>
-                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                     <a href="https://instagram.com/costaku.tabalong" target="_blank" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-3 px-6 rounded-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2"><i class="fa-brands fa-instagram text-xl"></i> DM Instagram</a>
-                     <button class="bg-green-500 text-white font-bold py-3 px-6 rounded-md hover:bg-green-600 transition-colors flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-xl"></i> Chat WhatsApp</button>
-                 </div>
-             </section>
+             <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12"><h2 class="text-3xl font-extrabold text-white">Gabung Komunitas</h2></div>
+            </section>
         </div>
-
     </main>
 
-    <footer class="bg-jp-darkGray border-t border-white/5 py-10 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-3">
-                <img src="logo.png" class="w-10 h-10 rounded-full border border-jp-gold/30 object-cover" onerror="this.src='https://placehold.co/100x100/121212/D4AF37?text=C'">
-                <div>
-                    <div class="text-white font-bold text-sm tracking-wide">COSTAKU TABALONG</div>
-                    <div class="text-gray-500 text-[10px]">© 2015-2026. Komunitas Jejepangan.</div>
+    <footer class="bg-jp-dark text-gray-500 py-12 border-t border-white/5 relative z-20 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+            <div>
+                <div class="flex items-center gap-3 mb-4 justify-center md:justify-start">
+                    <span class="text-base font-bold tracking-wider text-white">COSTAKU TABALONG</span>
                 </div>
+                <p class="text-sm text-gray-400 max-w-sm text-center md:text-left">Pionir komunitas pop-culture Jepang terbesar di Tabalong sejak 2015.</p>
             </div>
-            <div class="flex gap-4">
-                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-jp-gold transition-all"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-500 transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+
+            <div class="flex flex-col items-center md:items-end">
+                <h4 class="text-white font-bold mb-4 tracking-wider text-sm uppercase">Terhubung Dengan Kami</h4>
+                <div class="flex gap-4">
+                    <a href="https://www.instagram.com/costaku.tabalong/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-red-500 hover:to-purple-500 hover:border-transparent transition-all duration-300 shadow-lg hover:shadow-purple-500/20 group">
+                        <i class="fa-brands fa-instagram text-lg group-hover:scale-110 transition-transform"></i>
+                    </a>
+                    <a href="https://web.facebook.com/profile.php?id=100068536860320" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#1877F2] hover:border-transparent transition-all duration-300 shadow-lg hover:shadow-blue-500/20 group">
+                        <i class="fa-brands fa-facebook-f text-lg group-hover:scale-110 transition-transform"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@costaku.tabalong" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-black hover:border-transparent transition-all duration-300 shadow-lg hover:shadow-white/20 group">
+                        <i class="fa-brands fa-tiktok text-lg group-hover:scale-110 transition-transform"></i>
+                    </a>
+                    <a href="https://www.threads.com/@costaku.tabalong" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-black hover:border-transparent transition-all duration-300 shadow-lg hover:shadow-white/20 group">
+                        <i class="fa-brands fa-threads text-lg group-hover:scale-110 transition-transform"></i>
+                    </a>
+                    <a href="mailto:costaku.tabalong@gmail.com" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-jp-dark hover:bg-jp-gold hover:border-transparent transition-all duration-300 shadow-lg hover:shadow-jp-gold/20 group">
+                        <i class="fa-solid fa-envelope text-lg group-hover:scale-110 transition-transform"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script>
-        const canvas = document.getElementById('sakura-canvas');
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let sakuras = [];
+    <!-- MODALS -->
+    <div id="success-modal" class="hidden fixed inset-0 z-50 bg-jp-dark/90 flex items-center justify-center p-4 backdrop-blur-md">
+        <div class="bg-jp-lightGray/95 border border-white/10 rounded-2xl max-w-md w-full p-8 text-center shadow-2xl relative overflow-hidden">
+            <div class="absolute inset-0 bg-jp-gold/5 animate-pulse-slow"></div>
+            <div class="w-16 h-16 bg-jp-gold/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-jp-gold/50 relative z-10">
+                <i class="fa-solid fa-check text-2xl text-jp-gold"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2 relative z-10">Sukses!</h3>
+            <p class="text-gray-400 text-sm mb-6 relative z-10" id="success-modal-message"></p>
+            <button onclick="window.closeModal('success-modal')" class="bg-jp-gold text-jp-dark text-xs font-bold px-10 py-3 rounded-md relative z-10 transition-transform hover:scale-105">Tutup</button>
+        </div>
+    </div>
+    
+    <!-- Modal Aturan Keamanan -->
+    <div id="rules-modal" class="hidden fixed inset-0 z-[60] bg-jp-dark/95 flex items-center justify-center p-4 backdrop-blur-md">
+        <div class="bg-jp-darkGray border border-jp-gold/30 rounded-2xl max-w-2xl w-full p-8 shadow-2xl relative overflow-hidden">
+            <button onclick="window.closeModal('rules-modal')" class="absolute top-4 right-4 text-gray-500 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <h3 class="text-2xl font-bold text-jp-gold mb-2"><i class="fa-solid fa-shield-halved"></i> Panduan Keamanan Firebase</h3>
+            <p class="text-gray-300 text-sm mb-4">Agar database Anda (Firestore) aman dan hanya bisa diotak-atik oleh admin yang login, Anda <strong>wajib</strong> memasukkan aturan keamanan ini di Firebase Console.</p>
+            
+            <div class="space-y-3 text-sm text-gray-400 mb-6">
+                <p>1. Buka <a href="https://console.firebase.google.com/" target="_blank" class="text-blue-400 hover:underline">Firebase Console</a>, pilih project <strong>costaku-tabalong</strong>.</p>
+                <p>2. Di menu kiri, pilih <strong>Firestore Database</strong>, lalu klik tab <strong>Rules</strong> (Aturan).</p>
+                <p>3. Hapus kode yang ada, ganti dengan kode di bawah ini, lalu klik <strong>Publish</strong>.</p>
+            </div>
 
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
+            <div class="relative">
+                <button onclick="navigator.clipboard.writeText(document.getElementById('rules-code').innerText); alert('Aturan dicopy!');" class="absolute top-2 right-2 bg-white/10 hover:bg-white/20 p-2 rounded text-white text-xs"><i class="fa-regular fa-copy"></i> Copy</button>
+                <pre class="bg-black border border-white/10 rounded-lg p-4 text-sm text-green-400 overflow-x-auto" id="rules-code">
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /members_directory/{document=**} {
+      // Siapapun bisa melihat daftar anggota (untuk di website)
+      allow read: if true;
+      // Hanya akun yang sudah login lewat Google Auth yang bisa mengubah/menghapus
+      allow write: if request.auth != null;
+    }
+  }
+}
+</pre>
+            </div>
+            
+            <div class="mt-6 text-center">
+                <button onclick="window.closeModal('rules-modal')" class="bg-white/10 hover:bg-white/20 text-white px-6 py-2 rounded-md font-bold text-sm">Saya Mengerti</button>
+            </div>
+        </div>
+    </div>
 
-        window.addEventListener('resize', resize);
-        resize();
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-        class Sakura {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height - height;
-                this.size = Math.random() * 3 + 2;
-                this.speedY = Math.random() * 1 + 0.5;
-                this.speedX = Math.random() * 1 - 0.5;
-                this.angle = Math.random() * Math.PI * 2;
-                this.spin = Math.random() * 0.1 - 0.05;
-                this.color = `rgba(255, 183, 197, ${Math.random() * 0.4 + 0.1})`;
-            }
-            update() {
-                this.y += this.speedY;
-                this.x += this.speedX;
-                this.angle += this.spin;
-                
-                if (this.y > height) {
-                    this.y = -10;
-                    this.x = Math.random() * width;
-                }
-                if (this.x > width) this.x = 0;
-                if (this.x < 0) this.x = width;
-            }
-            draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.angle);
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.moveTo(0, 0);
-                ctx.bezierCurveTo(this.size, -this.size, this.size*2, 0, 0, this.size*1.5);
-                ctx.bezierCurveTo(-this.size*2, 0, -this.size, -this.size, 0, 0);
-                ctx.fill();
-                ctx.restore();
-            }
-        }
+        const firebaseConfig = {
+            apiKey: "AIzaSyB_reprtE-6VB14KHVz1b-Pim2xoTDiHV0",
+            authDomain: "costaku-tabalong.firebaseapp.com",
+            projectId: "costaku-tabalong",
+            storageBucket: "costaku-tabalong.firebasestorage.app",
+            messagingSenderId: "460748081636",
+            appId: "1:460748081636:web:4ad750768119ceb45f5ff1",
+            measurementId: "G-35TXRQF7RZ"
+        };
 
-        for (let i = 0; i < 30; i++) {
-            sakuras.push(new Sakura());
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            sakuras.forEach(s => {
-                s.update();
-                s.draw();
-            });
-            requestAnimationFrame(animate);
-        }
-        animate();
-
-        const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
-        const pages = document.querySelectorAll('.page-container');
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
         
-        function navigateTo(hash) {
-            let target = 'home';
-            if(hash === '#/' || hash === '') target = 'home';
-            else if(hash.startsWith('#/')) target = hash.substring(2).split('/')[0];
-            
-            let subRoute = null;
-            if(hash.split('/').length > 2) {
-                subRoute = hash.split('/')[2];
-            }
+        const membersCollection = collection(db, "members_directory");
 
-            pages.forEach(page => page.classList.add('hidden'));
-            
-            const targetPage = document.getElementById('page-' + target);
-            if(targetPage) {
-                targetPage.classList.remove('hidden');
-            } else {
-                document.getElementById('page-home').classList.remove('hidden');
-            }
+        let currentUser = null;
+        let communityMembers = [];
+        window.currentGenFilter = null; 
 
-            if(subRoute) {
-                setTimeout(() => {
-                    const section = document.getElementById(`divisi-${subRoute}`) || document.getElementById(`galeri-${subRoute}`);
-                    if(section) {
-                        section.scrollIntoView({behavior: 'smooth', block: 'start'});
-                    }
-                }, 100);
-            } else {
-                window.scrollTo({top: 0, behavior: 'smooth'});
-            }
-
-            navLinks.forEach(link => {
-                if(link.getAttribute('data-target') === target) {
-                    link.classList.add('text-jp-gold');
-                    link.classList.remove('text-gray-300', 'text-gray-400');
-                } else {
-                    link.classList.remove('text-jp-gold');
-                    if(!link.classList.contains('mobile-nav-link')) {
-                        link.classList.add('text-gray-300');
-                    }
-                }
-            });
-
-            document.getElementById('mobile-menu').classList.add('hidden');
-            
-            if(target === 'members') {
-                document.getElementById('admin-control-panel').style.display = 'block';
-            } else {
-                document.getElementById('admin-control-panel').style.display = 'none';
-            }
-        }
-
-        window.addEventListener('hashchange', () => navigateTo(window.location.hash));
-        
-        window.addEventListener('load', () => {
-            if(!window.location.hash) window.location.hash = '#/';
-            else navigateTo(window.location.hash);
-        });
-
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-
-        window.toggleMobileSubmenu = function(id) {
-            const el = document.getElementById(id);
-            const icon = document.getElementById('icon-' + id);
-            el.classList.toggle('hidden');
-            if(el.classList.contains('hidden')) {
-                icon.style.transform = 'rotate(0deg)';
-            } else {
-                icon.style.transform = 'rotate(180deg)';
-            }
-        }
-
-        // Mock Login System
-        let isLoggedIn = false;
-        
-        window.loginWithGoogle = function() {
-            const btns = document.querySelectorAll('button[onclick="window.loginWithGoogle()"]');
-            btns.forEach(btn => {
-                const originalHtml = btn.innerHTML;
-                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Memproses...';
-            });
-            
-            setTimeout(() => {
-                isLoggedIn = true;
-                updateAuthUI();
-            }, 800);
-        }
-
-        window.logout = function() {
-            isLoggedIn = false;
+        onAuthStateChanged(auth, (user) => {
+            currentUser = user;
             updateAuthUI();
-        }
+            if (communityMembers.length > 0) renderMemberDirectory();
+        });
+
+        window.loginWithGoogle = () => {
+            const btnNav = document.getElementById('nav-auth-container');
+            if(btnNav) btnNav.innerHTML = `<button class="bg-white/10 text-white border border-white/20 px-4 py-2 rounded-md text-sm font-bold opacity-50 cursor-not-allowed"><i class="fa-solid fa-spinner fa-spin"></i> Login...</button>`;
+
+            signInWithPopup(auth, provider).catch(error => {
+                console.error("Login failed:", error);
+                if (error.code !== 'auth/popup-closed-by-user') {
+                    alert("Gagal login: " + error.message);
+                }
+                updateAuthUI(); 
+            });
+        };
+
+        window.logout = () => {
+            signOut(auth).then(() => {
+                document.getElementById('success-modal-message').innerText = "Berhasil Logout dari akun pengurus.";
+                document.getElementById('success-modal').classList.remove('hidden');
+                const authOverlay = document.getElementById('auth-overlay-form');
+                if(authOverlay) authOverlay.classList.remove('hidden');
+            });
+        };
 
         function updateAuthUI() {
-            const navAuth = document.getElementById('nav-auth-container');
-            const mobileAuth = document.getElementById('mobile-auth-container');
-            const overlay = document.getElementById('auth-overlay-form');
+            const authContainerNav = document.getElementById('nav-auth-container');
+            const authContainerMobile = document.getElementById('mobile-auth-container');
+            const formOverlay = document.getElementById('auth-overlay-form');
 
-            if(isLoggedIn) {
-                // Tampilan Navbar jika sudah login
-                navAuth.innerHTML = `
-                    <div class="flex items-center gap-2 group relative cursor-pointer">
-                        <div class="w-8 h-8 rounded-full bg-jp-gold text-jp-dark flex items-center justify-center font-bold text-sm">A</div>
-                        <div class="absolute right-0 top-10 w-32 bg-jp-darkGray border border-white/10 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                            <button onclick="window.logout()" class="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-white/5 transition-colors"><i class="fa-solid fa-right-from-bracket mr-2"></i> Logout</button>
-                        </div>
-                    </div>
-                `;
-                
-                // Tampilan Menu Mobile jika sudah login
-                mobileAuth.style.display = 'flex';
-                mobileAuth.innerHTML = `
-                    <div class="flex items-center justify-between w-full px-4 py-3 bg-white/5 rounded-md border border-white/10">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-jp-gold text-jp-dark flex items-center justify-center font-bold text-sm">A</div>
-                            <span class="text-sm text-white font-medium">Admin Costaku</span>
-                        </div>
-                        <button onclick="window.logout()" class="text-sm text-red-400 p-2 hover:bg-white/10 rounded-md transition-colors"><i class="fa-solid fa-right-from-bracket"></i></button>
-                    </div>
-                `;
-
-                // Hilangkan overlay form
-                if(overlay) overlay.style.display = 'none';
+            if (currentUser) {
+                const btnHtml = `<button onclick="window.logout()" class="bg-red-500/20 hover:bg-red-500/40 text-red-300 border border-red-500/30 px-4 py-2 rounded-md text-sm font-bold transition-all" title="Logged in as ${currentUser.email}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout Admin</button>`;
+                if(authContainerNav) authContainerNav.innerHTML = btnHtml;
+                if(authContainerMobile) authContainerMobile.innerHTML = btnHtml;
+                if(formOverlay) formOverlay.classList.add('hidden');
             } else {
-                // Tampilan Navbar jika belum login
-                navAuth.innerHTML = `<button onclick="window.loginWithGoogle()" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-4 py-2 rounded-md text-sm font-bold transition-all flex items-center gap-2"><i class="fa-brands fa-google text-red-400"></i> Login</button>`;
-                
-                // Tampilan Menu Mobile jika belum login
-                mobileAuth.style.display = 'flex';
-                mobileAuth.innerHTML = `<button onclick="window.loginWithGoogle()" class="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 px-4 py-3 rounded-md text-sm font-bold transition-all flex items-center justify-center gap-2"><i class="fa-brands fa-google text-red-400"></i> Login Admin</button>`;
-                
-                // Munculkan kembali overlay form
-                if(overlay) overlay.style.display = 'flex';
+                const btnHtml = `<button onclick="window.loginWithGoogle()" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-4 py-2 rounded-md text-sm font-bold transition-all"><i class="fa-brands fa-google"></i> Login Admin</button>`;
+                if(authContainerNav) authContainerNav.innerHTML = btnHtml;
+                if(authContainerMobile) authContainerMobile.innerHTML = btnHtml;
+                if(formOverlay) formOverlay.classList.remove('hidden');
             }
         }
-        
-        updateAuthUI();
 
-        window.generateCard = function() {
-            if(!isLoggedIn) return;
-
-            const name = document.getElementById('id-name-input').value || 'Tanpa Nama';
-            const labmem = document.getElementById('id-labmem-input').value || '0000';
-            
-            const checkboxes = document.querySelectorAll('.role-checkbox:checked');
-            let rolesHtml = '';
-            checkboxes.forEach(cb => {
-                rolesHtml += `<span class="text-xs bg-white/10 px-2 py-1 rounded text-gray-200 border border-white/5">${cb.value}</span>`;
+        function loadMembersFromFirestore() {
+            document.getElementById('loading-spinner').classList.remove('hidden');
+            onSnapshot(membersCollection, (snapshot) => {
+                communityMembers = [];
+                snapshot.forEach((doc) => {
+                    communityMembers.push({ id: doc.id, ...doc.data() });
+                });
+                communityMembers.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+                renderMemberDirectory();
+                document.getElementById('loading-spinner').classList.add('hidden');
+            }, (error) => {
+                console.error("Error mendengarkan data Firestore:", error);
+                document.getElementById('loading-spinner').classList.add('hidden');
+                document.getElementById('member-directory-container').innerHTML = `<div class="text-red-400 text-center py-4 bg-red-400/10 border border-red-400/30 rounded">Gagal memuat data: ${error.message}</div>`;
             });
-            if(rolesHtml === '') rolesHtml = `<span class="text-xs text-gray-500">Belum ada role dipilih</span>`;
-
-            const genSelect = document.getElementById('id-gen-select');
-            const genText = genSelect.options[genSelect.selectedIndex].text.split(' (')[0];
-
-            // Update UI Preview
-            document.getElementById('preview-name').innerText = name;
-            document.getElementById('preview-labmem').innerText = labmem;
-            document.getElementById('preview-roles').innerHTML = rolesHtml;
-            document.getElementById('preview-gen').innerText = genText;
-
-            // Animasi tombol saat diklik
-            const btn = event.currentTarget;
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fa-solid fa-check"></i> Kartu Diperbarui!';
-            btn.classList.add('bg-green-500', 'text-white');
-            btn.classList.remove('bg-jp-gold', 'text-jp-dark');
-            
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.classList.remove('bg-green-500', 'text-white');
-                btn.classList.add('bg-jp-gold', 'text-jp-dark');
-            }, 1500);
-
-            // Trigger animasi pada kartu untuk memberikan feedback visual
-            const cardInner = document.querySelector('.fancy-flip-anim');
-            cardInner.classList.add('is-flipped');
-            setTimeout(() => {
-                cardInner.classList.remove('is-flipped');
-            }, 1000);
         }
 
+        window.addCurrentCardToList = async function() { 
+            if (!currentUser) {
+                alert("Akses Ditolak! Anda harus login sebagai admin untuk menambah data.");
+                return;
+            }
+
+            const name = document.getElementById('id-name-input').value || 'Ryuka';
+            const labmem = document.getElementById('id-labmem-input').value || '0001';
+            const btnSimpan = document.getElementById('btn-simpan');
+            
+            // Ambil data checkbox multiple
+            const roleCheckboxes = document.querySelectorAll('.role-checkbox:checked');
+            const selectedRoles = Array.from(roleCheckboxes).map(cb => cb.value);
+            if (selectedRoles.length === 0) selectedRoles.push('#member'); // Fallback default jika tidak memilih
+            
+            const newMember = { 
+                nickname: name, 
+                labmem: labmem,
+                role: selectedRoles, // Array Tags disimpan ke firebase
+                gen: document.getElementById('id-gen-select').value,
+                anime: document.getElementById('id-anime-input').value || 'Bocchi the Rock!',
+                game: document.getElementById('id-game-input').value || 'Genshin Impact',
+                avatar: document.getElementById('id-avatar-input').value || "https://placehold.co/150x150/121212/D4AF37?text=Avatar",
+                status: document.getElementById('id-status-select').value,
+                createdAt: new Date().toISOString(),
+                createdBy: currentUser.uid,
+                creatorEmail: currentUser.email
+            };
+
+            try {
+                btnSimpan.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Menyimpan...';
+                btnSimpan.disabled = true;
+                await addDoc(membersCollection, newMember);
+                document.getElementById('success-modal-message').innerText = `Kartu anggota untuk ${name} berhasil disimpan secara permanen ke Database!`;
+                document.getElementById('success-modal').classList.remove('hidden');
+            } catch (error) {
+                console.error("Error menambahkan anggota:", error);
+                alert("Gagal menyimpan ke database.\nError: " + error.message);
+                if (error.code === 'permission-denied') window.openModal('rules-modal');
+            } finally {
+                btnSimpan.innerHTML = '<i class="fa-solid fa-user-plus"></i> Simpan ke Database';
+                btnSimpan.disabled = false;
+            }
+        }
+
+        window.deleteMember = async function(memberId, event) {
+            if (event) event.stopPropagation();
+            if (!currentUser) {
+                alert("Akses Ditolak! Anda harus login sebagai admin untuk menghapus data.");
+                return;
+            }
+            const isConfirm = confirm("Apakah Anda yakin ingin menghapus data anggota ini dari database permanen?");
+            if (!isConfirm) return;
+
+            try {
+                await deleteDoc(doc(db, "members_directory", memberId));
+                document.getElementById('success-modal-message').innerText = "Data kartu anggota berhasil dihapus dari Database!";
+                document.getElementById('success-modal').classList.remove('hidden');
+            } catch (error) {
+                console.error("Error menghapus anggota:", error);
+                alert("Gagal menghapus data: " + error.message);
+                if (error.code === 'permission-denied') window.openModal('rules-modal');
+            }
+        }
+
+        function generateCardHTML(member, index) {
+            const idNum = member.labmem ? member.labmem : String(index + 1).padStart(4, '0');
+            const statusColor = member.status === 'ACTIVE' ? 'text-green-400' : 'text-red-400';
+            
+            const deleteBtnHTML = currentUser ? `
+                <button onclick="window.deleteMember('${member.id}', event)" class="absolute top-3 right-3 z-50 bg-red-600/90 hover:bg-red-500 text-white w-7 h-7 rounded-full flex items-center justify-center backdrop-blur-sm transition-all shadow-[0_0_10px_rgba(220,38,38,0.5)] border border-red-400/50 hover:scale-110" title="Hapus Kartu Ini">
+                    <i class="fa-solid fa-trash-can text-[11px]"></i>
+                </button>` : '';
+
+            // Menangani mapping Array Tag HTML
+            let roles = [];
+            if (Array.isArray(member.role)) {
+                roles = member.role;
+            } else if (typeof member.role === 'string') {
+                roles = [member.role];
+            } else {
+                roles = ['#member'];
+            }
+            const roleHTML = roles.map(r => `<span class="text-[8px] font-bold text-jp-gold bg-jp-gold/10 border border-jp-gold/20 px-1.5 py-0.5 rounded shadow-sm">${r}</span>`).join('');
+
+            return `
+            <div class="w-full max-w-sm perspective-1000 cursor-pointer card-hover-effect mx-auto" onclick="this.querySelector('.fancy-flip-anim').classList.toggle('is-flipped')">
+                <div class="relative w-full h-64 transform-style-3d fancy-flip-anim shadow-xl shadow-jp-gold/5 rounded-2xl">
+                    <!-- FRONT OF CARD -->
+                    <div class="absolute top-0 left-0 w-full h-full backface-hidden bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none">
+                        ${deleteBtnHTML}
+                        <div class="glare-sweep"></div>
+                        <div class="h-2 bg-jp-gold w-full"></div>
+                        <div class="p-5 flex flex-col justify-between h-[calc(100%-8px)] relative">
+                            <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle at 100% 150%, #fff 24%, white 25%, white 28%, #fff 29%, #fff 36%, white 36%, white 40%, transparent 40%, transparent); background-size: 20px 20px;"></div>
+                            
+                            <div class="flex justify-between items-start relative z-10">
+                                <div class="flex gap-2 items-center">
+                                    <img src="logo.png" class="w-8 h-8 rounded-full border border-jp-gold/30 object-cover shadow-sm" onerror="this.src='https://placehold.co/100x100/121212/D4AF37?text=C'">
+                                    <div class="flex flex-col justify-center">
+                                        <span class="text-[8px] tracking-widest text-gray-200 font-extrabold block mb-0.5">Costaku Tabalong</span>
+                                        <div class="relative inline-flex items-center justify-center px-1.5 py-0.5 bg-gradient-to-b from-slate-300 via-slate-100 to-slate-400 rounded-[3px] border border-slate-500 shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                                            <span class="text-[8px] font-black text-slate-800 font-mono tracking-widest relative z-10">LABMEM ${idNum}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-3 py-2 relative z-10 mt-1">
+                                <div class="w-16 h-16 bg-zinc-900 border border-white/10 flex items-center justify-center relative overflow-hidden flex-shrink-0">
+                                    <img src="${member.avatar}" alt="Avatar" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/150x150/121212/D4AF37?text=!'">
+                                </div>
+                                <div class="overflow-hidden">
+                                    <h4 class="text-2xl font-extrabold text-white tracking-wide uppercase font-jp leading-none mb-1.5 truncate pr-8">${member.nickname}</h4>
+                                    <div class="flex flex-wrap gap-1 mt-1 font-mono">
+                                        ${roleHTML}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between items-end pt-3 border-t border-white/5 relative z-10">
+                                <div>
+                                    <span class="text-[7px] text-gray-500 uppercase block tracking-wider">LOKALITAS REGIONAL</span>
+                                    <span class="text-[9px] font-bold text-white tracking-wide uppercase">TABALONG, IDN</span>
+                                </div>
+                                
+                                <div>
+                                    <span class="text-[7px] text-gray-500 uppercase block tracking-wider">STATUS ANGGOTA</span>
+                                    <span class="text-[9px] font-bold ${statusColor} tracking-wide uppercase">${member.status}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BACK OF CARD -->
+                    <div class="absolute top-0 left-0 w-full h-full backface-hidden rotate-y-180 bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none">
+                        <div class="glare-sweep"></div>
+                        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle at 100% 150%, #fff 24%, white 25%, white 28%, #fff 29%, #fff 36%, white 36%, white 40%, transparent 40%, transparent); background-size: 20px 20px;"></div>
+                        
+                        <div class="w-full h-10 bg-black mt-5 relative z-10 border-y border-white/10 shadow-inner"></div>
+                        
+                        <div class="p-5 flex flex-col justify-between h-[calc(100%-60px)] relative z-10">
+                            <div class="space-y-3 w-full mt-2">
+                                <div>
+                                    <span class="text-[7px] uppercase tracking-widest text-jp-gold font-bold block mb-1">Anime Kesukaan</span>
+                                    <div class="bg-jp-dark/50 border border-white/5 rounded px-3 py-2 text-[10px] text-white font-medium flex items-center gap-3">
+                                        <i class="fa-solid fa-tv text-gray-500 w-3"></i> <span class="truncate">${member.anime}</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="text-[7px] uppercase tracking-widest text-jp-gold font-bold block mb-1">Game Favorit</span>
+                                    <div class="bg-jp-dark/50 border border-white/5 rounded px-3 py-2 text-[10px] text-white font-medium flex items-center gap-3">
+                                        <i class="fa-solid fa-gamepad text-gray-500 w-3"></i> <span class="truncate">${member.game}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between items-center border-t border-white/5 pt-2 mt-3">
+                                <div class="text-[7px] text-gray-500 font-mono tracking-widest">GEN: <span class="text-jp-gold">${member.gen.toUpperCase()}</span></div>
+                                <div class="w-8 h-8 bg-white/90 p-1 rounded-sm flex items-center justify-center">
+                                    <i class="fa-solid fa-qrcode text-black text-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            `;
+        }
+
+        window.renderMemberDirectory = function(filterGen = window.currentGenFilter) {
+            window.currentGenFilter = filterGen;
+            const container = document.getElementById('member-directory-container');
+            const statusText = document.getElementById('filter-status-text');
+            container.innerHTML = '';
+            
+            let generationsToShow = ['Gen 1', 'Gen 2', 'Gen 3'];
+            if (filterGen === 'gen1') { generationsToShow = ['Gen 1']; statusText.innerText = "Hanya menampilkan data anggota Generasi 1 (2015-2018)."; }
+            else if (filterGen === 'gen2') { generationsToShow = ['Gen 2']; statusText.innerText = "Hanya menampilkan data anggota Generasi 2 (2019-2022)."; }
+            else if (filterGen === 'gen3') { generationsToShow = ['Gen 3']; statusText.innerText = "Hanya menampilkan data anggota Generasi 3 (2023-Sekarang)."; }
+            else { statusText.innerText = "Menampilkan semua data generasi anggota secara penuh."; }
+
+            let anyRendered = false;
+            
+            generationsToShow.forEach(gen => {
+                const membersInGen = communityMembers.filter(m => m.gen === gen);
+                if (membersInGen.length > 0) {
+                    anyRendered = true;
+                    const genHTML = `
+                        <div class="mt-8 mb-8">
+                            <div class="flex items-center gap-4">
+                                <div class="h-[1px] flex-grow bg-gradient-to-r from-transparent to-white/10"></div>
+                                <h4 class="text-sm font-black text-jp-dark bg-jp-gold px-4 py-1 rounded-full tracking-widest uppercase font-jp shadow-[0_0_15px_rgba(212,175,55,0.3)]">${gen}</h4>
+                                <div class="h-[1px] flex-grow bg-gradient-to-l from-transparent to-white/10"></div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 mt-8">
+                                ${membersInGen.map((m, idx) => generateCardHTML(m, communityMembers.indexOf(m))).join('')}
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += genHTML;
+                }
+            });
+
+            if (!anyRendered) {
+                container.innerHTML = `
+                    <div class="text-center py-10 bg-jp-lightGray/20 rounded-xl border border-white/5 border-dashed">
+                        <i class="fa-regular fa-folder-open text-3xl text-gray-600 mb-3"></i>
+                        <p class="text-gray-400 text-sm">Belum ada data anggota yang terdaftar di ${generationsToShow.length === 1 ? generationsToShow[0] : 'database'}.</p>
+                    </div>
+                `;
+            }
+        }
+
+        const idNameInput = document.getElementById('id-name-input');
+        const idLabmemInput = document.getElementById('id-labmem-input');
+        const idGenSelect = document.getElementById('id-gen-select');
+        const idAnimeInput = document.getElementById('id-anime-input');
+        const idGameInput = document.getElementById('id-game-input');
+        const idAvatarInputHidden = document.getElementById('id-avatar-input');
+        const idStatusSelect = document.getElementById('id-status-select');
+        
+        function updateCardData() {
+            const elNick = document.getElementById('card-nickname');
+            const elLabmem = document.getElementById('card-labmem-preview');
+            const elRole = document.getElementById('card-role');
+            const elGen = document.getElementById('card-gen');
+            const elAni = document.getElementById('card-back-anime');
+            const elGam = document.getElementById('card-back-game');
+            const elImg = document.getElementById('card-avatar-img');
+            
+            if(elNick) elNick.innerText = idNameInput.value || 'Ryuka';
+            if(elLabmem) elLabmem.innerText = `LABMEM ${idLabmemInput.value || '0001'}`;
+            if(elGen && idGenSelect) elGen.innerText = idGenSelect.value.toUpperCase();
+            if(elAni) elAni.innerText = idAnimeInput.value || 'Bocchi the Rock!';
+            if(elGam) elGam.innerText = idGameInput.value || 'Genshin Impact';
+            if(elImg) elImg.src = idAvatarInputHidden.value || "https://placehold.co/150x150/121212/D4AF37?text=Avatar";
+
+            // Update Multiple Roles UI for Preview
+            const roleCheckboxes = document.querySelectorAll('.role-checkbox:checked');
+            const selectedRoles = Array.from(roleCheckboxes).map(cb => cb.value);
+            
+            if(elRole) {
+                if (selectedRoles.length > 0) {
+                    elRole.innerHTML = selectedRoles.map(r => `<span class="text-[8px] font-bold text-jp-gold bg-jp-gold/10 border border-jp-gold/20 px-1.5 py-0.5 rounded shadow-sm">${r}</span>`).join('');
+                } else {
+                    elRole.innerHTML = `<span class="text-[8px] font-bold text-jp-gold bg-jp-gold/10 border border-jp-gold/20 px-1.5 py-0.5 rounded shadow-sm">#member</span>`;
+                }
+            }
+        }
+
+        ['input', 'change'].forEach(evt => {
+            if(idNameInput) idNameInput.addEventListener(evt, updateCardData);
+            if(idLabmemInput) idLabmemInput.addEventListener(evt, updateCardData);
+            if(idGenSelect) idGenSelect.addEventListener(evt, updateCardData);
+            if(idAnimeInput) idAnimeInput.addEventListener(evt, updateCardData);
+            if(idGameInput) idGameInput.addEventListener(evt, updateCardData);
+            if(idStatusSelect) idStatusSelect.addEventListener(evt, updateCardData);
+        });
+
+        // Event listener khusus untuk checkbox role tags
+        document.querySelectorAll('.role-checkbox').forEach(cb => {
+            cb.addEventListener('change', updateCardData);
+        });
+
+        const idAvatarUpload = document.getElementById('id-avatar-upload');
+        if (idAvatarUpload) {
+            idAvatarUpload.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    if(file.size > 500 * 1024) {
+                        alert("Ukuran file terlalu besar! Maksimal 500KB.");
+                        this.value = ''; // Reset input
+                        return;
+                    }
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const base64Image = e.target.result;
+                        if(idAvatarInputHidden) idAvatarInputHidden.value = base64Image;
+                        updateCardData();
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        window.openModal = function(id) { document.getElementById(id).classList.remove('hidden'); }
+        window.closeModal = function(id) { document.getElementById(id).classList.add('hidden'); }
+        
+        window.toggleMobileSubmenu = function(id) {
+            const submenu = document.getElementById(id);
+            const icon = document.getElementById(`icon-${id}`);
+            if (submenu.classList.contains('hidden')) {
+                submenu.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                submenu.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        function checkAdminAccess() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const isAdmin = urlParams.get('admin');
+            const controlPanel = document.getElementById('admin-control-panel');
+            const navAuthBtn = document.getElementById('nav-auth-container');
+
+            if (isAdmin === 'true') {
+                if(controlPanel) controlPanel.style.display = 'block';
+                if(navAuthBtn) navAuthBtn.style.display = 'flex';
+            } else {
+                if(controlPanel) controlPanel.style.display = 'none';
+                if(navAuthBtn) navAuthBtn.style.display = 'none';
+            }
+        }
+
+        function handleRouting() {
+            const hash = window.location.hash || '#/';
+            const validPages = ['home', 'about', 'divisions', 'gallery', 'members', 'events', 'join'];
+            
+            let hashPath = hash.substring(2).split('?')[0]; 
+            let pathParts = hashPath.split('/');
+            let targetPage = pathParts[0] || 'home';
+            let subTarget = pathParts[1] || null;
+
+            if (!validPages.includes(targetPage)) targetPage = 'home';
+            validPages.forEach(p => { const c = document.getElementById(`page-${p}`); if (c) c.classList.add('hidden'); });
+
+            const activeContainer = document.getElementById(`page-${targetPage}`);
+            if (activeContainer) activeContainer.classList.remove('hidden');
+
+            document.querySelectorAll('.nav-link').forEach(link => { link.classList.remove('text-jp-gold'); link.classList.add('text-gray-300'); });
+            document.querySelectorAll(`a.nav-link[data-target="${targetPage}"]`).forEach(link => { link.classList.add('text-jp-gold'); link.classList.remove('text-gray-300'); });
+
+            if (targetPage === 'members') {
+                window.renderMemberDirectory(subTarget);
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            } else if (targetPage === 'divisions' && subTarget) {
+                setTimeout(() => {
+                    const targetElement = document.getElementById(`divisi-${subTarget}`);
+                    if (targetElement) { targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+                }, 100);
+            } else if (targetPage === 'gallery' && subTarget) {
+                setTimeout(() => {
+                    const targetElement = document.getElementById(`galeri-${subTarget}`);
+                    if (targetElement) { targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+                }, 100);
+            } else {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            }
+            
+            document.getElementById('mobile-menu').classList.add('hidden');
+            checkAdminAccess();
+        }
+
+        window.addEventListener('hashchange', handleRouting);
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+
+        window.onload = function() {
+            handleRouting(); 
+            loadMembersFromFirestore(); 
+        };
     </script>
 </body>
 </html>
