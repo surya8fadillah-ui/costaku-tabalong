@@ -883,11 +883,9 @@ service cloud.firestore {
             const statusColor = member.status === 'ACTIVE' ? 'text-green-400' : 'text-red-400';
             
             const deleteBtnHTML = currentUser ? `
-                <div class="mt-4 flex justify-center w-full">
-                    <button onclick="window.deleteMember('${member.id}', event)" class="bg-red-900/40 hover:bg-red-600/80 text-red-200 border border-red-500/30 hover:border-red-400 px-4 py-2 rounded-full text-[10px] font-bold tracking-wider transition-all flex items-center gap-2 shadow-lg" title="Hapus Kartu Anggota Ini">
-                        <i class="fa-solid fa-trash-can"></i> HAPUS DATA KARTU
-                    </button>
-                </div>` : '';
+                <button onclick="window.deleteMember('${member.id}', event)" class="absolute top-3 right-3 z-50 bg-red-600/90 hover:bg-red-500 text-white w-7 h-7 rounded-full flex items-center justify-center backdrop-blur-sm transition-all shadow-[0_0_10px_rgba(220,38,38,0.5)] border border-red-400/50 hover:scale-110" title="Hapus Kartu Ini">
+                    <i class="fa-solid fa-trash-can text-[11px]"></i>
+                </button>` : '';
 
             let roles = [];
             if (Array.isArray(member.role)) {
@@ -904,14 +902,16 @@ service cloud.firestore {
             const displayTiktok = (member.tiktok && member.tiktok !== '-') ? `@${member.tiktok}` : '-';
 
             return `
-            <div class="w-full max-w-sm mx-auto flex flex-col items-center">
-                <div class="w-full perspective-1000 cursor-pointer card-hover-effect" onclick="this.querySelector('.fancy-flip-anim').classList.toggle('is-flipped')">
-                    <div class="relative w-full h-64 transform-style-3d fancy-flip-anim shadow-xl shadow-jp-gold/5 rounded-2xl">
-                        <!-- FRONT OF CARD -->
-                        <div class="absolute top-0 left-0 w-full h-full backface-hidden bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none">
-                            <div class="glare-sweep"></div>
-                            <div class="h-2 bg-jp-gold w-full"></div>
-                            <div class="p-5 flex flex-col justify-between h-[calc(100%-8px)] relative">
+            <div class="w-full max-w-sm perspective-1000 cursor-pointer card-hover-effect mx-auto" onclick="this.querySelector('.fancy-flip-anim').classList.toggle('is-flipped')">
+                <div class="relative w-full h-64 transform-style-3d fancy-flip-anim shadow-xl shadow-jp-gold/5 rounded-2xl">
+                    <!-- FRONT OF CARD -->
+                    <div class="absolute top-0 left-0 w-full h-full backface-hidden bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none">
+                        ${deleteBtnHTML}
+                        <div class="glare-sweep"></div>
+                        <div class="h-2 bg-jp-gold w-full"></div>
+                        <div class="p-5 flex flex-col justify-between h-[calc(100%-8px)] relative">
+                            <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle at 100% 150%, #fff 24%, white 25%, white 28%, #fff 29%, #fff 36%, white 36%, white 40%, transparent 40%, transparent); background-size: 20px 20px;"></div>
+                            
                             <div class="flex justify-between items-start relative z-10">
                                 <div class="flex gap-2 items-center">
                                     <img src="logo.png" class="w-8 h-8 rounded-full border border-jp-gold/30 object-cover shadow-sm" onerror="this.src='https://placehold.co/100x100/121212/D4AF37?text=C'">
@@ -988,8 +988,8 @@ service cloud.firestore {
                             
                         </div>
                     </div>
+
                 </div>
-                ${deleteBtnHTML}
             </div>
             `;
         }
