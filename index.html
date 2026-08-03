@@ -115,15 +115,15 @@
                     <a href="#/" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="home">Beranda</a>
                     <a href="#/about" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1" data-target="about">Tentang Kami</a>
                     
-                    <!-- Dropdown Divisi -->
+                    <!-- Dropdown Divisi (Ikon Dihapus) -->
                     <div class="relative group">
                         <a href="#/divisions" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1 flex items-center gap-1" data-target="divisions">Divisi <i class="fa-solid fa-chevron-down text-[10px] opacity-70 transition-transform duration-300 group-hover:rotate-180"></i></a>
                         <div class="absolute left-0 mt-1 w-56 bg-jp-darkGray border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform origin-top translate-y-2 group-hover:translate-y-0 overflow-hidden">
                             <div class="py-1">
-                                <a href="#/divisions/cosplay" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-scissors w-4 text-center"></i> Cosplay & Crafting</a>
-                                <a href="#/divisions/dance" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-music w-4 text-center"></i> Dance & Musik</a>
-                                <a href="#/divisions/gaming" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-gamepad w-4 text-center"></i> Gaming</a>
-                                <a href="#/divisions/eo" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-clipboard-list w-4 text-center"></i> Event Organizer (EO)</a>
+                                <a href="#/divisions/cosplay" class="block px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors">Cosplay & Crafting</a>
+                                <a href="#/divisions/dance" class="block px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors">Dance & Musik</a>
+                                <a href="#/divisions/gaming" class="block px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors">Gaming</a>
+                                <a href="#/divisions/eo" class="block px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors">Event Organizer (EO)</a>
                             </div>
                         </div>
                     </div>
@@ -175,12 +175,13 @@
             
             <div class="space-y-1">
                 <button onclick="window.toggleMobileSubmenu('mobile-divisi-sub')" class="w-full flex justify-between items-center text-gray-300 hover:text-jp-gold text-base font-medium py-2 transition-colors"><span>Divisi Hobi</span><i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" id="icon-mobile-divisi-sub"></i></button>
+                <!-- Mobile Divisi Submenu (Ikon Dihapus) -->
                 <div id="mobile-divisi-sub" class="hidden pl-4 space-y-2 border-l-2 border-jp-gold/30 ml-2 mb-2 mt-1">
-                    <a href="#/divisions" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors" data-target="divisions"><i class="fa-solid fa-layer-group w-5"></i> Semua Divisi</a>
-                    <a href="#/divisions/cosplay" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-scissors w-5"></i> Cosplay & Crafting</a>
-                    <a href="#/divisions/dance" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-music w-5"></i> Dance & Musik</a>
-                    <a href="#/divisions/gaming" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-gamepad w-5"></i> Gaming</a>
-                    <a href="#/divisions/eo" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-clipboard-list w-5"></i> Event Organizer (EO)</a>
+                    <a href="#/divisions" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors pl-2" data-target="divisions">Semua Divisi</a>
+                    <a href="#/divisions/cosplay" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors pl-2">Cosplay & Crafting</a>
+                    <a href="#/divisions/dance" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors pl-2">Dance & Musik</a>
+                    <a href="#/divisions/gaming" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors pl-2">Gaming</a>
+                    <a href="#/divisions/eo" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors pl-2">Event Organizer (EO)</a>
                 </div>
             </div>
             
@@ -474,12 +475,17 @@
                                     <input type="text" id="id-labmem-input" value="0001" maxlength="6" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all" placeholder="Contoh: 0001">
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Divisi Utama</label>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Role Tag</label>
+                                    <!-- Select Diubah Menjadi Hashtag Sesuai Permintaan -->
                                     <select id="id-division-select" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
-                                        <option value="Cosplay & Crafting" data-jp="コスプレ">Cosplay & Crafting</option>
-                                        <option value="Dance & Musik" data-jp="ダンス＆音楽">Dance & Musik</option>
-                                        <option value="Gaming" data-jp="ゲーム">Gaming</option>
-                                        <option value="Event Organizer (EO)" data-jp="イベント">Event Organizer (EO)</option>
+                                        <option value="#cosplayer">#cosplayer</option>
+                                        <option value="#band">#band</option>
+                                        <option value="#crafter">#crafter</option>
+                                        <option value="#gamer">#gamer</option>
+                                        <option value="#make-up-artist">#make-up-artist</option>
+                                        <option value="#costagvrls">#costagvrls</option>
+                                        <option value="#dancer">#dancer</option>
+                                        <option value="#photografer">#photografer</option>
                                     </select>
                                 </div>
                                 <div>
@@ -552,7 +558,7 @@
                                                 <div>
                                                     <h4 class="text-3xl font-extrabold text-white tracking-wide uppercase font-jp leading-none mb-1.5 truncate pr-8" id="card-nickname">Ryuka</h4>
                                                     <div class="text-[10px] text-gray-400 font-mono tracking-wider flex items-center gap-2">
-                                                        <i class="fa-solid fa-shield-halved text-jp-gold"></i> <span id="card-role" class="truncate">Cosplay & Crafting</span>
+                                                        <i class="fa-solid fa-hashtag text-jp-gold text-xs"></i> <span id="card-role" class="truncate font-bold text-gray-300">#cosplayer</span>
                                                     </div>
                                                     <div class="mt-1">
                                                         <span id="card-gen" class="font-bold text-jp-gold text-[9px] bg-jp-gold/10 px-1.5 py-0.5 rounded border border-jp-gold/20">GEN 1</span>
@@ -866,6 +872,11 @@ service cloud.firestore {
                     <i class="fa-solid fa-trash-can text-[11px]"></i>
                 </button>` : '';
 
+            // Icon Hashtag kecil di depan nama peran (jika itu hashtag)
+            const roleHTML = member.role.startsWith('#') 
+                ? `<i class="fa-solid fa-hashtag text-jp-gold text-xs"></i> <span class="truncate font-bold text-gray-300">${member.role}</span>`
+                : `<i class="fa-solid fa-shield-halved text-jp-gold"></i> <span class="truncate">${member.role}</span>`;
+
             return `
             <div class="w-full max-w-sm perspective-1000 cursor-pointer card-hover-effect mx-auto" onclick="this.querySelector('.fancy-flip-anim').classList.toggle('is-flipped')">
                 <div class="relative w-full h-64 transform-style-3d fancy-flip-anim shadow-xl shadow-jp-gold/5 rounded-2xl">
@@ -896,7 +907,7 @@ service cloud.firestore {
                                 <div class="overflow-hidden">
                                     <h4 class="text-2xl font-extrabold text-white tracking-wide uppercase font-jp leading-none mb-1.5 truncate pr-8">${member.nickname}</h4>
                                     <div class="text-[9px] text-gray-400 font-mono tracking-wider flex items-center gap-1.5 truncate">
-                                        <i class="fa-solid fa-shield-halved text-jp-gold"></i> <span class="truncate">${member.role}</span>
+                                        ${roleHTML}
                                     </div>
                                 </div>
                             </div>
