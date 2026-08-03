@@ -573,34 +573,34 @@
                                         </div>
                                     </div>
                                     <!-- BACK -->
-                                    <div class="absolute top-0 left-0 w-full h-full backface-hidden rotate-y-180 bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none">
+                                    <div class="absolute top-0 left-0 w-full h-full backface-hidden rotate-y-180 bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none flex flex-col">
                                         <div class="glare-sweep"></div>
-                                        <div class="w-full h-12 bg-black mt-6 relative z-10 border-y border-white/10 shadow-inner"></div>
-                                        <div class="p-6 flex flex-col justify-between h-[calc(100%-72px)] relative z-10">
-                                            <div class="space-y-4 w-full mt-2">
+                                        <div class="w-full h-10 bg-black mt-5 relative z-10 border-y border-white/10 shadow-inner shrink-0"></div>
+                                        <div class="p-5 flex flex-col flex-grow justify-between relative z-10">
+                                            <div class="space-y-3 w-full">
                                                 <div>
                                                     <span class="text-[8px] uppercase tracking-widest text-jp-gold font-bold block mb-1">Anime Kesukaan</span>
-                                                    <div class="bg-jp-dark/50 border border-white/5 rounded px-3 py-2 text-xs text-white font-medium flex items-center gap-3">
+                                                    <div class="bg-jp-dark/50 border border-white/5 rounded px-3 py-1.5 text-xs text-white font-medium flex items-center gap-3">
                                                         <i class="fa-solid fa-tv text-gray-500 w-4"></i> <span id="card-back-anime" class="truncate">Bocchi the Rock!</span>
                                                     </div>
                                                 </div>
                                                 <div>
                                                     <span class="text-[8px] uppercase tracking-widest text-jp-gold font-bold block mb-1">Game Favorit</span>
-                                                    <div class="bg-jp-dark/50 border border-white/5 rounded px-3 py-2 text-xs text-white font-medium flex items-center gap-3">
+                                                    <div class="bg-jp-dark/50 border border-white/5 rounded px-3 py-1.5 text-xs text-white font-medium flex items-center gap-3">
                                                         <i class="fa-solid fa-gamepad text-gray-500 w-4"></i> <span id="card-back-game" class="truncate">Genshin Impact</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             
-                                            <!-- Bagian QR Code diganti dengan Social Media -->
-                                            <div class="flex justify-between items-end border-t border-white/5 pt-2 mt-4">
-                                                <div class="text-[8px] text-gray-500 font-mono tracking-widest mb-0.5">GEN: <span class="text-jp-gold" id="card-back-gen-preview">GEN 1</span></div>
-                                                <div class="flex flex-col gap-1.5 items-end">
-                                                    <div class="flex items-center gap-1.5 text-[9px] text-gray-300 bg-white/5 px-2 py-0.5 rounded border border-white/10 shadow-sm">
-                                                        <span id="card-back-ig" class="truncate max-w-[90px]">@ryuka_cos</span> <i class="fa-brands fa-instagram text-pink-500"></i>
+                                            <!-- Social Media Horizontal Layout -->
+                                            <div class="flex justify-between items-center border-t border-white/10 pt-3 mt-1">
+                                                <div class="text-[8px] text-gray-500 font-mono tracking-widest">GEN: <span class="text-jp-gold" id="card-back-gen-preview">GEN 1</span></div>
+                                                <div class="flex gap-2">
+                                                    <div class="flex items-center gap-1.5 text-[8px] text-gray-300 bg-white/5 px-1.5 py-0.5 rounded border border-white/10 shadow-sm">
+                                                        <i class="fa-brands fa-instagram text-pink-500"></i> <span id="card-back-ig" class="truncate max-w-[65px]">@ryuka_cos</span>
                                                     </div>
-                                                    <div class="flex items-center gap-1.5 text-[9px] text-gray-300 bg-white/5 px-2 py-0.5 rounded border border-white/10 shadow-sm">
-                                                        <span id="card-back-tiktok" class="truncate max-w-[90px]">@ryuka.tok</span> <i class="fa-brands fa-tiktok text-white"></i>
+                                                    <div class="flex items-center gap-1.5 text-[8px] text-gray-300 bg-white/5 px-1.5 py-0.5 rounded border border-white/10 shadow-sm">
+                                                        <i class="fa-brands fa-tiktok text-white"></i> <span id="card-back-tiktok" class="truncate max-w-[65px]">@ryuka.tok</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -951,37 +951,37 @@ service cloud.firestore {
                     </div>
 
                     <!-- BACK OF CARD -->
-                    <div class="absolute top-0 left-0 w-full h-full backface-hidden rotate-y-180 bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none">
+                    <div class="absolute top-0 left-0 w-full h-full backface-hidden rotate-y-180 bg-zinc-950 border-2 border-jp-gold rounded-2xl overflow-hidden select-none flex flex-col">
                         <div class="glare-sweep"></div>
                         <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle at 100% 150%, #fff 24%, white 25%, white 28%, #fff 29%, #fff 36%, white 36%, white 40%, transparent 40%, transparent); background-size: 20px 20px;"></div>
                         
-                        <div class="w-full h-10 bg-black mt-5 relative z-10 border-y border-white/10 shadow-inner"></div>
+                        <div class="w-full h-10 bg-black mt-5 relative z-10 border-y border-white/10 shadow-inner shrink-0"></div>
                         
-                        <div class="p-5 flex flex-col justify-between h-[calc(100%-60px)] relative z-10">
-                            <div class="space-y-3 w-full mt-2">
+                        <div class="p-5 flex flex-col flex-grow justify-between relative z-10">
+                            <div class="space-y-3 w-full">
                                 <div>
                                     <span class="text-[7px] uppercase tracking-widest text-jp-gold font-bold block mb-1">Anime Kesukaan</span>
-                                    <div class="bg-jp-dark/50 border border-white/5 rounded px-3 py-2 text-[10px] text-white font-medium flex items-center gap-3">
+                                    <div class="bg-jp-dark/50 border border-white/5 rounded px-3 py-1.5 text-[10px] text-white font-medium flex items-center gap-3">
                                         <i class="fa-solid fa-tv text-gray-500 w-3"></i> <span class="truncate">${member.anime}</span>
                                     </div>
                                 </div>
                                 <div>
                                     <span class="text-[7px] uppercase tracking-widest text-jp-gold font-bold block mb-1">Game Favorit</span>
-                                    <div class="bg-jp-dark/50 border border-white/5 rounded px-3 py-2 text-[10px] text-white font-medium flex items-center gap-3">
+                                    <div class="bg-jp-dark/50 border border-white/5 rounded px-3 py-1.5 text-[10px] text-white font-medium flex items-center gap-3">
                                         <i class="fa-solid fa-gamepad text-gray-500 w-3"></i> <span class="truncate">${member.game}</span>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Bagian Bawah Kartu Generate (Social Media) -->
-                            <div class="flex justify-between items-end border-t border-white/5 pt-2 mt-4">
-                                <div class="text-[7px] text-gray-500 font-mono tracking-widest mb-0.5">GEN: <span class="text-jp-gold">${member.gen.toUpperCase()}</span></div>
-                                <div class="flex flex-col gap-1.5 items-end">
-                                    <div class="flex items-center gap-1.5 text-[8px] text-gray-300 bg-white/5 px-1.5 py-0.5 rounded border border-white/10 shadow-sm">
-                                        <span class="truncate max-w-[80px]">${displayIg}</span> <i class="fa-brands fa-instagram text-pink-500"></i>
+                            <div class="flex justify-between items-center border-t border-white/10 pt-3 mt-1">
+                                <div class="text-[7px] text-gray-500 font-mono tracking-widest">GEN: <span class="text-jp-gold">${member.gen.toUpperCase()}</span></div>
+                                <div class="flex gap-1.5">
+                                    <div class="flex items-center gap-1.5 text-[7px] sm:text-[8px] text-gray-300 bg-white/5 px-1.5 py-0.5 rounded border border-white/10 shadow-sm">
+                                        <i class="fa-brands fa-instagram text-pink-500"></i> <span class="truncate max-w-[55px]">${displayIg}</span>
                                     </div>
-                                    <div class="flex items-center gap-1.5 text-[8px] text-gray-300 bg-white/5 px-1.5 py-0.5 rounded border border-white/10 shadow-sm">
-                                        <span class="truncate max-w-[80px]">${displayTiktok}</span> <i class="fa-brands fa-tiktok text-white"></i>
+                                    <div class="flex items-center gap-1.5 text-[7px] sm:text-[8px] text-gray-300 bg-white/5 px-1.5 py-0.5 rounded border border-white/10 shadow-sm">
+                                        <i class="fa-brands fa-tiktok text-white"></i> <span class="truncate max-w-[55px]">${displayTiktok}</span>
                                     </div>
                                 </div>
                             </div>
