@@ -475,18 +475,17 @@
                                     <input type="text" id="id-labmem-input" value="0001" maxlength="6" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all" placeholder="Contoh: 0001">
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Role Tag</label>
-                                    <!-- Select Diubah Menjadi Hashtag Sesuai Permintaan -->
-                                    <select id="id-division-select" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all">
-                                        <option value="#cosplayer">#cosplayer</option>
-                                        <option value="#band">#band</option>
-                                        <option value="#crafter">#crafter</option>
-                                        <option value="#gamer">#gamer</option>
-                                        <option value="#make-up-artist">#make-up-artist</option>
-                                        <option value="#costagvrls">#costagvrls</option>
-                                        <option value="#dancer">#dancer</option>
-                                        <option value="#photografer">#photografer</option>
-                                    </select>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Role Tag (Pilih > 1)</label>
+                                    <div id="id-role-tags" class="grid grid-cols-2 gap-2 bg-jp-dark border border-white/10 rounded-md p-3">
+                                        <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#cosplayer" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold" checked> #cosplayer</label>
+                                        <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#band" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #band</label>
+                                        <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#crafter" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #crafter</label>
+                                        <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#gamer" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #gamer</label>
+                                        <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#make-up-artist" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #make-up-artist</label>
+                                        <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#costagvrls" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #costagvrls</label>
+                                        <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#dancer" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #dancer</label>
+                                        <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#photografer" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #photografer</label>
+                                    </div>
                                 </div>
                                 <div>
                                     <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Generasi</label>
@@ -555,12 +554,12 @@
                                                 <div class="w-20 h-20 bg-zinc-900 border border-white/10 flex items-center justify-center relative overflow-hidden flex-shrink-0">
                                                     <img id="card-avatar-img" src="https://placehold.co/150x150/121212/D4AF37?text=Avatar" alt="Foto Avatar" class="w-full h-full object-cover">
                                                 </div>
-                                                <div>
+                                                <div class="overflow-hidden">
                                                     <h4 class="text-3xl font-extrabold text-white tracking-wide uppercase font-jp leading-none mb-1.5 truncate pr-8" id="card-nickname">Ryuka</h4>
-                                                    <div class="text-[10px] text-gray-400 font-mono tracking-wider flex items-center gap-2">
-                                                        <i class="fa-solid fa-hashtag text-jp-gold text-xs"></i> <span id="card-role" class="truncate font-bold text-gray-300">#cosplayer</span>
+                                                    <div id="card-role" class="flex flex-wrap gap-1 mt-1 font-mono">
+                                                        <span class="text-[8px] font-bold text-jp-gold bg-jp-gold/10 border border-jp-gold/20 px-1.5 py-0.5 rounded">#cosplayer</span>
                                                     </div>
-                                                    <div class="mt-1">
+                                                    <div class="mt-1.5">
                                                         <span id="card-gen" class="font-bold text-jp-gold text-[9px] bg-jp-gold/10 px-1.5 py-0.5 rounded border border-jp-gold/20">GEN 1</span>
                                                     </div>
                                                 </div>
@@ -708,7 +707,6 @@ service cloud.firestore {
         import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
         import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-        // Konfigurasi dari Akun Firebase Anda 
         const firebaseConfig = {
             apiKey: "AIzaSyB_reprtE-6VB14KHVz1b-Pim2xoTDiHV0",
             authDomain: "costaku-tabalong.firebaseapp.com",
@@ -728,8 +726,6 @@ service cloud.firestore {
 
         let currentUser = null;
         let communityMembers = [];
-        
-        // Simpan Filter yang sedang aktif
         window.currentGenFilter = null; 
 
         onAuthStateChanged(auth, (user) => {
@@ -755,7 +751,6 @@ service cloud.firestore {
             signOut(auth).then(() => {
                 document.getElementById('success-modal-message').innerText = "Berhasil Logout dari akun pengurus.";
                 document.getElementById('success-modal').classList.remove('hidden');
-                
                 const authOverlay = document.getElementById('auth-overlay-form');
                 if(authOverlay) authOverlay.classList.remove('hidden');
             });
@@ -781,13 +776,11 @@ service cloud.firestore {
 
         function loadMembersFromFirestore() {
             document.getElementById('loading-spinner').classList.remove('hidden');
-
             onSnapshot(membersCollection, (snapshot) => {
                 communityMembers = [];
                 snapshot.forEach((doc) => {
                     communityMembers.push({ id: doc.id, ...doc.data() });
                 });
-                
                 communityMembers.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
                 renderMemberDirectory();
                 document.getElementById('loading-spinner').classList.add('hidden');
@@ -808,10 +801,15 @@ service cloud.firestore {
             const labmem = document.getElementById('id-labmem-input').value || '0001';
             const btnSimpan = document.getElementById('btn-simpan');
             
+            // Ambil data checkbox multiple
+            const roleCheckboxes = document.querySelectorAll('.role-checkbox:checked');
+            const selectedRoles = Array.from(roleCheckboxes).map(cb => cb.value);
+            if (selectedRoles.length === 0) selectedRoles.push('#member'); // Fallback default jika tidak memilih
+            
             const newMember = { 
                 nickname: name, 
                 labmem: labmem,
-                role: document.getElementById('id-division-select').value, 
+                role: selectedRoles, // Array Tags disimpan ke firebase
                 gen: document.getElementById('id-gen-select').value,
                 anime: document.getElementById('id-anime-input').value || 'Bocchi the Rock!',
                 game: document.getElementById('id-game-input').value || 'Genshin Impact',
@@ -825,12 +823,9 @@ service cloud.firestore {
             try {
                 btnSimpan.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Menyimpan...';
                 btnSimpan.disabled = true;
-
                 await addDoc(membersCollection, newMember);
-                
                 document.getElementById('success-modal-message').innerText = `Kartu anggota untuk ${name} berhasil disimpan secara permanen ke Database!`;
                 document.getElementById('success-modal').classList.remove('hidden');
-                
             } catch (error) {
                 console.error("Error menambahkan anggota:", error);
                 alert("Gagal menyimpan ke database.\nError: " + error.message);
@@ -843,12 +838,10 @@ service cloud.firestore {
 
         window.deleteMember = async function(memberId, event) {
             if (event) event.stopPropagation();
-
             if (!currentUser) {
                 alert("Akses Ditolak! Anda harus login sebagai admin untuk menghapus data.");
                 return;
             }
-
             const isConfirm = confirm("Apakah Anda yakin ingin menghapus data anggota ini dari database permanen?");
             if (!isConfirm) return;
 
@@ -872,10 +865,16 @@ service cloud.firestore {
                     <i class="fa-solid fa-trash-can text-[11px]"></i>
                 </button>` : '';
 
-            // Icon Hashtag kecil di depan nama peran (jika itu hashtag)
-            const roleHTML = member.role.startsWith('#') 
-                ? `<i class="fa-solid fa-hashtag text-jp-gold text-xs"></i> <span class="truncate font-bold text-gray-300">${member.role}</span>`
-                : `<i class="fa-solid fa-shield-halved text-jp-gold"></i> <span class="truncate">${member.role}</span>`;
+            // Menangani mapping Array Tag HTML
+            let roles = [];
+            if (Array.isArray(member.role)) {
+                roles = member.role;
+            } else if (typeof member.role === 'string') {
+                roles = [member.role];
+            } else {
+                roles = ['#member'];
+            }
+            const roleHTML = roles.map(r => `<span class="text-[8px] font-bold text-jp-gold bg-jp-gold/10 border border-jp-gold/20 px-1.5 py-0.5 rounded shadow-sm">${r}</span>`).join('');
 
             return `
             <div class="w-full max-w-sm perspective-1000 cursor-pointer card-hover-effect mx-auto" onclick="this.querySelector('.fancy-flip-anim').classList.toggle('is-flipped')">
@@ -906,7 +905,7 @@ service cloud.firestore {
                                 </div>
                                 <div class="overflow-hidden">
                                     <h4 class="text-2xl font-extrabold text-white tracking-wide uppercase font-jp leading-none mb-1.5 truncate pr-8">${member.nickname}</h4>
-                                    <div class="text-[9px] text-gray-400 font-mono tracking-wider flex items-center gap-1.5 truncate">
+                                    <div class="flex flex-wrap gap-1 mt-1 font-mono">
                                         ${roleHTML}
                                     </div>
                                 </div>
@@ -963,7 +962,6 @@ service cloud.firestore {
             `;
         }
 
-        // FUNGSI RENDER BERDASARKAN FILTER GENERASI
         window.renderMemberDirectory = function(filterGen = window.currentGenFilter) {
             window.currentGenFilter = filterGen;
             const container = document.getElementById('member-directory-container');
@@ -980,7 +978,6 @@ service cloud.firestore {
             
             generationsToShow.forEach(gen => {
                 const membersInGen = communityMembers.filter(m => m.gen === gen);
-                
                 if (membersInGen.length > 0) {
                     anyRendered = true;
                     const genHTML = `
@@ -1011,7 +1008,6 @@ service cloud.firestore {
 
         const idNameInput = document.getElementById('id-name-input');
         const idLabmemInput = document.getElementById('id-labmem-input');
-        const idDivisionSelect = document.getElementById('id-division-select');
         const idGenSelect = document.getElementById('id-gen-select');
         const idAnimeInput = document.getElementById('id-anime-input');
         const idGameInput = document.getElementById('id-game-input');
@@ -1029,49 +1025,54 @@ service cloud.firestore {
             
             if(elNick) elNick.innerText = idNameInput.value || 'Ryuka';
             if(elLabmem) elLabmem.innerText = `LABMEM ${idLabmemInput.value || '0001'}`;
-            if(elRole) elRole.innerText = idDivisionSelect.value;
             if(elGen && idGenSelect) elGen.innerText = idGenSelect.value.toUpperCase();
             if(elAni) elAni.innerText = idAnimeInput.value || 'Bocchi the Rock!';
             if(elGam) elGam.innerText = idGameInput.value || 'Genshin Impact';
             if(elImg) elImg.src = idAvatarInputHidden.value || "https://placehold.co/150x150/121212/D4AF37?text=Avatar";
+
+            // Update Multiple Roles UI for Preview
+            const roleCheckboxes = document.querySelectorAll('.role-checkbox:checked');
+            const selectedRoles = Array.from(roleCheckboxes).map(cb => cb.value);
+            
+            if(elRole) {
+                if (selectedRoles.length > 0) {
+                    elRole.innerHTML = selectedRoles.map(r => `<span class="text-[8px] font-bold text-jp-gold bg-jp-gold/10 border border-jp-gold/20 px-1.5 py-0.5 rounded shadow-sm">${r}</span>`).join('');
+                } else {
+                    elRole.innerHTML = `<span class="text-[8px] font-bold text-jp-gold bg-jp-gold/10 border border-jp-gold/20 px-1.5 py-0.5 rounded shadow-sm">#member</span>`;
+                }
+            }
         }
 
         ['input', 'change'].forEach(evt => {
             if(idNameInput) idNameInput.addEventListener(evt, updateCardData);
             if(idLabmemInput) idLabmemInput.addEventListener(evt, updateCardData);
-            if(idDivisionSelect) idDivisionSelect.addEventListener(evt, updateCardData);
             if(idGenSelect) idGenSelect.addEventListener(evt, updateCardData);
             if(idAnimeInput) idAnimeInput.addEventListener(evt, updateCardData);
             if(idGameInput) idGameInput.addEventListener(evt, updateCardData);
             if(idStatusSelect) idStatusSelect.addEventListener(evt, updateCardData);
         });
 
-        // Event listener khusus untuk input file foto
+        // Event listener khusus untuk checkbox role tags
+        document.querySelectorAll('.role-checkbox').forEach(cb => {
+            cb.addEventListener('change', updateCardData);
+        });
+
         const idAvatarUpload = document.getElementById('id-avatar-upload');
         if (idAvatarUpload) {
             idAvatarUpload.addEventListener('change', function(event) {
                 const file = event.target.files[0];
                 if (file) {
-                    // Validasi ukuran file maks 500KB untuk keamanan Firestore
                     if(file.size > 500 * 1024) {
                         alert("Ukuran file terlalu besar! Maksimal 500KB.");
                         this.value = ''; // Reset input
                         return;
                     }
-
                     const reader = new FileReader();
                     reader.onload = function(e) {
                         const base64Image = e.target.result;
-                        
-                        // 1. Simpan string Base64 ke hidden input agar tersimpan di Firestore
-                        if(idAvatarInputHidden) {
-                            idAvatarInputHidden.value = base64Image;
-                        }
-                        
-                        // 2. Perbarui tampilan kartu
+                        if(idAvatarInputHidden) idAvatarInputHidden.value = base64Image;
                         updateCardData();
                     }
-                    // Baca file sebagai Data URL (Base64)
                     reader.readAsDataURL(file);
                 }
             });
@@ -1095,7 +1096,6 @@ service cloud.firestore {
         function checkAdminAccess() {
             const urlParams = new URLSearchParams(window.location.search);
             const isAdmin = urlParams.get('admin');
-            
             const controlPanel = document.getElementById('admin-control-panel');
             const navAuthBtn = document.getElementById('nav-auth-container');
 
@@ -1126,9 +1126,8 @@ service cloud.firestore {
             document.querySelectorAll('.nav-link').forEach(link => { link.classList.remove('text-jp-gold'); link.classList.add('text-gray-300'); });
             document.querySelectorAll(`a.nav-link[data-target="${targetPage}"]`).forEach(link => { link.classList.add('text-jp-gold'); link.classList.remove('text-gray-300'); });
 
-            // LOGIKA FILTER DAN SCROLLING SUBMENU
             if (targetPage === 'members') {
-                window.renderMemberDirectory(subTarget); // Panggil render ulang dengan subTarget (gen1, gen2, dsb)
+                window.renderMemberDirectory(subTarget);
                 window.scrollTo({ top: 0, behavior: 'instant' });
             } else if (targetPage === 'divisions' && subTarget) {
                 setTimeout(() => {
@@ -1149,7 +1148,6 @@ service cloud.firestore {
         }
 
         window.addEventListener('hashchange', handleRouting);
-        
         document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
 
         window.onload = function() {
