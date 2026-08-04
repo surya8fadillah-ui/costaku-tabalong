@@ -523,7 +523,7 @@
                                     <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Unggah Foto Avatar</label>
                                     <input type="file" id="id-avatar-upload" accept="image/png, image/jpeg, image/jpg" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-2 text-sm text-white focus:outline-none focus:border-jp-gold transition-all file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-jp-gold file:text-jp-dark hover:file:bg-jp-goldHover cursor-pointer">
                                     <input type="hidden" id="id-avatar-input" value="https://placehold.co/150x150/121212/D4AF37?text=Avatar">
-                                    <p class="text-[10px] text-gray-500 mt-1">* Disarankan rasio 1:1 (persegi) maks. 500KB.</p>
+                                    <p class="text-[10px] text-gray-500 mt-1">* Disarankan rasio 1:1 (persegi) maks. 1MB.</p>
                                 </div>
                                 <div>
                                     <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Status Keanggotaan</label>
@@ -533,8 +533,11 @@
                                     </select>
                                 </div>
                                 
-                                <div class="pt-4 border-t border-white/5">
-                                    <button id="btn-simpan" onclick="window.addCurrentCardToList()" class="w-full bg-jp-gold hover:bg-jp-goldHover text-jp-dark py-3.5 rounded-md font-extrabold tracking-wider transition-all shadow-md flex items-center justify-center gap-2 text-sm uppercase">
+                                <div class="pt-4 border-t border-white/5 flex gap-3">
+                                    <button id="btn-batal-edit" onclick="window.cancelEdit()" class="hidden w-1/3 bg-white/10 hover:bg-white/20 text-white border border-white/20 py-3.5 rounded-md font-bold tracking-wider transition-all text-sm uppercase">
+                                        Batal
+                                    </button>
+                                    <button id="btn-simpan" onclick="window.saveMemberData()" class="w-full bg-jp-gold hover:bg-jp-goldHover text-jp-dark py-3.5 rounded-md font-extrabold tracking-wider transition-all shadow-md flex items-center justify-center gap-2 text-sm uppercase">
                                         <i class="fa-solid fa-user-plus"></i> Simpan ke Database
                                     </button>
                                 </div>
@@ -747,7 +750,7 @@ service cloud.firestore {
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
         import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
         const firebaseConfig = {
@@ -770,6 +773,7 @@ service cloud.firestore {
         let currentUser = null;
         let communityMembers = [];
         window.currentGenFilter = null; 
+        let currentEditingId = null;
 
         onAuthStateChanged(auth, (user) => {
             currentUser = user;
@@ -834,9 +838,9 @@ service cloud.firestore {
             });
         }
 
-        window.addCurrentCardToList = async function() { 
+        window.saveMemberData = async function() { 
             if (!currentUser) {
-                alert("Akses Ditolak! Anda harus login sebagai admin untuk menambah data.");
+                alert("Akses Ditolak! Anda harus login sebagai admin untuk mengubah data.");
                 return;
             }
 
@@ -867,25 +871,110 @@ service cloud.firestore {
                 lokalitas: lokalitasInput.toUpperCase() || 'IDN',
                 avatar: document.getElementById('id-avatar-input').value || "https://placehold.co/150x150/121212/D4AF37?text=Avatar",
                 status: document.getElementById('id-status-select').value,
-                createdAt: new Date().toISOString(),
-                createdBy: currentUser.uid,
-                creatorEmail: currentUser.email
+                updatedAt: new Date().toISOString()
             };
 
             try {
                 btnSimpan.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Menyimpan...';
                 btnSimpan.disabled = true;
-                await addDoc(membersCollection, newMember);
-                document.getElementById('success-modal-message').innerText = `Kartu anggota untuk ${name} berhasil disimpan secara permanen ke Database!`;
+                
+                if (currentEditingId) {
+                    await updateDoc(doc(db, "members_directory", currentEditingId), newMember);
+                    document.getElementById('success-modal-message').innerText = `Data anggota untuk ${name} berhasil diperbarui di Database!`;
+                    window.cancelEdit();
+                } else {
+                    newMember.createdAt = new Date().toISOString();
+                    newMember.createdBy = currentUser.uid;
+                    newMember.creatorEmail = currentUser.email;
+                    
+                    await addDoc(membersCollection, newMember);
+                    document.getElementById('success-modal-message').innerText = `Kartu anggota untuk ${name} berhasil disimpan secara permanen ke Database!`;
+                }
+                
                 document.getElementById('success-modal').classList.remove('hidden');
             } catch (error) {
-                console.error("Error menambahkan anggota:", error);
+                console.error("Error menyimpan data anggota:", error);
                 alert("Gagal menyimpan ke database.\nError: " + error.message);
                 if (error.code === 'permission-denied') window.openModal('rules-modal');
             } finally {
-                btnSimpan.innerHTML = '<i class="fa-solid fa-user-plus"></i> Simpan ke Database';
+                if (!currentEditingId) {
+                    btnSimpan.innerHTML = '<i class="fa-solid fa-user-plus"></i> Simpan ke Database';
+                }
                 btnSimpan.disabled = false;
             }
+        }
+
+        window.editMember = function(memberId, event) {
+            if (event) event.stopPropagation();
+            if (!currentUser) {
+                alert("Akses Ditolak! Anda harus login sebagai admin untuk mengedit data.");
+                return;
+            }
+            
+            const member = communityMembers.find(m => m.id === memberId);
+            if (!member) return;
+
+            currentEditingId = memberId;
+
+            // Populate form dengan data lama
+            document.getElementById('id-name-input').value = member.nickname || '';
+            document.getElementById('id-labmem-input').value = member.labmem || '';
+            document.getElementById('id-gen-select').value = member.gen || 'Gen 1';
+            document.getElementById('id-anime-input').value = member.anime || '';
+            document.getElementById('id-game-input').value = member.game || '';
+            document.getElementById('id-ig-input').value = member.instagram === '-' ? '' : member.instagram;
+            document.getElementById('id-tiktok-input').value = member.tiktok === '-' ? '' : member.tiktok;
+            document.getElementById('id-regional-input').value = member.regional || 'TABALONG';
+            document.getElementById('id-lokalitas-input').value = member.lokalitas || 'IDN';
+            document.getElementById('id-status-select').value = member.status || 'ACTIVE';
+            
+            document.getElementById('id-avatar-input').value = member.avatar || "https://placehold.co/150x150/121212/D4AF37?text=Avatar";
+            
+            // Atur Centang Checkbox Role
+            const roleCheckboxes = document.querySelectorAll('.role-checkbox');
+            let roles = Array.isArray(member.role) ? member.role : [member.role];
+            roleCheckboxes.forEach(cb => {
+                cb.checked = roles.includes(cb.value);
+            });
+
+            // Update Tampilan Tombol
+            const btnSimpan = document.getElementById('btn-simpan');
+            btnSimpan.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Update Data';
+            btnSimpan.classList.remove('w-full');
+            btnSimpan.classList.add('w-2/3');
+            document.getElementById('btn-batal-edit').classList.remove('hidden');
+
+            updateCardData();
+            document.getElementById('admin-control-panel').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.cancelEdit = function() {
+            currentEditingId = null;
+            
+            // Kembalikan form ke mode default
+            document.getElementById('id-name-input').value = 'Ryuka';
+            document.getElementById('id-labmem-input').value = '0001';
+            document.getElementById('id-gen-select').value = 'Gen 1';
+            document.getElementById('id-anime-input').value = 'Bocchi the Rock!';
+            document.getElementById('id-game-input').value = 'Genshin Impact';
+            document.getElementById('id-ig-input').value = 'ryuka_cos';
+            document.getElementById('id-tiktok-input').value = 'ryuka.tok';
+            document.getElementById('id-regional-input').value = 'TABALONG';
+            document.getElementById('id-lokalitas-input').value = 'IDN';
+            document.getElementById('id-status-select').value = 'ACTIVE';
+            document.getElementById('id-avatar-input').value = "https://placehold.co/150x150/121212/D4AF37?text=Avatar";
+            
+            document.querySelectorAll('.role-checkbox').forEach(cb => cb.checked = false);
+            const defaultCb = document.querySelector('.role-checkbox[value="#cosplayer"]');
+            if(defaultCb) defaultCb.checked = true;
+
+            const btnSimpan = document.getElementById('btn-simpan');
+            btnSimpan.innerHTML = '<i class="fa-solid fa-user-plus"></i> Simpan ke Database';
+            btnSimpan.classList.remove('w-2/3');
+            btnSimpan.classList.add('w-full');
+            document.getElementById('btn-batal-edit').classList.add('hidden');
+            
+            updateCardData();
         }
 
         window.deleteMember = async function(memberId, event) {
@@ -913,9 +1002,14 @@ service cloud.firestore {
             const statusColor = member.status === 'ACTIVE' ? 'text-green-400' : 'text-red-400';
             
             const deleteBtnHTML = currentUser ? `
-                <button onclick="window.deleteMember('${member.id}', event)" class="absolute top-3 right-3 z-50 bg-red-600/90 hover:bg-red-500 text-white w-7 h-7 rounded-full flex items-center justify-center backdrop-blur-sm transition-all shadow-[0_0_10px_rgba(220,38,38,0.5)] border border-red-400/50 hover:scale-110" title="Hapus Kartu Ini">
-                    <i class="fa-solid fa-trash-can text-[11px]"></i>
-                </button>` : '';
+                <div class="absolute top-3 right-3 z-50 flex gap-2">
+                    <button onclick="window.editMember('${member.id}', event)" class="bg-blue-600/90 hover:bg-blue-500 text-white w-7 h-7 rounded-full flex items-center justify-center backdrop-blur-sm transition-all shadow-[0_0_10px_rgba(37,99,235,0.5)] border border-blue-400/50 hover:scale-110" title="Edit Kartu Ini">
+                        <i class="fa-solid fa-pen text-[11px]"></i>
+                    </button>
+                    <button onclick="window.deleteMember('${member.id}', event)" class="bg-red-600/90 hover:bg-red-500 text-white w-7 h-7 rounded-full flex items-center justify-center backdrop-blur-sm transition-all shadow-[0_0_10px_rgba(220,38,38,0.5)] border border-red-400/50 hover:scale-110" title="Hapus Kartu Ini">
+                        <i class="fa-solid fa-trash-can text-[11px]"></i>
+                    </button>
+                </div>` : '';
 
             let roles = [];
             if (Array.isArray(member.role)) {
@@ -1157,8 +1251,8 @@ service cloud.firestore {
             idAvatarUpload.addEventListener('change', function(event) {
                 const file = event.target.files[0];
                 if (file) {
-                    if(file.size > 500 * 1024) {
-                        alert("Ukuran file terlalu besar! Maksimal 500KB.");
+                    if(file.size > 1024 * 1024) {
+                        alert("Ukuran file terlalu besar! Maksimal 1MB.");
                         this.value = ''; 
                         return;
                     }
