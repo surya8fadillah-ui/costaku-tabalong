@@ -457,6 +457,22 @@
                                     <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">No. LABMEM (ID)</label>
                                     <input type="text" id="id-labmem-input" value="0001" maxlength="6" class="w-full bg-jp-dark border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-jp-gold transition-all" placeholder="Contoh: 0001">
                                 </div>
+
+                                <!-- Penambahan Bagian Badge Spesial -->
+                                <div class="bg-jp-dark border border-white/10 rounded-md p-4">
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-jp-gold mb-3"><i class="fa-solid fa-award"></i> Badge Spesial</label>
+                                    <div class="flex flex-col sm:flex-row gap-4">
+                                        <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-blue-400 transition-colors">
+                                            <input type="checkbox" id="id-badge-og" class="badge-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-blue-500 accent-blue-500"> 
+                                            <span class="bg-blue-900/40 border border-blue-500/30 text-blue-300 px-2 py-0.5 rounded text-[10px] font-bold">THE OG</span>
+                                        </label>
+                                        <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-pink-400 transition-colors">
+                                            <input type="checkbox" id="id-badge-costagvrls" class="badge-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-pink-500 accent-pink-500"> 
+                                            <span class="bg-pink-900/40 border border-pink-500/30 text-pink-300 px-2 py-0.5 rounded text-[10px] font-bold">COSTAGVRLS</span>
+                                        </label>
+                                    </div>
+                                </div>
+
                                 <div>
                                     <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Role Tag (Pilih > 1)</label>
                                     <div id="id-role-tags" class="grid grid-cols-2 gap-2 bg-jp-dark border border-white/10 rounded-md p-3">
@@ -465,7 +481,6 @@
                                         <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#crafter" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #crafter</label>
                                         <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#gamer" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #gamer</label>
                                         <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#make-up-artist" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #make-up-artist</label>
-                                        <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#costagvrls" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #costagvrls</label>
                                         <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#dancer" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #dancer</label>
                                         <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer hover:text-jp-gold transition-colors"><input type="checkbox" value="#photografer" class="role-checkbox w-4 h-4 rounded border-white/10 bg-jp-dark text-jp-gold accent-jp-gold"> #photografer</label>
                                     </div>
@@ -559,12 +574,19 @@
                                         <div class="p-5 flex flex-col justify-between h-[calc(100%-8px)] relative">
                                             <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle at 100% 150%, #fff 24%, white 25%, white 28%, #fff 29%, #fff 36%, white 36%, white 40%, transparent 40%, transparent); background-size: 20px 20px;"></div>
                                             <div class="flex justify-between items-start relative z-10">
-                                                <div class="flex gap-2.5 items-center">
+                                                <div class="flex gap-2.5 items-center w-full">
                                                     <img src="logo.png" class="w-9 h-9 rounded-full border border-jp-gold/30 object-cover shadow-sm" onerror="this.src='https://placehold.co/100x100/121212/D4AF37?text=C'">
-                                                    <div class="flex flex-col justify-center">
+                                                    <div class="flex flex-col justify-center flex-grow">
                                                         <span class="text-[10px] tracking-widest text-gray-200 font-extrabold block mb-1">Costaku Tabalong</span>
-                                                        <div class="relative inline-flex items-center justify-center px-1.5 py-0.5 bg-gradient-to-b from-slate-300 via-slate-100 to-slate-400 rounded-[3px] border border-slate-500 shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                                                            <span id="card-labmem-preview" class="text-[9px] font-black text-slate-800 font-mono tracking-widest relative z-10">LABMEM 0001</span>
+                                                        <div class="flex items-center gap-1.5 flex-wrap">
+                                                            <div class="relative inline-flex items-center justify-center px-1.5 py-0.5 bg-gradient-to-b from-slate-300 via-slate-100 to-slate-400 rounded-[3px] border border-slate-500 shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                                                                <span id="card-labmem-preview" class="text-[9px] font-black text-slate-800 font-mono tracking-widest relative z-10">LABMEM 0001</span>
+                                                            </div>
+                                                            <!-- Tempat Badge Spesial Muncul -->
+                                                            <div id="card-badges-preview" class="flex gap-1">
+                                                                <span id="badge-og-preview" class="hidden text-[8px] font-black text-blue-200 bg-blue-900/80 border border-blue-400/50 px-1.5 py-0.5 rounded-[3px] tracking-widest shadow-sm">THE OG</span>
+                                                                <span id="badge-costagvrls-preview" class="hidden text-[8px] font-black text-pink-200 bg-pink-900/80 border border-pink-400/50 px-1.5 py-0.5 rounded-[3px] tracking-widest shadow-sm">COSTAGVRLS</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -584,7 +606,6 @@
                                                 </div>
                                             </div>
                                             
-                                            <!-- Menambahkan footer pratinjau yang hilang -->
                                             <div class="flex justify-between items-end pt-3 border-t border-white/5 relative z-10">
                                                 <div>
                                                     <span class="text-[7px] text-gray-500 uppercase block tracking-wider">LOKALITAS REGIONAL</span>
@@ -850,7 +871,6 @@ service cloud.firestore {
             const igInput = document.getElementById('id-ig-input').value;
             const tiktokInput = document.getElementById('id-tiktok-input').value;
             
-            // Ambil data regional & lokalitas
             const regionalInput = document.getElementById('id-regional-input').value;
             const lokalitasInput = document.getElementById('id-lokalitas-input').value;
             
@@ -858,10 +878,16 @@ service cloud.firestore {
             const selectedRoles = Array.from(roleCheckboxes).map(cb => cb.value);
             if (selectedRoles.length === 0) selectedRoles.push('#member'); 
             
+            // Ambil status Badge Spesial
+            const isOG = document.getElementById('id-badge-og').checked;
+            const isCostagvrls = document.getElementById('id-badge-costagvrls').checked;
+
             const newMember = { 
                 nickname: name, 
                 labmem: labmem,
                 role: selectedRoles, 
+                isOG: isOG,
+                isCostagvrls: isCostagvrls,
                 gen: document.getElementById('id-gen-select').value,
                 anime: document.getElementById('id-anime-input').value || 'Bocchi the Rock!',
                 game: document.getElementById('id-game-input').value || 'Genshin Impact',
@@ -930,12 +956,16 @@ service cloud.firestore {
             
             document.getElementById('id-avatar-input').value = member.avatar || "https://placehold.co/150x150/121212/D4AF37?text=Avatar";
             
-            // Atur Centang Checkbox Role
+            // Set Checkbox Roles
             const roleCheckboxes = document.querySelectorAll('.role-checkbox');
             let roles = Array.isArray(member.role) ? member.role : [member.role];
             roleCheckboxes.forEach(cb => {
                 cb.checked = roles.includes(cb.value);
             });
+
+            // Set Checkbox Badges
+            document.getElementById('id-badge-og').checked = member.isOG || false;
+            document.getElementById('id-badge-costagvrls').checked = member.isCostagvrls || false;
 
             // Update Tampilan Tombol
             const btnSimpan = document.getElementById('btn-simpan');
@@ -964,6 +994,10 @@ service cloud.firestore {
             document.getElementById('id-status-select').value = 'ACTIVE';
             document.getElementById('id-avatar-input').value = "https://placehold.co/150x150/121212/D4AF37?text=Avatar";
             
+            // Reset Badges
+            document.getElementById('id-badge-og').checked = false;
+            document.getElementById('id-badge-costagvrls').checked = false;
+
             document.querySelectorAll('.role-checkbox').forEach(cb => cb.checked = false);
             const defaultCb = document.querySelector('.role-checkbox[value="#cosplayer"]');
             if(defaultCb) defaultCb.checked = true;
@@ -1021,14 +1055,15 @@ service cloud.firestore {
             }
             const roleHTML = roles.map(r => `<span class="text-[8px] font-bold text-jp-gold bg-jp-gold/10 border border-jp-gold/20 px-1.5 py-0.5 rounded shadow-sm">${r}</span>`).join('');
 
-            // Handle display Social Media (dengan fallback jika null/undefined)
             const displayIg = (member.instagram && member.instagram !== '-') ? `@${member.instagram}` : '-';
             const displayTiktok = (member.tiktok && member.tiktok !== '-') ? `@${member.tiktok}` : '-';
-            
-            // Format teks lokasi (dengan fallback ke default untuk member lama)
             const displayRegional = (member.regional || 'TABALONG').toUpperCase();
             const displayLokalitas = (member.lokalitas || 'IDN').toUpperCase();
             const regionalText = `${displayRegional}, ${displayLokalitas}`;
+
+            // HTML Untuk Badges
+            const badgeOG = member.isOG ? `<span class="text-[8px] font-black text-blue-200 bg-blue-900/80 border border-blue-400/50 px-1.5 py-0.5 rounded-[3px] tracking-widest shadow-sm">THE OG</span>` : '';
+            const badgeCostagvrls = member.isCostagvrls ? `<span class="text-[8px] font-black text-pink-200 bg-pink-900/80 border border-pink-400/50 px-1.5 py-0.5 rounded-[3px] tracking-widest shadow-sm">COSTAGVRLS</span>` : '';
 
             return `
             <div class="w-full max-w-sm perspective-1000 cursor-pointer card-hover-effect mx-auto" onclick="this.querySelector('.fancy-flip-anim').classList.toggle('is-flipped')">
@@ -1042,12 +1077,19 @@ service cloud.firestore {
                             <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle at 100% 150%, #fff 24%, white 25%, white 28%, #fff 29%, #fff 36%, white 36%, white 40%, transparent 40%, transparent); background-size: 20px 20px;"></div>
                             
                             <div class="flex justify-between items-start relative z-10">
-                                <div class="flex gap-2 items-center">
+                                <div class="flex gap-2 items-center w-full">
                                     <img src="logo.png" class="w-8 h-8 rounded-full border border-jp-gold/30 object-cover shadow-sm" onerror="this.src='https://placehold.co/100x100/121212/D4AF37?text=C'">
-                                    <div class="flex flex-col justify-center">
+                                    <div class="flex flex-col justify-center flex-grow">
                                         <span class="text-[8px] tracking-widest text-gray-200 font-extrabold block mb-0.5">Costaku Tabalong</span>
-                                        <div class="relative inline-flex items-center justify-center px-1.5 py-0.5 bg-gradient-to-b from-slate-300 via-slate-100 to-slate-400 rounded-[3px] border border-slate-500 shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                                            <span class="text-[8px] font-black text-slate-800 font-mono tracking-widest relative z-10">LABMEM ${idNum}</span>
+                                        <div class="flex items-center gap-1 flex-wrap">
+                                            <div class="relative inline-flex items-center justify-center px-1.5 py-0.5 bg-gradient-to-b from-slate-300 via-slate-100 to-slate-400 rounded-[3px] border border-slate-500 shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                                                <span class="text-[8px] font-black text-slate-800 font-mono tracking-widest relative z-10">LABMEM ${idNum}</span>
+                                            </div>
+                                            <!-- Dynamically Inserted Badges -->
+                                            <div class="flex gap-1 ml-0.5">
+                                                ${badgeOG}
+                                                ${badgeCostagvrls}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1102,7 +1144,6 @@ service cloud.firestore {
                                 </div>
                             </div>
                             
-                            <!-- Bagian Bawah Kartu Generate (Social Media) -->
                             <div class="flex justify-between items-center border-t border-white/10 pt-3 mt-1">
                                 <div class="text-[7px] text-gray-500 font-mono tracking-widest">GEN: <span class="text-jp-gold">${member.gen.toUpperCase()}</span></div>
                                 <div class="flex gap-1.5">
@@ -1175,12 +1216,15 @@ service cloud.firestore {
         const idAvatarInputHidden = document.getElementById('id-avatar-input');
         const idStatusSelect = document.getElementById('id-status-select');
         
-        // Input sosial media & regional
         const idIgInput = document.getElementById('id-ig-input');
         const idTiktokInput = document.getElementById('id-tiktok-input');
         const idRegionalInput = document.getElementById('id-regional-input');
         const idLokalitasInput = document.getElementById('id-lokalitas-input');
         
+        // Elemen Input Badge
+        const idBadgeOG = document.getElementById('id-badge-og');
+        const idBadgeCostagvrls = document.getElementById('id-badge-costagvrls');
+
         function updateCardData() {
             const elNick = document.getElementById('card-nickname');
             const elLabmem = document.getElementById('card-labmem-preview');
@@ -1190,12 +1234,15 @@ service cloud.firestore {
             const elGam = document.getElementById('card-back-game');
             const elImg = document.getElementById('card-avatar-img');
             
-            // Elemen tambahan sosial media, regional, dan gen
             const elIg = document.getElementById('card-back-ig');
             const elTiktok = document.getElementById('card-back-tiktok');
             const elGenBack = document.getElementById('card-back-gen-preview');
             const elRegional = document.getElementById('card-regional-preview');
             const elStatus = document.getElementById('card-status-preview');
+
+            // Elemen Tampilan Badge di Preview
+            const badgeOGPreview = document.getElementById('badge-og-preview');
+            const badgeCostagvrlsPreview = document.getElementById('badge-costagvrls-preview');
             
             if(elNick) elNick.innerText = idNameInput.value || 'Ryuka';
             if(elLabmem) elLabmem.innerText = `LABMEM ${idLabmemInput.value || '0001'}`;
@@ -1215,6 +1262,16 @@ service cloud.firestore {
             if(elStatus && idStatusSelect) {
                 elStatus.innerText = idStatusSelect.value;
                 elStatus.className = `text-[9px] font-bold tracking-wide uppercase ${idStatusSelect.value === 'ACTIVE' ? 'text-green-400' : 'text-red-400'}`;
+            }
+
+            // Tampilkan/Sembunyikan Badge di Preview Kartu
+            if (badgeOGPreview && idBadgeOG) {
+                if (idBadgeOG.checked) badgeOGPreview.classList.remove('hidden');
+                else badgeOGPreview.classList.add('hidden');
+            }
+            if (badgeCostagvrlsPreview && idBadgeCostagvrls) {
+                if (idBadgeCostagvrls.checked) badgeCostagvrlsPreview.classList.remove('hidden');
+                else badgeCostagvrlsPreview.classList.add('hidden');
             }
 
             const roleCheckboxes = document.querySelectorAll('.role-checkbox:checked');
@@ -1240,6 +1297,8 @@ service cloud.firestore {
             if(idTiktokInput) idTiktokInput.addEventListener(evt, updateCardData);
             if(idRegionalInput) idRegionalInput.addEventListener(evt, updateCardData);
             if(idLokalitasInput) idLokalitasInput.addEventListener(evt, updateCardData);
+            if(idBadgeOG) idBadgeOG.addEventListener(evt, updateCardData);
+            if(idBadgeCostagvrls) idBadgeCostagvrls.addEventListener(evt, updateCardData);
         });
 
         document.querySelectorAll('.role-checkbox').forEach(cb => {
