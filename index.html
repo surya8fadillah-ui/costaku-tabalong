@@ -743,16 +743,16 @@ service cloud.firestore {
         let currentEditingId = null;
         window.isAdminMode = false; // Tambahkan variabel global ini
 
-        // Daftar Event Statis
+        // Daftar Event Statis (Urutan dibalik: Terlama di bawah, terbaru di atas)
         const eventList = [
-            { id: 'evt_natsu_2016', name: 'Tabalong Natsu Matsuri', date: '28 Agustus 2016' },
-            { id: 'evt_gaming_2023', name: 'Costaku Gaming Fest', date: '30 Juli 2023' },
-            { id: 'evt_watch_1_2024', name: 'Watch Along With Costaku', date: '21 April 2024' },
-            { id: 'evt_game_fest_2024', name: 'Costaku Game Fest', date: '05 Mei 2024' },
-            { id: 'evt_honda_2024', name: 'Honda Matsuri', date: '27 Juli 2024' },
-            { id: 'evt_watch_2_2024', name: 'Watch Along With Costaku 2', date: '17 November 2024' },
+            { id: 'evt_spring_2025', name: 'Spring Serenade', date: '25 Mei 2025' },
             { id: 'evt_yume_2025', name: 'Yumegakuen Fest', date: '23 Februari 2025' },
-            { id: 'evt_spring_2025', name: 'Spring Serenade', date: '25 Mei 2025' }
+            { id: 'evt_watch_2_2024', name: 'Watch Along With Costaku 2', date: '17 November 2024' },
+            { id: 'evt_honda_2024', name: 'Honda Matsuri', date: '27 Juli 2024' },
+            { id: 'evt_game_fest_2024', name: 'Costaku Game Fest', date: '05 Mei 2024' },
+            { id: 'evt_watch_1_2024', name: 'Watch Along With Costaku', date: '21 April 2024' },
+            { id: 'evt_gaming_2023', name: 'Costaku Gaming Fest', date: '30 Juli 2023' },
+            { id: 'evt_natsu_2016', name: 'Tabalong Natsu Matsuri', date: '28 Agustus 2016' }
         ];
 
         onAuthStateChanged(auth, (user) => {
