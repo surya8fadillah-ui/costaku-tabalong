@@ -128,18 +128,6 @@
                     </div>
 
                     <div class="relative group">
-                        <a href="#/gallery" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1 flex items-center gap-1" data-target="gallery">Galeri <i class="fa-solid fa-chevron-down text-[10px] opacity-70 transition-transform duration-300 group-hover:rotate-180"></i></a>
-                        <div class="absolute left-0 mt-1 w-56 bg-jp-darkGray border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform origin-top translate-y-2 group-hover:translate-y-0 overflow-hidden">
-                            <div class="py-1">
-                                <a href="#/gallery/gathering" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-users w-4 text-center"></i> Gathering</a>
-                                <a href="#/gallery/photosession" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-camera w-4 text-center"></i> Photo Session</a>
-                                <a href="#/gallery/sports" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-volleyball w-4 text-center"></i> Sports</a>
-                                <a href="#/gallery/dance" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-jp-lightGray hover:text-jp-gold transition-colors"><i class="fa-solid fa-compact-disc w-4 text-center"></i> Dance & Musik</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="relative group">
                         <a href="#/members" class="nav-link text-gray-300 hover:text-jp-gold text-sm font-medium tracking-wide transition-all pb-1 flex items-center gap-1" data-target="members">Anggota <i class="fa-solid fa-chevron-down text-[10px] opacity-70 transition-transform duration-300 group-hover:rotate-180"></i></a>
                         <div class="absolute left-0 mt-1 w-48 bg-jp-darkGray border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform origin-top translate-y-2 group-hover:translate-y-0 overflow-hidden">
                             <div class="py-1">
@@ -180,17 +168,6 @@
                 </div>
             </div>
             
-            <div class="space-y-1">
-                <button onclick="window.toggleMobileSubmenu('mobile-galeri-sub')" class="w-full flex justify-between items-center text-gray-300 hover:text-jp-gold text-base font-medium py-2 transition-colors"><span>Galeri Dokumentasi</span><i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" id="icon-mobile-galeri-sub"></i></button>
-                <div id="mobile-galeri-sub" class="hidden pl-4 space-y-2 border-l-2 border-jp-gold/30 ml-2 mb-2 mt-1">
-                    <a href="#/gallery" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors" data-target="gallery"><i class="fa-solid fa-images w-5"></i> Semua Galeri</a>
-                    <a href="#/gallery/gathering" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-users w-5"></i> Gathering</a>
-                    <a href="#/gallery/photosession" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-camera w-5"></i> Photo Session</a>
-                    <a href="#/gallery/sports" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-volleyball w-5"></i> Sports</a>
-                    <a href="#/gallery/dance" class="mobile-nav-link block text-gray-400 hover:text-jp-gold text-sm py-2 transition-colors"><i class="fa-solid fa-compact-disc w-5"></i> Dance & Musik</a>
-                </div>
-            </div>
-
             <div class="space-y-1">
                 <button onclick="window.toggleMobileSubmenu('mobile-anggota-sub')" class="w-full flex justify-between items-center text-gray-300 hover:text-jp-gold text-base font-medium py-2 transition-colors"><span>Anggota (ID Card)</span><i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" id="icon-mobile-anggota-sub"></i></button>
                 <div id="mobile-anggota-sub" class="hidden pl-4 space-y-2 border-l-2 border-jp-gold/30 ml-2 mb-2 mt-1">
@@ -365,91 +342,6 @@
                             <h3 class="text-4xl font-black text-white">Event Organizer (EO)</h3>
                             <p class="text-gray-400 text-lg leading-relaxed">Motor penggerak di balik setiap acara Costaku Tabalong. Divisi ini berisi mereka yang memiliki passion dalam merancang konsep, manajemen panggung, kepanitiaan, hingga memastikan kelancaran setiap festival jejepangan.</p>
                         </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- GALLERY PAGE -->
-        <div id="page-gallery" class="page-container hidden page-fade-in">
-            <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <span class="text-xs font-bold tracking-widest text-jp-gold uppercase font-jp block mb-2">ギャラリー ・ GALERI KITA</span>
-                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Dokumentasi Kegiatan</h2>
-                </div>
-
-                <div id="galeri-gathering" class="scroll-mt-32 mb-16 border-t border-white/5 pt-10">
-                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3"><i class="fa-solid fa-users text-jp-gold"></i> Gathering & Kumpul Rutin</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath1.jpeg" alt="Gathering 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" </div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath2.jpeg" alt="Gathering 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+2'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath3.jpeg" alt="Gathering 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+3'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath4.jpeg" alt="Gathering 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+4'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath5.jpeg" alt="Gathering 5" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+5'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath6.jpeg" alt="Gathering 6" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+6'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath7.jpeg" alt="Gathering 7" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+7'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath8.jpeg" alt="Gathering 8" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+8'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath9.jpeg" alt="Gathering 9" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+9'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath10.jpeg" alt="Gathering 10" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+10'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath11.jpeg" alt="Gathering 11" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+11'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath12.jpeg" alt="Gathering 12" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+12'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath13.jpeg" alt="Gathering 13" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+13'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath14.jpeg" alt="Gathering 14" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+14'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath15.jpeg" alt="Gathering 15" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+15'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath16.jpeg" alt="Gathering 16" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+16'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath17.jpeg" alt="Gathering 17" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+17'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath18.jpeg" alt="Gathering 18" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+18'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath19.jpg" alt="Gathering 19" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+19'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath21.jpg" alt="Gathering 21" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+21'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath22.jpg" alt="Gathering 22" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+22'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath23.jpg" alt="Gathering 23" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+23'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath24.jpg" alt="Gathering 24" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+24'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath25.jpg" alt="Gathering 25" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+25'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath26.jpg" alt="Gathering 26" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+26'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath27.jpg" alt="Gathering 27" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+27'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath28.jpg" alt="Gathering 28" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+28'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath29.jpg" alt="Gathering 29" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+29'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath30.jpg" alt="Gathering 30" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+30'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath31.jpg" alt="Gathering 31" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+31'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath32.jpg" alt="Gathering 32" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+32'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath33.jpg" alt="Gathering 33" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+33'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath34.jpg" alt="Gathering 34" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+34'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath35.jpg" alt="Gathering 35" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+35'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath36.jpg" alt="Gathering 36" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+36'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath37.jpg" alt="Gathering 37" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+37'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath38.jpeg" alt="Gathering 38" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+38'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath39.jpeg" alt="Gathering 39" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+39'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath40.jpeg" alt="Gathering 40" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+40'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath41.jpeg" alt="Gathering 41" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+41'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath42.jpeg" alt="Gathering 42" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+42'"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-gold/30 transition-all overflow-hidden group"><img src="gath43.jpeg" alt="Gathering 43" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/161615/D4AF37?text=Gath+43'"></div>
-                    </div>
-                </div>
-
-                <div id="galeri-photosession" class="scroll-mt-32 mb-16 border-t border-white/5 pt-10">
-                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3"><i class="fa-solid fa-camera text-jp-orange"></i> Photo Session (Cosplay)</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        <div class="aspect-square bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-orange/30 transition-all overflow-hidden group"><img src="https://placehold.co/400x400/161615/FF9F1C?text=Photo+1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-                        <div class="aspect-square bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-orange/30 transition-all overflow-hidden group"><img src="https://placehold.co/400x400/161615/FF9F1C?text=Photo+2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-                        <div class="aspect-square bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-orange/30 transition-all overflow-hidden group"><img src="https://placehold.co/400x400/161615/FF9F1C?text=Photo+3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-                        <div class="aspect-square bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-jp-orange/30 transition-all overflow-hidden group"><img src="https://placehold.co/400x400/161615/FF9F1C?text=Photo+4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-                    </div>
-                </div>
-
-                <div id="galeri-sports" class="scroll-mt-32 mb-16 border-t border-white/5 pt-10">
-                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3"><i class="fa-solid fa-volleyball text-blue-400"></i> Sports & Olahraga Bersama</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-blue-400/30 transition-all overflow-hidden group"><img src="https://placehold.co/600x400/161615/3B82F6?text=Sport+1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-blue-400/30 transition-all overflow-hidden group"><img src="https://placehold.co/600x400/161615/3B82F6?text=Sport+2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-                    </div>
-                </div>
-
-                <div id="galeri-dance" class="scroll-mt-32 mb-16 border-t border-white/5 pt-10">
-                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3"><i class="fa-solid fa-compact-disc text-pink-400"></i> Dance Cover & Musik</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-pink-400/30 transition-all overflow-hidden group"><img src="https://placehold.co/600x400/161615/EC4899?text=Dance+1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-pink-400/30 transition-all overflow-hidden group"><img src="https://placehold.co/600x400/161615/EC4899?text=Dance+2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
-                        <div class="aspect-video bg-jp-lightGray/30 rounded-xl border border-white/5 flex items-center justify-center hover:border-pink-400/30 transition-all overflow-hidden group"><img src="https://placehold.co/600x400/161615/EC4899?text=Music+1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"></div>
                     </div>
                 </div>
             </section>
@@ -835,7 +727,7 @@ service cloud.firestore {
         let communityMembers = [];
         window.currentGenFilter = null; 
         let currentEditingId = null;
-        window.isAdminMode = false; // Tambahkan variabel global ini
+        window.isAdminMode = false;
 
         onAuthStateChanged(auth, (user) => {
             currentUser = user;
@@ -919,7 +811,6 @@ service cloud.firestore {
             const selectedRoles = Array.from(roleCheckboxes).map(cb => cb.value);
             if (selectedRoles.length === 0) selectedRoles.push('#member'); 
             
-            // Ambil status Badge Spesial
             const isOG = document.getElementById('id-badge-og').checked;
             const isCostagvrls = document.getElementById('id-badge-costagvrls').checked;
 
@@ -983,7 +874,6 @@ service cloud.firestore {
 
             currentEditingId = memberId;
 
-            // Populate form dengan data lama
             document.getElementById('id-name-input').value = member.nickname || '';
             document.getElementById('id-labmem-input').value = member.labmem || '';
             document.getElementById('id-gen-select').value = member.gen || 'Gen 1';
@@ -997,18 +887,15 @@ service cloud.firestore {
             
             document.getElementById('id-avatar-input').value = member.avatar || "https://placehold.co/150x150/121212/D4AF37?text=Avatar";
             
-            // Set Checkbox Roles
             const roleCheckboxes = document.querySelectorAll('.role-checkbox');
             let roles = Array.isArray(member.role) ? member.role : [member.role];
             roleCheckboxes.forEach(cb => {
                 cb.checked = roles.includes(cb.value);
             });
 
-            // Set Checkbox Badges
             document.getElementById('id-badge-og').checked = member.isOG || false;
             document.getElementById('id-badge-costagvrls').checked = member.isCostagvrls || false;
 
-            // Update Tampilan Tombol
             const btnSimpan = document.getElementById('btn-simpan');
             btnSimpan.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Update Data';
             btnSimpan.classList.remove('w-full');
@@ -1022,7 +909,6 @@ service cloud.firestore {
         window.cancelEdit = function() {
             currentEditingId = null;
             
-            // Kembalikan form ke mode default
             document.getElementById('id-name-input').value = 'Ryuka';
             document.getElementById('id-labmem-input').value = '0001';
             document.getElementById('id-gen-select').value = 'Gen 1';
@@ -1035,7 +921,6 @@ service cloud.firestore {
             document.getElementById('id-status-select').value = 'ACTIVE';
             document.getElementById('id-avatar-input').value = "https://placehold.co/150x150/121212/D4AF37?text=Avatar";
             
-            // Reset Badges
             document.getElementById('id-badge-og').checked = false;
             document.getElementById('id-badge-costagvrls').checked = false;
 
@@ -1076,7 +961,6 @@ service cloud.firestore {
             const idNum = member.labmem ? member.labmem : String(index + 1).padStart(4, '0');
             const statusColor = member.status === 'ACTIVE' ? 'text-green-400' : 'text-red-400';
             
-            // Ubah logika: Periksa currentUser DAN window.isAdminMode
             const deleteBtnHTML = (currentUser && window.isAdminMode) ? `
                 <div class="absolute top-2 right-2 z-[60] flex gap-2">
                     <button onclick="window.editMember('${member.id}', event)" class="bg-blue-600/90 hover:bg-blue-500 text-white w-9 h-9 rounded-full flex items-center justify-center backdrop-blur-sm transition-all shadow-[0_0_15px_rgba(37,99,235,0.6)] border border-blue-400/50 hover:scale-110 cursor-pointer" title="Edit Kartu Ini">
@@ -1103,7 +987,6 @@ service cloud.firestore {
             const displayLokalitas = (member.lokalitas || 'IDN').toUpperCase();
             const regionalText = `${displayRegional}, ${displayLokalitas}`;
 
-            // HTML Untuk Badges
             const badgeOG = member.isOG ? `<span class="text-[8px] font-black text-blue-200 bg-blue-900/80 border border-blue-400/50 px-1.5 py-0.5 rounded-[3px] tracking-widest shadow-sm">THE OG</span>` : '';
             const badgeCostagvrls = member.isCostagvrls ? `<span class="text-[8px] font-black text-pink-200 bg-pink-900/80 border border-pink-400/50 px-1.5 py-0.5 rounded-[3px] tracking-widest shadow-sm">COSTAGVRLS</span>` : '';
 
@@ -1127,7 +1010,6 @@ service cloud.firestore {
                                             <div class="relative inline-flex items-center justify-center px-1.5 py-0.5 bg-gradient-to-b from-slate-300 via-slate-100 to-slate-400 rounded-[3px] border border-slate-500 shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                                                 <span class="text-[8px] font-black text-slate-800 font-mono tracking-widest relative z-10">LABMEM ${idNum}</span>
                                             </div>
-                                            <!-- Dynamically Inserted Badges -->
                                             <div class="flex gap-1 ml-0.5">
                                                 ${badgeOG}
                                                 ${badgeCostagvrls}
@@ -1263,7 +1145,6 @@ service cloud.firestore {
         const idRegionalInput = document.getElementById('id-regional-input');
         const idLokalitasInput = document.getElementById('id-lokalitas-input');
         
-        // Elemen Input Badge
         const idBadgeOG = document.getElementById('id-badge-og');
         const idBadgeCostagvrls = document.getElementById('id-badge-costagvrls');
 
@@ -1282,7 +1163,6 @@ service cloud.firestore {
             const elRegional = document.getElementById('card-regional-preview');
             const elStatus = document.getElementById('card-status-preview');
 
-            // Elemen Tampilan Badge di Preview
             const badgeOGPreview = document.getElementById('badge-og-preview');
             const badgeCostagvrlsPreview = document.getElementById('badge-costagvrls-preview');
             
@@ -1306,7 +1186,6 @@ service cloud.firestore {
                 elStatus.className = `text-[9px] font-bold tracking-wide uppercase ${idStatusSelect.value === 'ACTIVE' ? 'text-green-400' : 'text-red-400'}`;
             }
 
-            // Tampilkan/Sembunyikan Badge di Preview Kartu
             if (badgeOGPreview && idBadgeOG) {
                 if (idBadgeOG.checked) badgeOGPreview.classList.remove('hidden');
                 else badgeOGPreview.classList.add('hidden');
@@ -1390,16 +1269,15 @@ service cloud.firestore {
             const navAuthBtn = document.getElementById('nav-auth-container');
 
             if (isAdmin === 'true') {
-                window.isAdminMode = true; // Set state
+                window.isAdminMode = true; 
                 if(controlPanel) controlPanel.style.display = 'block';
                 if(navAuthBtn) navAuthBtn.style.display = 'flex';
             } else {
-                window.isAdminMode = false; // Reset state
+                window.isAdminMode = false;
                 if(controlPanel) controlPanel.style.display = 'none';
                 if(navAuthBtn) navAuthBtn.style.display = 'none';
             }
             
-            // Re-render direktori jika mode berubah (misal dari login ke logout, dsb)
             if (communityMembers.length > 0) {
                  renderMemberDirectory();
             }
@@ -1407,7 +1285,7 @@ service cloud.firestore {
 
         function handleRouting() {
             const hash = window.location.hash || '#/';
-            const validPages = ['home', 'about', 'divisions', 'gallery', 'members', 'events'];
+            const validPages = ['home', 'about', 'divisions', 'members', 'events']; // 'gallery' telah dihapus
             
             let hashPath = hash.substring(2).split('?')[0]; 
             let pathParts = hashPath.split('/');
@@ -1429,11 +1307,6 @@ service cloud.firestore {
             } else if (targetPage === 'divisions' && subTarget) {
                 setTimeout(() => {
                     const targetElement = document.getElementById(`divisi-${subTarget}`);
-                    if (targetElement) { targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-                }, 100);
-            } else if (targetPage === 'gallery' && subTarget) {
-                setTimeout(() => {
-                    const targetElement = document.getElementById(`galeri-${subTarget}`);
                     if (targetElement) { targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
                 }, 100);
             } else {
