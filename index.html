@@ -610,7 +610,17 @@
 
         <div id="page-events" class="page-container hidden page-fade-in">
              <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12"><h2 class="text-3xl font-extrabold text-white">Kalender Kegiatan</h2></div>
+                <div class="text-center mb-16">
+                    <span class="text-xs font-bold tracking-widest text-jp-gold uppercase font-jp block mb-2">イベント ・ RIWAYAT EVENT</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Event Costaku Tabalong</h2>
+                    <p class="max-w-2xl mx-auto text-gray-400 text-sm font-light leading-relaxed">Perjalanan dan jejak langkah komunitas kami dari tahun ke tahun.</p>
+                </div>
+                
+                <div class="max-w-3xl mx-auto px-2 sm:px-6">
+                    <div id="events-timeline" class="relative border-l-2 border-white/10 ml-3 sm:ml-0">
+                        <!-- Event akan dimuat oleh JavaScript -->
+                    </div>
+                </div>
             </section>
         </div>
         
@@ -685,9 +695,11 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /members_directory/{document=**} {
-      // Siapapun bisa melihat daftar anggota (untuk di website)
       allow read: if true;
-      // Hanya akun yang sudah login lewat Google Auth yang bisa mengubah/menghapus
+      allow write: if request.auth != null;
+    }
+    match /event_photos/{document=**} {
+      allow read: if true;
       allow write: if request.auth != null;
     }
   }
@@ -703,7 +715,7 @@ service cloud.firestore {
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
         import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
         const firebaseConfig = {
@@ -722,17 +734,32 @@ service cloud.firestore {
         const provider = new GoogleAuthProvider();
         
         const membersCollection = collection(db, "members_directory");
+        const eventsCollection = collection(db, "event_photos");
 
         let currentUser = null;
         let communityMembers = [];
+        let eventPhotos = {};
         window.currentGenFilter = null; 
         let currentEditingId = null;
-        window.isAdminMode = false;
+        window.isAdminMode = false; // Tambahkan variabel global ini
+
+        // Daftar Event Statis
+        const eventList = [
+            { id: 'evt_natsu_2016', name: 'Tabalong Natsu Matsuri', date: '28 Agustus 2016' },
+            { id: 'evt_gaming_2023', name: 'Costaku Gaming Fest', date: '30 Juli 2023' },
+            { id: 'evt_watch_1_2024', name: 'Watch Along With Costaku', date: '21 April 2024' },
+            { id: 'evt_game_fest_2024', name: 'Costaku Game Fest', date: '05 Mei 2024' },
+            { id: 'evt_honda_2024', name: 'Honda Matsuri', date: '27 Juli 2024' },
+            { id: 'evt_watch_2_2024', name: 'Watch Along With Costaku 2', date: '17 November 2024' },
+            { id: 'evt_yume_2025', name: 'Yumegakuen Fest', date: '23 Februari 2025' },
+            { id: 'evt_spring_2025', name: 'Spring Serenade', date: '25 Mei 2025' }
+        ];
 
         onAuthStateChanged(auth, (user) => {
             currentUser = user;
             updateAuthUI();
             if (communityMembers.length > 0) renderMemberDirectory();
+            renderEvents(); // Refresh tombol admin di panel event
         });
 
         window.loginWithGoogle = () => {
@@ -1132,6 +1159,110 @@ service cloud.firestore {
             }
         }
 
+
+        function loadEventsFromFirestore() {
+            onSnapshot(eventsCollection, (snapshot) => {
+                eventPhotos = {};
+                snapshot.forEach((doc) => {
+                    eventPhotos[doc.id] = doc.data().photoUrl;
+                });
+                renderEvents();
+            }, (error) => {
+                console.warn("Notice: Event photos collection not created yet or missing permissions. Default placeholders will be used.", error);
+                renderEvents();
+            });
+        }
+
+        window.renderEvents = function() {
+            const container = document.getElementById('events-timeline');
+            if (!container) return;
+            
+            container.innerHTML = eventList.map(evt => {
+                const photoUrl = eventPhotos[evt.id] || 'https://placehold.co/800x400/161615/D4AF37?text=Belum+Ada+Foto';
+                
+                // Kontrol Admin: Hanya dirender bila login & isAdminMode aktif
+                const adminControls = (currentUser && window.isAdminMode) ? `
+                    <div class="mt-4 p-4 bg-jp-dark/50 border border-white/10 rounded-lg flex flex-col gap-2">
+                        <label class="text-xs text-jp-gold font-bold"><i class="fa-solid fa-cloud-arrow-up"></i> (Admin) Upload/Ubah Foto Dokumentasi</label>
+                        <input type="file" accept="image/png, image/jpeg, image/jpg" class="text-[10px] text-gray-400 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-[10px] file:font-bold file:bg-jp-gold file:text-jp-dark cursor-pointer hover:file:bg-jp-goldHover transition-all" onchange="window.uploadEventPhoto('${evt.id}', this)">
+                        <p class="text-[9px] text-gray-500">* Maksimal ukuran 1MB. Disarankan mode landscape/memanjang.</p>
+                    </div>
+                ` : '';
+
+                return `
+                <div class="mb-12 pl-6 sm:pl-10 relative group">
+                    <span class="absolute -left-[9px] sm:-left-[11px] top-1.5 w-4 h-4 sm:w-5 sm:h-5 bg-jp-dark border-2 border-jp-gold rounded-full group-hover:bg-jp-gold transition-colors shadow-[0_0_10px_rgba(212,175,55,0.5)] z-10"></span>
+                    
+                    <div class="bg-jp-lightGray/40 border border-white/5 rounded-xl p-5 sm:p-7 hover:border-jp-gold/30 transition-all shadow-lg">
+                        <span class="text-[10px] sm:text-xs font-bold text-jp-gold tracking-widest block mb-1 font-mono">${evt.date.toUpperCase()}</span>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">${evt.name}</h3>
+                        
+                        <button onclick="window.toggleEventPhoto('${evt.id}')" class="text-xs sm:text-sm bg-white/5 hover:bg-white/10 text-gray-300 px-4 py-2.5 rounded-md border border-white/10 transition-colors flex items-center gap-2">
+                            <i class="fa-solid fa-image"></i> Lihat Dokumentasi
+                        </button>
+
+                        <div id="photo_container_${evt.id}" class="hidden mt-5 transition-all duration-300">
+                            <img id="img_${evt.id}" src="${photoUrl}" class="w-full rounded-lg border border-white/10 shadow-lg object-cover bg-jp-dark" alt="Dokumentasi ${evt.name}" onerror="this.src='https://placehold.co/800x400/161615/D4AF37?text=Gambar+Rusak'">
+                            ${adminControls}
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        window.toggleEventPhoto = function(eventId) {
+            const container = document.getElementById(`photo_container_${eventId}`);
+            if (container.classList.contains('hidden')) {
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+            }
+        }
+
+        window.uploadEventPhoto = async function(eventId, inputElement) {
+            if (!currentUser || !window.isAdminMode) {
+                alert("Akses ditolak! Anda harus login sebagai admin untuk mengunggah foto.");
+                inputElement.value = '';
+                return;
+            }
+            const file = inputElement.files[0];
+            if (!file) return;
+
+            if(file.size > 1024 * 1024) {
+                alert("Ukuran file terlalu besar! Maksimal 1MB.");
+                inputElement.value = ''; 
+                return;
+            }
+
+            const imgElement = document.getElementById(`img_${eventId}`);
+            const originalSrc = imgElement.src;
+            imgElement.src = 'https://placehold.co/800x400/161615/D4AF37?text=Mengunggah...';
+
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                const base64Image = e.target.result;
+                
+                try {
+                    await setDoc(doc(db, "event_photos", eventId), {
+                        photoUrl: base64Image,
+                        updatedAt: new Date().toISOString(),
+                        updatedBy: currentUser.email
+                    });
+                    
+                    imgElement.src = base64Image;
+                    document.getElementById('success-modal-message').innerText = "Foto dokumentasi event berhasil diunggah ke Database!";
+                    document.getElementById('success-modal').classList.remove('hidden');
+                } catch (error) {
+                    console.error("Error saving event photo:", error);
+                    imgElement.src = originalSrc;
+                    alert("Gagal menyimpan foto: " + error.message);
+                    if (error.code === 'permission-denied') window.openModal('rules-modal');
+                }
+            }
+            reader.readAsDataURL(file);
+        }
+
         const idNameInput = document.getElementById('id-name-input');
         const idLabmemInput = document.getElementById('id-labmem-input');
         const idGenSelect = document.getElementById('id-gen-select');
@@ -1269,18 +1400,20 @@ service cloud.firestore {
             const navAuthBtn = document.getElementById('nav-auth-container');
 
             if (isAdmin === 'true') {
-                window.isAdminMode = true; 
+                window.isAdminMode = true; // Set state
                 if(controlPanel) controlPanel.style.display = 'block';
                 if(navAuthBtn) navAuthBtn.style.display = 'flex';
             } else {
-                window.isAdminMode = false;
+                window.isAdminMode = false; // Reset state
                 if(controlPanel) controlPanel.style.display = 'none';
                 if(navAuthBtn) navAuthBtn.style.display = 'none';
             }
             
+            // Re-render direktori jika mode berubah (misal dari login ke logout, dsb)
             if (communityMembers.length > 0) {
                  renderMemberDirectory();
             }
+            renderEvents(); // Re-render event agar upload box hilang/muncul
         }
 
         function handleRouting() {
@@ -1323,6 +1456,7 @@ service cloud.firestore {
         window.onload = function() {
             handleRouting(); 
             loadMembersFromFirestore(); 
+            loadEventsFromFirestore(); // Muat foto event
         };
     </script>
 </body>
